@@ -1499,28 +1499,6 @@
 					"name": "Users_An",
 					"item": [
 						{
-							"name": "UserSignIn",
-							"id": "405a4051-343a-452d-bd7a-1d9f095d2ef8",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login"
-							},
-							"response": []
-						},
-						{
 							"name": "Get all Users with Facets/Filters",
 							"id": "ac5fdffb-d51d-4ceb-a304-cf5aefd638b6",
 							"protocolProfileBehavior": {
@@ -1546,15 +1524,9 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w"
-									}
-								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users"
+								"url": "{{baseURL}}/users"
 							},
 							"response": []
 						},
@@ -1565,15 +1537,63 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w"
-									}
-								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/U53"
+								"url": "{{baseURL}}/users/U53"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Users with Role",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0f2f7847-f0e4-4246-82c0-d3b12a7b7e11",
+										"exec": [
+											"const response = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"console.log(`this is from Anjali's fork request`)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "97e65fef-2ca2-4b67-99d8-3e3d85b8f655",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userComments\": \"string\",\r\n\"userEduPg\": \"string\",\r\n\"userEduUg\": \"string\",\r\n\"userFirstName\": \"string\",\r\n\"userLastName\": \"string\",\r\n\"userLinkedinUrl\": \"www.linkedin.com/in/prakash-roy-d5622787/\",\r\n\"userLocation\": \"string\",\r\n\"userMiddleName\": \"string\",\r\n\"userPhoneNumber\": \"+91 1234567892\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R01\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": \"Test@gmail.com\"\r\n}\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/users/roleStatus"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "ab3428c3-879d-4a93-bdf4-52bb62dfca53",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": ""
 							},
 							"response": []
 						},
@@ -1584,15 +1604,9 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w"
-									}
-								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/v2/usersInvalid"
+								"url": "{{baseURL}}/v2/usersInvalid"
 							},
 							"response": []
 						}
