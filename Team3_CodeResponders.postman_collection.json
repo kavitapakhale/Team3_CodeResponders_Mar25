@@ -1,0 +1,2006 @@
+{
+	"info": {
+		"_postman_id": "6b92f49d-5788-4a9d-a692-c53cab4ad45f",
+		"name": "Team3_CodeResponders",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42929560"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"\r",
+									"//Validate status 200, roles value and  + response schema\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validate status being Active\r",
+									"pm.test(\"User Status is Active\", function () {\r",
+									"    pm.expect(response.status).to.equal(\"Active\");\r",
+									"});\r",
+									"\r",
+									"//Validate Admin Roles\r",
+									"pm.test(\"User have both Admin and Staff roles assigned\", function () {\r",
+									"    const roles = response.roles\r",
+									"    pm.expect(roles).to.include(\"ROLE_ADMIN\");\r",
+									"    pm.expect(roles).to.include(\"ROLE_STAFF\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Set some values at collection level\r",
+									"//1. Set Bearer Token\r",
+									"pm.collectionVariables.set(\"BearerToken\", response.token);\r",
+									"\r",
+									"//2. set Admin UserID\r",
+									"pm.collectionVariables.set(\"Admin_UserID\", response.userId);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"password\": \"{{password}}\",\r\n \"userLoginEmailId\": \"{{userLoginEmailId}}\"\r\n } ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Program",
+			"item": [
+				{
+					"name": "AddNewProgram_Mandatory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"programDescription\":\"String\",\r\n \"programName\":\"String\", //mandatory and unique\r\n \"programStatus\":\"String\" //mandatory\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/saveprogram",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"saveprogram"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewProgram_AllData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"programDescription\":\"String\",\r\n \"programName\":\"String\", //mandatory\r\n \"programStatus\":\"String\" //mandatory\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/saveprogram",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"saveprogram"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AllPrograms",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"\r",
+									"console.log(response.length)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/allPrograms",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"allPrograms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AllProgramswithUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"\r",
+									"console.log(response.length) //7 users\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/allProgramsWithUsers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"allProgramsWithUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProgrambyProgramId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"\r",
+									"//Validate status, Program ID availability in response body and schema"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/programs/:programId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"programs",
+								":programId"
+							],
+							"variable": [
+								{
+									"key": "programId",
+									"value": "16225"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProgrambyProgramName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									" {\r",
+									" \"programDescription\": \"Update\",\r",
+									" \"programName\":\"TestChatBot\",\r",
+									" \"programStatus\":\"Inactive\"\r",
+									" }\r",
+									" */\r",
+									"\r",
+									"const response = pm.response.json()\r",
+									"\r",
+									"/**\r",
+									" MandatoryFields:\r",
+									" programName,programStatus\r",
+									" */\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n \"programDescription\": \"Update\",\r\n \"programName\":\"TestChatBot\",\r\n \"programStatus\":\"Inactive\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/program/:programName",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"program",
+								":programName"
+							],
+							"variable": [
+								{
+									"key": "programName",
+									"value": "TestChatBot"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProgrambyProgramId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/**\r",
+									" MandatoryFields:\r",
+									" programName,programStatus\r",
+									" */"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"programDescription\": \"Ab odit velit distinctio ipsam. Update\",\r\n    \"programName\": \"Wanda Update\",\r\n    \"programStatus\": \"Inactive\"\r\n }\r\n\r\n/* {\r\n \"programDescription\": \"Update\",\r\n \"programName\":\"TestChatBot\",\r\n \"programStatus\":\"Inactive\"\r\n }\r\n\r\n response:[\r\n{\r\n    \"message\": \"Program Name TestChatBot already exists\",\r\n    \"success\": false\r\n}]*/",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/putprogram/:programId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"putprogram",
+								":programId"
+							],
+							"variable": [
+								{
+									"key": "programId",
+									"value": "16487"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProgramByProgramID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									"StatusCode:\r",
+									" 200:okwithMessage(Eg:Message:Program\r",
+									" Id-10isdeletedSuccessfully!)\r",
+									" 404:ErrorwithMessage(Eg:\"message\":\"no\r",
+									" recordfoundwithprogramId{programId}\",\r",
+									" \"success\": false)\r",
+									"  */"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/deletebyprogid/:programId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"deletebyprogid",
+								":programId"
+							],
+							"variable": [
+								{
+									"key": "programId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProgramByProgramName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*\r",
+									"StatusCode:\r",
+									" 200:okwithMessage(Eg:Message:Program\r",
+									" Name-{programName} isdeletedSuccessfully!)\r",
+									" 404:ErrorwithMessage(Eg:\"message\":\"no\r",
+									" recordfoundwithprogramName\", \"success\":\r",
+									" false)\r",
+									"  */"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/deletebyprogname/:programName",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"deletebyprogname",
+								":programName"
+							],
+							"variable": [
+								{
+									"key": "programName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Batch",
+			"item": []
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "Class_K",
+					"item": [
+						{
+							"name": "User Sign In",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Class",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"batchId\": 9518,\r\n\"classNo\": 1,\r\n\"classDate\": \"2025-06-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U25\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-06-06T19:04:41.220Z\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/CreateClassSchedule",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"CreateClassSchedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Class with No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"batchId\": 9518,\r\n\"classNo\": 45,\r\n\"classDate\": \"2025-03-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U81\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-03-06T19:04:41.220Z\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/CreateClassSchedule",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"CreateClassSchedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Class List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"allClasses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Class List with No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"allClasses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Class List with invalid end points",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClass",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"allClass"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/297",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"upcomingClasses",
+										"297"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student with No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/48",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"upcomingClasses",
+										"48"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student with Invalid end points",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClass/48",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"upcomingClass",
+										"48"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student with special character student Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/@f",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"upcomingClasses",
+										"@f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student with letters student Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/RY",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"upcomingClasses",
+										"RY"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student with letters numbers and special character student Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/@f3",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"upcomingClasses",
+										"@f3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update New Class",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"csId\": 65,\r\n  \"batchId\": 78,\r\n  \"classNo\": 0,\r\n  \"classDate\": \"2025-03-07T21:02:04.502Z\",\r\n  \"classTopic\": \"java\",\r\n  \"classStatus\": \"null\",\r\n  \"classStaffId\": \"U78\",\r\n  \"classDescription\": \"lodk2 o-D-66_MdRIdH6oSFhkqPbb0VcTPy\",\r\n  \"classComments\": \"  \",\r\n  \"classNotes\": \"null\",\r\n  \"classRecordingPath\": \"c:\\\\recordings\",\r\n  \"batchName\": \"java2.5\",\r\n  \"classScheduledDates\": [\r\n    \"2025-03-07T21:02:04.504Z\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClass/62",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"updateClass",
+										"62"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Recordings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classrecordings",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classrecordings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Recordings with No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classrecordings",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classrecordings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Recordings with invalid end points",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classrecording",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classrecording"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update class recordings by class Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"batchId\": 0,\r\n\"classComments\": \"string\",\r\n\"classDate\": \"2023-12-16T06:53:55.590Z\",\r\n\"classDescription\": \"string\",\r\n\"classNo\": 0,\r\n\"classNotes\": \"string\",\r\n\"classRecordingPath\": \"string\",\r\n\"classStaffId\": \"string\",\r\n\"classTopic\": \"string\",\r\n\"csId\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClassrecording/297",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"updateClassrecording",
+										"297"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/8432",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesbyBatch",
+										"8432"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id with No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/8432",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesbyBatch",
+										"8432"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id with invalid endpoints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBat/8432",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesbyBat",
+										"8432"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id with only letters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/abc",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesbyBatch",
+										"abc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id with only special characters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/&#%%",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesbyBatch",
+										"&"
+									],
+									"hash": "%%"
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id with letters numbers and special character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/T4*",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesbyBatch",
+										"T4*"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/U25",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesByStaff",
+										"U25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff with No Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/U25",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesByStaff",
+										"U25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff with invalid end points",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesBySta/U25",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesBySta",
+										"U25"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff Id with only letters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/UN",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesByStaff",
+										"UN"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff Id with only special characters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/&*#",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesByStaff",
+										"&*"
+									],
+									"hash": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff Id with letters numbers and special character",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/U2&",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"classesByStaff",
+										"U2&"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Class_A",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Users_An",
+					"item": [
+						{
+							"name": "UserSignIn",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Users with Facets/Filters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/v2/users",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"v2",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Info by ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/U53",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"users",
+										"U53"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Facets/Filters with invalid endpoint",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/v2/usersInvalid",
+									"protocol": "https",
+									"host": [
+										"lms-hackthon-feb25-803334c87fbe",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"lms",
+										"v2",
+										"usersInvalid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tear Down and Logout",
+			"item": [
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}//logoutlms",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"",
+								"logoutlms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BearerToken",
+			"value": ""
+		},
+		{
+			"key": "Admin_UserID",
+			"value": ""
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+			"type": "default"
+		}
+	]
+}
