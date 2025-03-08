@@ -444,6 +444,19 @@
 			"item": [
 				{
 					"name": "CheckingGitUpdate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "145639e6-1d68-40d2-8ccd-73adc375a3ef",
+								"exec": [
+									"console.log(\"Name\")"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "a2d7690e-0d37-4957-9c8d-424964647fa9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
