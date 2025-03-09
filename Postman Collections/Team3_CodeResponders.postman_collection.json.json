@@ -1789,6 +1789,15 @@
 								},
 								"method": "PUT",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"batchDescription\": \"Java-script-node\",\r\n\"batchId\": 9698,\r\n\"batchName\": \"java-script-45\",\r\n\"batchNoOfClasses\": 5,\r\n\"batchStatus\": \"Active\",\r\n\"programId\": 17206,\r\n\"programName\": \"DsAlgo\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9698"
 							},
 							"response": []
