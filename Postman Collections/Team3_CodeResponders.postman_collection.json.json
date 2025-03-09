@@ -1530,6 +1530,34 @@
 							"response": []
 						},
 						{
+							"name": "Add New Program",
+							"id": "89e06bdd-04f1-4625-b166-2415da5665b0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"programDescription\": \"selenium-core-java-SDET25\",\r\n\"programName\": \"selenium-core-java\",\r\n\"programStatus\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
+							},
+							"response": []
+						},
+						{
 							"name": "Get All Programs",
 							"id": "181f8a63-17bc-4a92-82a8-db7775803862",
 							"protocolProfileBehavior": {
@@ -1549,21 +1577,14 @@
 							"response": []
 						},
 						{
-							"name": "Add New Program",
-							"id": "89e06bdd-04f1-4625-b166-2415da5665b0",
+							"name": "New Request",
+							"id": "295f0eb7-5937-4ace-a525-bec6b1c1ec6b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						},
