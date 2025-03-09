@@ -1803,6 +1803,40 @@
 							"response": []
 						},
 						{
+							"name": "Get All Class List 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8131416-8a75-4753-be8b-d67b5ce3eceb",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "8ce0a881-e788-498c-b0e1-a1caaa661d28",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1MjI4NCwiZXhwIjoxNzQxNTgxMDg0fQ.jGbkebO41m-X9k86Ph9_R9AXNhrAGUM8FqCjFMZhybb4ucj14h3SiM3EhT3aBWweKijg6YMl8DRtJGpxFipKgw"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses"
+							},
+							"response": []
+						},
+						{
 							"name": "Create New Class 1",
 							"event": [
 								{
@@ -1842,40 +1876,6 @@
 									}
 								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/CreateClassSchedule"
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Class List 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "c8131416-8a75-4753-be8b-d67b5ce3eceb",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "8ce0a881-e788-498c-b0e1-a1caaa661d28",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1MjI4NCwiZXhwIjoxNzQxNTgxMDg0fQ.jGbkebO41m-X9k86Ph9_R9AXNhrAGUM8FqCjFMZhybb4ucj14h3SiM3EhT3aBWweKijg6YMl8DRtJGpxFipKgw"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses"
 							},
 							"response": []
 						},
@@ -1953,6 +1953,25 @@
 									}
 								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClass/62"
+							},
+							"response": []
+						},
+						{
+							"name": "Get class recordings by Batch Id",
+							"id": "99100cd3-17a6-4e4d-943a-9b5fd7acd9f7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batchRecordings/9698"
 							},
 							"response": []
 						},
