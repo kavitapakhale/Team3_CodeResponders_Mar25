@@ -1493,7 +1493,7 @@
 					"name": "K",
 					"item": [
 						{
-							"name": "User Sign In Copy",
+							"name": "User Sign In 1",
 							"event": [
 								{
 									"listen": "test",
@@ -1530,7 +1530,7 @@
 							"response": []
 						},
 						{
-							"name": "Create New Class Copy",
+							"name": "Create New Class 1",
 							"event": [
 								{
 									"listen": "test",
@@ -1573,7 +1573,7 @@
 							"response": []
 						},
 						{
-							"name": "Get All Class List Copy",
+							"name": "Get All Class List 1",
 							"event": [
 								{
 									"listen": "test",
@@ -1607,7 +1607,7 @@
 							"response": []
 						},
 						{
-							"name": "Upcoming Classes for particular Student Copy",
+							"name": "Upcoming Classes for particular Student 1",
 							"event": [
 								{
 									"listen": "test",
@@ -1641,7 +1641,7 @@
 							"response": []
 						},
 						{
-							"name": "Update New Class Copy",
+							"name": "Update New Class 1",
 							"event": [
 								{
 									"listen": "test",
@@ -1680,6 +1680,74 @@
 									}
 								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClass/62"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f535f038-e7b3-4c30-b164-067147d5ab35",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "cca1892f-2beb-4a84-9b80-3d943bcd090d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/8432"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ab47f3c0-47e8-4418-9003-3ad576455204",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "624df342-469e-438a-972a-f93b9cce0739",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/U25"
 							},
 							"response": []
 						}
