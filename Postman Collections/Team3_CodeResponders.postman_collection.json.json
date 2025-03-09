@@ -1488,6 +1488,203 @@
 					"name": "Class_A",
 					"item": [],
 					"id": "e3f7e8fa-8c63-4f01-a149-a3aa9e156a66"
+				},
+				{
+					"name": "K",
+					"item": [
+						{
+							"name": "User Sign In Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7879f0f-737d-4293-b2a7-bec56b12e059",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "db514d74-6e51-4599-a44a-8e6d9526237f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Class Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fc70e53d-7e6a-4583-a90d-b4941e1c79f1",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3e0dbb0b-4324-49b6-bb08-1bee7f394bfa",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1NzQ2NCwiZXhwIjoxNzQxNTg2MjY0fQ.VTut0K0mnumKLaYvaIw9SzJInCv8sJA2tlLA16L1kkIIvFBDN_a-6SwkZYjDR6rKBO-IRgk-pJA0vAWB8nM3Dw"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n\"batchId\": 8455,\r\n\"classNo\": 1,\r\n\"classDate\": \"2025-06-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U25\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-06-06T19:04:41.220Z\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/CreateClassSchedule"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Class List Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8131416-8a75-4753-be8b-d67b5ce3eceb",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "8ce0a881-e788-498c-b0e1-a1caaa661d28",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1MjI4NCwiZXhwIjoxNzQxNTgxMDg0fQ.jGbkebO41m-X9k86Ph9_R9AXNhrAGUM8FqCjFMZhybb4ucj14h3SiM3EhT3aBWweKijg6YMl8DRtJGpxFipKgw"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses"
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "162e9c59-bf49-4cfb-b4e5-d569eed50eda",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5a1d1929-8afa-4f09-87e3-0b8b99fa9c74",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/297"
+							},
+							"response": []
+						},
+						{
+							"name": "Update New Class Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d350511c-fc91-4538-99ee-cb45faff617e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4b7e9296-b644-4a76-be5f-2baba57f5d0b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"csId\": 65,\r\n  \"batchId\": 78,\r\n  \"classNo\": 0,\r\n  \"classDate\": \"2025-03-07T21:02:04.502Z\",\r\n  \"classTopic\": \"java\",\r\n  \"classStatus\": \"null\",\r\n  \"classStaffId\": \"U78\",\r\n  \"classDescription\": \"lodk2 o-D-66_MdRIdH6oSFhkqPbb0VcTPy\",\r\n  \"classComments\": \"  \",\r\n  \"classNotes\": \"null\",\r\n  \"classRecordingPath\": \"c:\\\\recordings\",\r\n  \"batchName\": \"java2.5\",\r\n  \"classScheduledDates\": [\r\n    \"2025-03-07T21:02:04.504Z\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClass/62"
+							},
+							"response": []
+						}
+					],
+					"id": "91a77a08-b54a-4c6d-8cb5-58645e3360b2"
 				}
 			],
 			"id": "a00d91cd-42c2-4c66-bef9-0c0eb60714e7"
