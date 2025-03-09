@@ -1926,7 +1926,7 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/SeleniumSdet"
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Angular-java-script"
 							},
 							"response": []
 						}
