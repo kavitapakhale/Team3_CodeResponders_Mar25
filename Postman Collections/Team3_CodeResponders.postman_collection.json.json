@@ -1659,7 +1659,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "",
+									"raw": "{\r\n\"programDescription\":\"Angular-java-script-SEDT25\",\r\n\"programName\": \"Angular-java-script\",\r\n\"programStatus\": \"active\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1889,6 +1889,25 @@
 								"method": "GET",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/U25"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Program by Program Id",
+							"id": "9db4d035-de49-4035-9a0f-cb08e43856ca",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms//deletebyprogid/17195"
 							},
 							"response": []
 						}
