@@ -1687,7 +1687,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"batchDescription\":\"string\",\r\n\"batchName\": \"string\",\r\n\"batchNoOfClasses\": 0,\r\n\"batchStatus\": \"string\",\r\n\"programId\": 0\r\n}",
+									"raw": "{\r\n    \"batchDescription\": \"CodeScrappers\",\r\n    \"batchName\": \"Node-js\",\r\n    \"batchNoOfClasses\": 5,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17206\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
