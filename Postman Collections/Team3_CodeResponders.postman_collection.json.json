@@ -1907,7 +1907,26 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms//deletebyprogid/17195"
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogid/17195"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Program by Program Name",
+							"id": "52410b55-37a2-49f1-bbec-2f1d12072405",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/SeleniumSdet"
 							},
 							"response": []
 						}
