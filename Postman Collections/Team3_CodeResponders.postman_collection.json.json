@@ -1746,12 +1746,31 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
 									}
 								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms//batches/batchName/Node-js"
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/batchName/Node-js"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Batch by Program Id",
+							"id": "fae3a81a-8ee2-41c7-a6cd-19a6c796fc16",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/program/17206"
 							},
 							"response": []
 						},
@@ -2012,6 +2031,18 @@
 								"method": "DELETE",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Java-Program"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "a88da34d-6af4-4453-9046-5b34de8eb502",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						}
