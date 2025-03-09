@@ -475,6 +475,660 @@
 			"name": "Class",
 			"item": [
 				{
+					"name": "K",
+					"item": [
+						{
+							"name": "User Sign In 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7879f0f-737d-4293-b2a7-bec56b12e059",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "db514d74-6e51-4599-a44a-8e6d9526237f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Programs",
+							"id": "181f8a63-17bc-4a92-82a8-db7775803862",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allPrograms"
+							},
+							"response": []
+						},
+						{
+							"name": "Add New Program",
+							"id": "89e06bdd-04f1-4625-b166-2415da5665b0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"programDescription\": \"selenium-core-java-SDET96\",\r\n\"programName\": \"Ninja-selenium-core-java\",\r\n\"programStatus\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Programs with Users",
+							"id": "295f0eb7-5937-4ace-a525-bec6b1c1ec6b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allProgramsWithUsers"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Program by Program Id",
+							"id": "a4fabe9b-770e-4ace-a5cc-fa11603053c1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/programs/17195"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Program by Program Name",
+							"id": "77bf53b7-7fb7-4a1b-aca1-b82a74233687",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"programName\": \"selenium-core-java-script\",\r\n    \"programDescription\": \"selenium-core-java-script-SDET25\",\r\n    \"programStatus\": \"Active\"\r\n   }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/program/selenium-core-java"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Program by Program Id",
+							"id": "a66c2121-13ec-4475-9837-1cb9c7acc62e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"programDescription\":\"Angular-java-script-SEDT25\",\r\n\"programName\": \"Angular-java-script\",\r\n\"programStatus\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/putprogram/17195"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Batches",
+							"id": "7a90d05f-b74e-4f66-bb12-08252cff20c5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Batch",
+							"id": "537878d0-1640-4c13-bf02-ec7c38522787",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"batchDescription\": \"Code-Scrappers_25\",\r\n    \"batchName\": \"Node-js\",\r\n    \"batchNoOfClasses\": 5,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17211\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Batch by Batch Id",
+							"id": "2517c7db-d77a-44ed-8251-32d7272242ce",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/batchId/9698"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Batch by Batch Name",
+							"id": "ad133152-66ea-49dd-91d3-ed2a1fca0b5a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/batchName/Node-js"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Batch by Program Id",
+							"id": "fae3a81a-8ee2-41c7-a6cd-19a6c796fc16",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/program/17206"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Batch by Batch Id",
+							"id": "a88da34d-6af4-4453-9046-5b34de8eb502",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"batchDescription\": \"Java-script-node\",\r\n\"batchId\": 9698,\r\n\"batchName\": \"java-script-45\",\r\n\"batchNoOfClasses\": 5,\r\n\"batchStatus\": \"Active\",\r\n\"programId\": 17206,\r\n\"programName\": \"DsAlgo\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9698"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Class List 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8131416-8a75-4753-be8b-d67b5ce3eceb",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "8ce0a881-e788-498c-b0e1-a1caaa661d28",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1MjI4NCwiZXhwIjoxNzQxNTgxMDg0fQ.jGbkebO41m-X9k86Ph9_R9AXNhrAGUM8FqCjFMZhybb4ucj14h3SiM3EhT3aBWweKijg6YMl8DRtJGpxFipKgw"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses"
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Class 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fc70e53d-7e6a-4583-a90d-b4941e1c79f1",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3e0dbb0b-4324-49b6-bb08-1bee7f394bfa",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1NzQ2NCwiZXhwIjoxNzQxNTg2MjY0fQ.VTut0K0mnumKLaYvaIw9SzJInCv8sJA2tlLA16L1kkIIvFBDN_a-6SwkZYjDR6rKBO-IRgk-pJA0vAWB8nM3Dw"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n\"batchId\": 9703,\r\n\"classNo\": 1,\r\n\"classDate\": \"2025-06-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U25\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-06-06T19:04:41.220Z\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/CreateClassSchedule"
+							},
+							"response": []
+						},
+						{
+							"name": "Upcoming Classes for particular Student 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "162e9c59-bf49-4cfb-b4e5-d569eed50eda",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5a1d1929-8afa-4f09-87e3-0b8b99fa9c74",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/297"
+							},
+							"response": []
+						},
+						{
+							"name": "Update New Class 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d350511c-fc91-4538-99ee-cb45faff617e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4b7e9296-b644-4a76-be5f-2baba57f5d0b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"csId\": 65,\r\n  \"batchId\": 78,\r\n  \"classNo\": 0,\r\n  \"classDate\": \"2025-03-07T21:02:04.502Z\",\r\n  \"classTopic\": \"java\",\r\n  \"classStatus\": \"null\",\r\n  \"classStaffId\": \"U78\",\r\n  \"classDescription\": \"lodk2 o-D-66_MdRIdH6oSFhkqPbb0VcTPy\",\r\n  \"classComments\": \"  \",\r\n  \"classNotes\": \"null\",\r\n  \"classRecordingPath\": \"c:\\\\recordings\",\r\n  \"batchName\": \"java2.5\",\r\n  \"classScheduledDates\": [\r\n    \"2025-03-07T21:02:04.504Z\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClass/62"
+							},
+							"response": []
+						},
+						{
+							"name": "Get class recordings by Batch Id",
+							"id": "99100cd3-17a6-4e4d-943a-9b5fd7acd9f7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n{\r\n\"classRecordingPath\": \"Bosch-96\",\r\n\"csId\": 773\r\n}\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batchRecordings/9703"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "7203841e-f7d1-4abe-905a-d2b594e668d4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get Class Details by Class Id",
+							"id": "ec6ebb00-7e58-45b1-ad97-d2c8220d9d1a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/class/773"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by Batch Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f535f038-e7b3-4c30-b164-067147d5ab35",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "cca1892f-2beb-4a84-9b80-3d943bcd090d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/9703"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes By Staff Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ab47f3c0-47e8-4418-9003-3ad576455204",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "624df342-469e-438a-972a-f93b9cce0739",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/U25"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Batch by Batch Id",
+							"id": "e968a282-03e5-4a66-8076-d3cd1588c674",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9702"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Program by Program Id",
+							"id": "9db4d035-de49-4035-9a0f-cb08e43856ca",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogid/17206"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Program by Program Name",
+							"id": "52410b55-37a2-49f1-bbec-2f1d12072405",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Java-Program"
+							},
+							"response": []
+						}
+					],
+					"id": "91a77a08-b54a-4c6d-8cb5-58645e3360b2"
+				},
+				{
 					"name": "Class_K",
 					"item": [
 						{
@@ -1488,648 +2142,6 @@
 					"name": "Class_A",
 					"item": [],
 					"id": "e3f7e8fa-8c63-4f01-a149-a3aa9e156a66"
-				},
-				{
-					"name": "K",
-					"item": [
-						{
-							"name": "User Sign In 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d7879f0f-737d-4293-b2a7-bec56b12e059",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "db514d74-6e51-4599-a44a-8e6d9526237f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login"
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Programs",
-							"id": "181f8a63-17bc-4a92-82a8-db7775803862",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allPrograms"
-							},
-							"response": []
-						},
-						{
-							"name": "Add New Program",
-							"id": "89e06bdd-04f1-4625-b166-2415da5665b0",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"programDescription\": \"selenium-core-java-SDET96\",\r\n\"programName\": \"Ninja-selenium-core-java\",\r\n\"programStatus\": \"active\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Programs with Users",
-							"id": "295f0eb7-5937-4ace-a525-bec6b1c1ec6b",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allProgramsWithUsers"
-							},
-							"response": []
-						},
-						{
-							"name": "Get Program by Program Id",
-							"id": "a4fabe9b-770e-4ace-a5cc-fa11603053c1",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/programs/17195"
-							},
-							"response": []
-						},
-						{
-							"name": "Update Program by Program Name",
-							"id": "77bf53b7-7fb7-4a1b-aca1-b82a74233687",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"programName\": \"selenium-core-java-script\",\r\n    \"programDescription\": \"selenium-core-java-script-SDET25\",\r\n    \"programStatus\": \"Active\"\r\n   }",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/program/selenium-core-java"
-							},
-							"response": []
-						},
-						{
-							"name": "Update Program by Program Id",
-							"id": "a66c2121-13ec-4475-9837-1cb9c7acc62e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"programDescription\":\"Angular-java-script-SEDT25\",\r\n\"programName\": \"Angular-java-script\",\r\n\"programStatus\": \"active\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/putprogram/17195"
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Batches",
-							"id": "7a90d05f-b74e-4f66-bb12-08252cff20c5",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
-							},
-							"response": []
-						},
-						{
-							"name": "Create New Batch",
-							"id": "537878d0-1640-4c13-bf02-ec7c38522787",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"batchDescription\": \"Code-Scrappers_25\",\r\n    \"batchName\": \"Node-js\",\r\n    \"batchNoOfClasses\": 5,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17211\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
-							},
-							"response": []
-						},
-						{
-							"name": "Get Batch by Batch Id",
-							"id": "2517c7db-d77a-44ed-8251-32d7272242ce",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/batchId/9698"
-							},
-							"response": []
-						},
-						{
-							"name": "Get Batch by Batch Name",
-							"id": "ad133152-66ea-49dd-91d3-ed2a1fca0b5a",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/batchName/Node-js"
-							},
-							"response": []
-						},
-						{
-							"name": "Get Batch by Program Id",
-							"id": "fae3a81a-8ee2-41c7-a6cd-19a6c796fc16",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/program/17206"
-							},
-							"response": []
-						},
-						{
-							"name": "Update Batch by Batch Id",
-							"id": "a88da34d-6af4-4453-9046-5b34de8eb502",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
-									}
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"batchDescription\": \"Java-script-node\",\r\n\"batchId\": 9698,\r\n\"batchName\": \"java-script-45\",\r\n\"batchNoOfClasses\": 5,\r\n\"batchStatus\": \"Active\",\r\n\"programId\": 17206,\r\n\"programName\": \"DsAlgo\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9698"
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Class List 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "c8131416-8a75-4753-be8b-d67b5ce3eceb",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "8ce0a881-e788-498c-b0e1-a1caaa661d28",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1MjI4NCwiZXhwIjoxNzQxNTgxMDg0fQ.jGbkebO41m-X9k86Ph9_R9AXNhrAGUM8FqCjFMZhybb4ucj14h3SiM3EhT3aBWweKijg6YMl8DRtJGpxFipKgw"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses"
-							},
-							"response": []
-						},
-						{
-							"name": "Create New Class 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "fc70e53d-7e6a-4583-a90d-b4941e1c79f1",
-										"exec": [
-											"pm.test(\"Status code is 201\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "3e0dbb0b-4324-49b6-bb08-1bee7f394bfa",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1NzQ2NCwiZXhwIjoxNzQxNTg2MjY0fQ.VTut0K0mnumKLaYvaIw9SzJInCv8sJA2tlLA16L1kkIIvFBDN_a-6SwkZYjDR6rKBO-IRgk-pJA0vAWB8nM3Dw"
-									}
-								},
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{ \r\n\"batchId\": 9703,\r\n\"classNo\": 1,\r\n\"classDate\": \"2025-06-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U25\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-06-06T19:04:41.220Z\"]\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/CreateClassSchedule"
-							},
-							"response": []
-						},
-						{
-							"name": "Upcoming Classes for particular Student 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "162e9c59-bf49-4cfb-b4e5-d569eed50eda",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "5a1d1929-8afa-4f09-87e3-0b8b99fa9c74",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/297"
-							},
-							"response": []
-						},
-						{
-							"name": "Update New Class 1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "d350511c-fc91-4538-99ee-cb45faff617e",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "4b7e9296-b644-4a76-be5f-2baba57f5d0b",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
-									}
-								},
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{ \"csId\": 65,\r\n  \"batchId\": 78,\r\n  \"classNo\": 0,\r\n  \"classDate\": \"2025-03-07T21:02:04.502Z\",\r\n  \"classTopic\": \"java\",\r\n  \"classStatus\": \"null\",\r\n  \"classStaffId\": \"U78\",\r\n  \"classDescription\": \"lodk2 o-D-66_MdRIdH6oSFhkqPbb0VcTPy\",\r\n  \"classComments\": \"  \",\r\n  \"classNotes\": \"null\",\r\n  \"classRecordingPath\": \"c:\\\\recordings\",\r\n  \"batchName\": \"java2.5\",\r\n  \"classScheduledDates\": [\r\n    \"2025-03-07T21:02:04.504Z\"]\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClass/62"
-							},
-							"response": []
-						},
-						{
-							"name": "Get class recordings by Batch Id",
-							"id": "99100cd3-17a6-4e4d-943a-9b5fd7acd9f7",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[\r\n{\r\n\"classRecordingPath\": \"Bosch-96\",\r\n\"csId\": 773\r\n}\r\n]",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batchRecordings/9703"
-							},
-							"response": []
-						},
-						{
-							"name": "Get Class Details by Class Id",
-							"id": "ec6ebb00-7e58-45b1-ad97-d2c8220d9d1a",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/class/773"
-							},
-							"response": []
-						},
-						{
-							"name": "Get all Classes by Batch Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f535f038-e7b3-4c30-b164-067147d5ab35",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "cca1892f-2beb-4a84-9b80-3d943bcd090d",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesbyBatch/8432"
-							},
-							"response": []
-						},
-						{
-							"name": "Get all Classes By Staff Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "ab47f3c0-47e8-4418-9003-3ad576455204",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "624df342-469e-438a-972a-f93b9cce0739",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classesByStaff/U25"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Batch by Batch Id",
-							"id": "e968a282-03e5-4a66-8076-d3cd1588c674",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9702"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Program by Program Id",
-							"id": "9db4d035-de49-4035-9a0f-cb08e43856ca",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogid/17206"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Program by Program Name",
-							"id": "52410b55-37a2-49f1-bbec-2f1d12072405",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Java-Program"
-							},
-							"response": []
-						}
-					],
-					"id": "91a77a08-b54a-4c6d-8cb5-58645e3360b2"
 				}
 			],
 			"id": "a00d91cd-42c2-4c66-bef9-0c0eb60714e7"
