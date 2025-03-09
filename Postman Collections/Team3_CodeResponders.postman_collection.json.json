@@ -546,7 +546,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \"batchId\": 9518,\r\n\"classNo\": 1,\r\n\"classDate\": \"2025-06-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U25\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-06-06T19:04:41.220Z\"]\r\n}\r\n",
+									"raw": "{ \r\n\"batchId\": 8455,\r\n\"classNo\": 1,\r\n\"classDate\": \"2025-06-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U25\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-06-06T19:04:41.220Z\"]\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -583,7 +583,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \"batchId\": 9518,\r\n\"classNo\": 45,\r\n\"classDate\": \"2025-03-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U81\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-03-06T19:04:41.220Z\"]\r\n}\r\n",
+									"raw": "{ \r\n\"batchId\": 9518,\r\n\"classNo\": 45,\r\n\"classDate\": \"2025-03-06T19:04:41.220Z\",\r\n\"classTopic\": \"java\",\r\n\"classStatus\": \"null\",\r\n\"classStaffId\": \"U81\",\r\n\"classDescription\": \"java2.0\",\r\n\"classComments\": \"null\" ,\r\n\"classNotes\": \"null\",\r\n\"classRecordingPath\": \"null\",\r\n\"classScheduledDates\": [\"2025-03-06T19:04:41.220Z\"]\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
