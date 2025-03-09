@@ -942,14 +942,21 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Get All Recordings",
 							"id": "47bd8703-8b10-422c-b88a-7b22db6282ed",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classrecordings"
 							},
 							"response": []
 						},
@@ -978,6 +985,25 @@
 									}
 								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batchRecordings/9703"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Recordings by Class Id",
+							"id": "95c28bab-d5ea-4543-8141-2af6b8735369",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classRecordings/773"
 							},
 							"response": []
 						},
