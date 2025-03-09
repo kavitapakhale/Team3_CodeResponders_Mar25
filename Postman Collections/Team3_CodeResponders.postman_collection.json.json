@@ -1530,6 +1530,18 @@
 							"response": []
 						},
 						{
+							"name": "Add New Program",
+							"id": "89e06bdd-04f1-4625-b166-2415da5665b0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
 							"name": "Create New Class 1",
 							"event": [
 								{
