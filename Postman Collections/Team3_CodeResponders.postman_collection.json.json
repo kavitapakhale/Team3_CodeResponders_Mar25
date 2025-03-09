@@ -539,7 +539,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1NzQ2NCwiZXhwIjoxNzQxNTg2MjY0fQ.VTut0K0mnumKLaYvaIw9SzJInCv8sJA2tlLA16L1kkIIvFBDN_a-6SwkZYjDR6rKBO-IRgk-pJA0vAWB8nM3Dw"
 									}
 								},
 								"method": "POST",
