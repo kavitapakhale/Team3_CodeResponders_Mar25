@@ -1706,7 +1706,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"batchDescription\": \"CodeScrappers\",\r\n    \"batchName\": \"Node-js\",\r\n    \"batchNoOfClasses\": 5,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17206\r\n}\r\n",
+									"raw": "{\r\n    \"batchDescription\": \"Code-Scrappers_25\",\r\n    \"batchName\": \"Node-js\",\r\n    \"batchNoOfClasses\": 5,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17195\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1971,7 +1971,7 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batchRecordings/9698"
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batchRecordings/9702"
 							},
 							"response": []
 						},
@@ -2058,7 +2058,7 @@
 								},
 								"method": "DELETE",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9698"
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9702"
 							},
 							"response": []
 						},
