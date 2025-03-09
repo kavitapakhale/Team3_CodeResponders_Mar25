@@ -1775,6 +1775,25 @@
 							"response": []
 						},
 						{
+							"name": "Update Batch by Batch Id",
+							"id": "a88da34d-6af4-4453-9046-5b34de8eb502",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9698"
+							},
+							"response": []
+						},
+						{
 							"name": "Create New Class 1",
 							"event": [
 								{
@@ -2031,18 +2050,6 @@
 								"method": "DELETE",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Java-Program"
-							},
-							"response": []
-						},
-						{
-							"name": "New Request",
-							"id": "a88da34d-6af4-4453-9046-5b34de8eb502",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": []
 							},
 							"response": []
 						}
