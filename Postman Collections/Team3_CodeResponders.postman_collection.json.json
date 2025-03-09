@@ -2025,6 +2025,25 @@
 							"response": []
 						},
 						{
+							"name": "Delete Batch by Batch Id",
+							"id": "e968a282-03e5-4a66-8076-d3cd1588c674",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/9698"
+							},
+							"response": []
+						},
+						{
 							"name": "Delete Program by Program Id",
 							"id": "9db4d035-de49-4035-9a0f-cb08e43856ca",
 							"protocolProfileBehavior": {
