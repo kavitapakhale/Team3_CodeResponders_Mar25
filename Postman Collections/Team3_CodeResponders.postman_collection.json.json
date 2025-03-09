@@ -1530,6 +1530,25 @@
 							"response": []
 						},
 						{
+							"name": "Get All Programs",
+							"id": "181f8a63-17bc-4a92-82a8-db7775803862",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allPrograms"
+							},
+							"response": []
+						},
+						{
 							"name": "Add New Program",
 							"id": "89e06bdd-04f1-4625-b166-2415da5665b0",
 							"protocolProfileBehavior": {
@@ -1554,25 +1573,6 @@
 									}
 								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Programs",
-							"id": "181f8a63-17bc-4a92-82a8-db7775803862",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
-									}
-								},
-								"method": "GET",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allPrograms"
 							},
 							"response": []
 						},
@@ -1671,6 +1671,25 @@
 							"response": []
 						},
 						{
+							"name": "Get All Batches",
+							"id": "7a90d05f-b74e-4f66-bb12-08252cff20c5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
+							},
+							"response": []
+						},
+						{
 							"name": "Create New Batch",
 							"id": "537878d0-1640-4c13-bf02-ec7c38522787",
 							"protocolProfileBehavior": {
@@ -1699,8 +1718,8 @@
 							"response": []
 						},
 						{
-							"name": "Get All Batches",
-							"id": "7a90d05f-b74e-4f66-bb12-08252cff20c5",
+							"name": "Get Batch by Batch Id",
+							"id": "2517c7db-d77a-44ed-8251-32d7272242ce",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1713,7 +1732,19 @@
 								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches/batchId/9698"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Batch by Batch Name",
+							"id": "ad133152-66ea-49dd-91d3-ed2a1fca0b5a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						},
