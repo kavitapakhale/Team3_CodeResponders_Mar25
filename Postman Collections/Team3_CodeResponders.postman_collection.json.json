@@ -977,7 +977,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n{\r\n\"classRecordingPath\": \"Bosch-96\",\r\n\"csId\": 773\r\n}\r\n]",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1004,6 +1004,18 @@
 								"method": "GET",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classRecordings/773"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Class Recording",
+							"id": "d963d4a2-5d53-4d2e-a4ee-60307f9a4143",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						},
