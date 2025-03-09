@@ -1596,8 +1596,27 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Get Program by Program Id",
 							"id": "a4fabe9b-770e-4ace-a5cc-fa11603053c1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/programs/17195"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Program by Program Name",
+							"id": "77bf53b7-7fb7-4a1b-aca1-b82a74233687",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
