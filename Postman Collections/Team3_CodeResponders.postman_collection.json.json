@@ -1384,8 +1384,24 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2ODE5NywiZXhwIjoxNzQxNTk2OTk3fQ.fIsOTX6iisMZGssO-cZK3MzyPHEGEPzbf75rsJjYXpPIeO80X134n3EcjjSkgHs1F6AbyNP0qEDHouu4AxHxgw"
+									}
+								},
 								"method": "PUT",
-								"header": []
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"programId\": 17211,\r\n\"roleId\": \"R01\",\r\n\"userId\": \"U408\",\r\n\"userRoleProgramBatches\": [\r\n{\r\n\"batchId\": 9698,\r\n\"userRoleProgramBatchStatus\":\"Active\"\r\n}\r\n]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/roleProgramBatchStatus/U408"
 							},
 							"response": []
 						},
@@ -1443,6 +1459,18 @@
 								"method": "GET",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/v2/users"
+							},
+							"response": []
+						},
+						{
+							"name": "Update User Login Status",
+							"id": "bf6503a9-b959-4cce-a51d-90a5612e947c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						},
