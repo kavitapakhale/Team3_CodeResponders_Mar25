@@ -1479,7 +1479,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"loginStatus\": \"string\",\r\n\"password\": \"March@2025\",\r\n\"roleIds\": [\r\n\"string\"\r\n],\r\n\"status\": \"string\",\r\n\"userLoginEmail\": \"string\"\r\n}",
+									"raw": "{\r\n\"loginStatus\": \"Active\",\r\n\"password\": \"March@2025\",\r\n\"roleIds\": [\"R01\"],\r\n\"status\": \"Active\",\r\n\"userLoginEmail\": \"sdetorganizer@gmail.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
