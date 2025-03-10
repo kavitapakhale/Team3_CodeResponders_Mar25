@@ -524,7 +524,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2ODE5NywiZXhwIjoxNzQxNTk2OTk3fQ.fIsOTX6iisMZGssO-cZK3MzyPHEGEPzbf75rsJjYXpPIeO80X134n3EcjjSkgHs1F6AbyNP0qEDHouu4AxHxgw"
 									}
 								},
 								"method": "GET",
@@ -550,7 +550,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"programDescription\": \"selenium-core-java-SDET96\",\r\n\"programName\": \"Ninja-selenium-core-java\",\r\n\"programStatus\": \"active\"\r\n}",
+									"raw": "{\r\n\"programDescription\": \"nodejs-core-java-SDET96\",\r\n\"programName\": \"Nodejs-selenium-core-java\",\r\n\"programStatus\": \"active\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
