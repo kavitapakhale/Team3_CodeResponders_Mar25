@@ -1611,6 +1611,71 @@
 					"name": "Kavi",
 					"item": [
 						{
+							"name": "User Sign In Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7879f0f-737d-4293-b2a7-bec56b12e059",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1db46d4e-d2de-49ba-9a31-32ad4f0dbcbf",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Add New Program Copy",
+							"id": "5cbc666c-7033-4d4b-aab7-79c78018334c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1ODA1OCwiZXhwIjoxNzQxNTg2ODU4fQ.ot2l_28xxbqvfOrtqD0dRrSiN_-Lxc-k7xTGJb83gD_9eli--7xymJjqwIoXuv4SX4JU3yUoK2jLsFR6223J3g"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"programDescription\": \"nodejs-core-java-SDET96\",\r\n\"programName\": \"Nodejs-selenium-core-java\",\r\n\"programStatus\": \"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
+							},
+							"response": []
+						},
+						{
 							"name": "Create New Class",
 							"event": [
 								{
@@ -1747,6 +1812,34 @@
 									}
 								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/CreateClassSchedule"
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Batch Copy",
+							"id": "cc69f625-9ed2-4dae-81a4-71e5eee6f8f3",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1OTczMCwiZXhwIjoxNzQxNTg4NTMwfQ.CPrlPkrw8BFqn7nPEwE87FWVvfEYT8k3u_fAbiO7HGmTsd1Z5OYU0U4xX7SOEd8gTfi9oKkkl53LmxIjxEALyQ"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"batchDescription\": \"Code-Scrappers_25\",\r\n    \"batchName\": \"Node-js\",\r\n    \"batchNoOfClasses\": 5,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17235\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
 							},
 							"response": []
 						}
