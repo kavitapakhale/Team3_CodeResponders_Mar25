@@ -1294,6 +1294,37 @@
 							"response": []
 						},
 						{
+							"name": "Get Users for Program",
+							"id": "26ca187e-ce06-450f-926a-12490fdb02ec",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/programs/17206"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Users by Role Id",
+							"id": "d3ad639b-6d64-434e-8735-748b631e1529",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
 							"name": "Delete Class by Class Id",
 							"id": "92298909-e55a-4e88-a2a4-9e712a2ca5a1",
 							"protocolProfileBehavior": {
