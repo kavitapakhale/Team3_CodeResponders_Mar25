@@ -1611,7 +1611,7 @@
 					"name": "Kavi",
 					"item": [
 						{
-							"name": "User Sign In Copy",
+							"name": "User Sign In",
 							"event": [
 								{
 									"listen": "test",
@@ -1648,7 +1648,7 @@
 							"response": []
 						},
 						{
-							"name": "Add New Program Copy",
+							"name": "Add New Program",
 							"id": "5cbc666c-7033-4d4b-aab7-79c78018334c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1782,6 +1782,10 @@
 											"    \"classScheduledDates\"\r",
 											"  ]\r",
 											"}\r",
+											"\r",
+											"console.log(responseBody.batchId);\r",
+											"pm.global.set('batchId', responseBody.batchId);\r",
+											"\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1816,7 +1820,7 @@
 							"response": []
 						},
 						{
-							"name": "Create New Batch Copy",
+							"name": "Create New Batch",
 							"id": "cc69f625-9ed2-4dae-81a4-71e5eee6f8f3",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1840,6 +1844,34 @@
 									}
 								},
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/batches"
+							},
+							"response": []
+						},
+						{
+							"name": "Creating User with Role",
+							"id": "6b5379f8-6215-411d-a2df-319aaf9c4394",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2ODE5NywiZXhwIjoxNzQxNTk2OTk3fQ.fIsOTX6iisMZGssO-cZK3MzyPHEGEPzbf75rsJjYXpPIeO80X134n3EcjjSkgHs1F6AbyNP0qEDHouu4AxHxgw"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userComments\": \"Nice\",\r\n\"userEduPg\": \"Computer Science Engineering\",\r\n\"userEduUg\": \"MCA\",\r\n\"userFirstName\": \"Mangal\",\r\n\"userLastName\": \"Dodhi\",\r\n\"userLinkedinUrl\": \"https://www.linkedin.com/in/Mangal/\",\r\n\"userLocation\": \"USA\",\r\n\"userMiddleName\": \"T\",\r\n\"userPhoneNumber\": \"+91 8956453420\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R01\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"Active\",\r\n\"userLoginEmail\": \"mangaldohi67@gmail.com\"\r\n}\r\n}\r\n\r\n ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/roleStatus"
 							},
 							"response": []
 						}
