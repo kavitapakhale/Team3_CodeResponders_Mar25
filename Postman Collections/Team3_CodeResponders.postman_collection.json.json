@@ -1836,7 +1836,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"batchDescription\": \"Code-Scrappers_25\",\r\n    \"batchName\": \"Node-js\",\r\n    \"batchNoOfClasses\": 5,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17235\r\n}\r\n",
+									"raw": "{\r\n    \"batchDescription\": \"java-Code-Scrappers_25\",\r\n    \"batchName\": \"Node-angular-js\",\r\n    \"batchNoOfClasses\": 2,\r\n    \"batchStatus\": \"Active\",\r\n    \"programId\": 17235\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
