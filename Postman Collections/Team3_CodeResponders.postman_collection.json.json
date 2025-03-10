@@ -1808,7 +1808,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \r\n\"batchId\": {{batchId }},\r\n\"classNo\": {{classNo }},\r\n\"classDate\": \"{{classDate}}\",\r\n\"classTopic\": \"{{classTopic}}\",\r\n\"classStatus\": \"{{classStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{classDescription}}\",\r\n\"classComments\": \"{{classComments}}\" ,\r\n\"classNotes\": \"{{classNotes}}\",\r\n\"classRecordingPath\": \"{{classRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{classScheduledDates}}\"]\r\n}\r\n",
+									"raw": "{ \r\n\"batchId\": {{batchId}},\r\n\"classNo\": {{classNo}},\r\n\"classDate\": \"{{classDate}}\",\r\n\"classTopic\": \"{{classTopic}}\",\r\n\"classStatus\": \"{{classStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{classDescription}}\",\r\n\"classComments\": \"{{classComments}}\" ,\r\n\"classNotes\": \"{{classNotes}}\",\r\n\"classRecordingPath\": \"{{classRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{classScheduledDates}}\"]\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
