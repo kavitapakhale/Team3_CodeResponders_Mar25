@@ -1161,6 +1161,18 @@
 							"response": []
 						},
 						{
+							"name": "New Request",
+							"id": "5206b47d-0e88-42d2-ae94-83aa5104f357",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
 							"name": "Get All Active Users",
 							"id": "b9629a3c-ff8b-4763-ac59-40d1a3ef8048",
 							"protocolProfileBehavior": {
