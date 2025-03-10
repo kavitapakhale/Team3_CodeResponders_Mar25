@@ -1161,7 +1161,7 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Creating User with Role",
 							"id": "5206b47d-0e88-42d2-ae94-83aa5104f357",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1177,7 +1177,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"userComments\": \"string\",\r\n\"userEduPg\": \"string\",\r\n\"userEduUg\": \"string\",\r\n\"userFirstName\": \"string\",\r\n\"userLastName\": \"string\",\r\n\"userLinkedinUrl\": \"string\",\r\n\"userLocation\": \"string\",\r\n\"userMiddleName\": \"string\",\r\n\"userPhoneNumber\": 0,\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"string\",\r\n\"userRoleStatus\": \"string\"\r\n}\r\n],\r\n\"userTimeZone\": \"string\",\r\n\"userVisaStatus\": \"string\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": \"String\"\r\n}\r\n}",
+									"raw": "{\r\n\"userComments\": \"Nice\",\r\n\"userEduPg\": \"Computer Science Engineering\",\r\n\"userEduUg\": \"MCA\",\r\n\"userFirstName\": \"Mangal\",\r\n\"userLastName\": \"Dodhi\",\r\n\"userLinkedinUrl\": \"https://www.linkedin.com/in/Mangal/\",\r\n\"userLocation\": \"USA\",\r\n\"userMiddleName\": \"T\",\r\n\"userPhoneNumber\": \"+91 8956453420\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R01\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"Active\",\r\n\"userLoginEmail\": \"mangaldohi67@gmail.com\"\r\n}\r\n}\r\n\r\n ",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1379,6 +1379,25 @@
 							"response": []
 						},
 						{
+							"name": "Delete User",
+							"id": "9ebdf0fe-03b1-42f0-9bf6-5e8be7335880",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/U48"
+							},
+							"response": []
+						},
+						{
 							"name": "Delete Class by Class Id",
 							"id": "92298909-e55a-4e88-a2a4-9e712a2ca5a1",
 							"protocolProfileBehavior": {
@@ -1451,25 +1470,6 @@
 								"method": "DELETE",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Java-Program"
-							},
-							"response": []
-						},
-						{
-							"name": "Delete User",
-							"id": "9ebdf0fe-03b1-42f0-9bf6-5e8be7335880",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
-									}
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/U48"
 							},
 							"response": []
 						},
