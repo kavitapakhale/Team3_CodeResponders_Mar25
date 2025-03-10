@@ -822,7 +822,7 @@
 							"response": []
 						},
 						{
-							"name": "Create New Class 1",
+							"name": "Create New Class",
 							"event": [
 								{
 									"listen": "test",
@@ -865,7 +865,7 @@
 							"response": []
 						},
 						{
-							"name": "Upcoming Classes for particular Student 1",
+							"name": "Upcoming Classes for particular Student",
 							"event": [
 								{
 									"listen": "test",
@@ -899,7 +899,7 @@
 							"response": []
 						},
 						{
-							"name": "Update New Class 1",
+							"name": "Update New Class",
 							"event": [
 								{
 									"listen": "test",
