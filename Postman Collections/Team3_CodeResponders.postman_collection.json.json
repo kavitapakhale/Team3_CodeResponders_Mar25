@@ -1378,6 +1378,18 @@
 							"response": []
 						},
 						{
+							"name": "Update User Role Program Batch Status",
+							"id": "ebcf9fcd-9961-484e-97cb-534aa73391a4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": []
+							},
+							"response": []
+						},
+						{
 							"name": "Get Users for Program",
 							"id": "26ca187e-ce06-450f-926a-12490fdb02ec",
 							"protocolProfileBehavior": {
