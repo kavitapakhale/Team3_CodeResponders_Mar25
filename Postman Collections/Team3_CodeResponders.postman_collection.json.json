@@ -1142,6 +1142,18 @@
 							"response": []
 						},
 						{
+							"name": "New Request",
+							"id": "cbde3ea3-d3ea-4d12-8f93-8af005d6ea59",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
 							"name": "Delete Class by Class Id",
 							"id": "92298909-e55a-4e88-a2a4-9e712a2ca5a1",
 							"protocolProfileBehavior": {
