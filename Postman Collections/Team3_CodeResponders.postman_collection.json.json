@@ -1227,6 +1227,19 @@
 							"response": []
 						},
 						{
+							"name": "Update user by User Id",
+							"id": "160a9857-92a9-4374-a332-fac27cd8e17e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/"
+							},
+							"response": []
+						},
+						{
 							"name": "Get All Roles",
 							"id": "b6d29350-4f66-4e55-b79c-be46ea86b6c2",
 							"protocolProfileBehavior": {
