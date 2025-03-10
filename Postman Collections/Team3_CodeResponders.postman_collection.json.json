@@ -1218,6 +1218,25 @@
 							"response": []
 						},
 						{
+							"name": "Get User Information by User Id",
+							"id": "f9b1e3cf-b30e-4d94-a9c8-e4392604b6f9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/{userId}"
+							},
+							"response": []
+						},
+						{
 							"name": "Delete Class by Class Id",
 							"id": "92298909-e55a-4e88-a2a4-9e712a2ca5a1",
 							"protocolProfileBehavior": {
@@ -1290,6 +1309,37 @@
 								"method": "DELETE",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Java-Program"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Users with Roles",
+							"id": "c266cd51-e60b-46ce-ba38-84fc3cc9b889",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/roles"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "b0debc72-5e8a-4b87-9c62-b69d0a861534",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
 							},
 							"response": []
 						}
