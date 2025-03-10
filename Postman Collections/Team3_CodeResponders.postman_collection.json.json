@@ -1319,8 +1319,34 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/roles/R01"
+							},
+							"response": []
+						},
+						{
+							"name": "Add Request by Roled V2",
+							"id": "016eeeba-445a-431e-a259-e1abb63d8b11",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/v2/users"
 							},
 							"response": []
 						},
@@ -1397,6 +1423,25 @@
 								"method": "DELETE",
 								"header": [],
 								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/deletebyprogname/Java-Program"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"id": "9ebdf0fe-03b1-42f0-9bf6-5e8be7335880",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2MDU3MywiZXhwIjoxNzQxNTg5MzczfQ.sGg-EwZQ7ZZoaBp2b56N0v7bljZMYNVFC67IPvb_qBzcjko6jvppuPMKuis5on5Q02oCXRemP-fUv9Eq6qD2rA"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/{userID}"
 							},
 							"response": []
 						}
