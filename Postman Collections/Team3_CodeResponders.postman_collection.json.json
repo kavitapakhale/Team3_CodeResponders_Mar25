@@ -1233,9 +1233,24 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU2ODE5NywiZXhwIjoxNzQxNTk2OTk3fQ.fIsOTX6iisMZGssO-cZK3MzyPHEGEPzbf75rsJjYXpPIeO80X134n3EcjjSkgHs1F6AbyNP0qEDHouu4AxHxgw"
+									}
+								},
 								"method": "PUT",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/"
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userComments\": \"Good\",\r\n\"userEduUg\": \"MCA\",\r\n\"userEduPg\": \"Computer Science Engineering\",\r\n\"userFirstName\": \"Mangala\",\r\n\"userLastName\": \"Doshi\",\r\n\"userMiddleName\": \"N\",\r\n\"userLinkedinUrl\": \"https://www.linkedin.com/in/MangalaD/\",\r\n\"userLocation\": \"USA\",\r\n\"userLoginEmail\": \"doshi23@gmail.com\",\r\n\"userPhoneNumber\": \"+91 6463458290\",\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H1B\"\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/U408"
 							},
 							"response": []
 						},
