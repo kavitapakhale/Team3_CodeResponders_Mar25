@@ -478,7 +478,7 @@
 					"name": "K",
 					"item": [
 						{
-							"name": "User Sign In 1",
+							"name": "User Sign In",
 							"event": [
 								{
 									"listen": "test",
