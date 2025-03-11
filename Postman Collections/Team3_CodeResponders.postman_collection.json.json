@@ -71,6 +71,70 @@
 						"url": "{{baseURL}}/login"
 					},
 					"response": []
+				},
+				{
+					"name": "Login Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b51eb5c2-d1aa-471e-9042-a8d29be81441",
+								"exec": [
+									"const response = pm.response.json()\r",
+									"\r",
+									"//Validate status 200, roles value and  + response schema\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validate status being Active\r",
+									"pm.test(\"User Status is Active\", function () {\r",
+									"    pm.expect(response.status).to.equal(\"Active\");\r",
+									"});\r",
+									"\r",
+									"//Validate Admin Roles\r",
+									"pm.test(\"User have both Admin and Staff roles assigned\", function () {\r",
+									"    const roles = response.roles\r",
+									"    pm.expect(roles).to.include(\"ROLE_ADMIN\");\r",
+									"    pm.expect(roles).to.include(\"ROLE_STAFF\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Set some values at collection level\r",
+									"//1. Set Bearer Token\r",
+									"pm.collectionVariables.set(\"BearerToken\", response.token);\r",
+									"\r",
+									"//2. set Admin UserID\r",
+									"pm.collectionVariables.set(\"Admin_UserID\", response.userId);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "e942d211-0a95-4f17-b71e-36126d7b8de6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"password\": \"{{password}}\",\r\n \"userLoginEmailId\": \"{{userLoginEmailId}}\"\r\n } ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/login"
+					},
+					"response": []
 				}
 			],
 			"id": "3312d922-fda6-46ec-b80a-04af3e260030"
