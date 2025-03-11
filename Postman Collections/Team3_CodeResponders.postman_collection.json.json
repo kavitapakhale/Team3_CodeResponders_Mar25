@@ -2508,22 +2508,7 @@
 											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
 											"});\r",
 											"//4. Schema validation\r",
-											"const schemaconstant = \r",
-											"{\r",
-											"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-											"  \"type\": \"object\",\r",
-											"  \"properties\": {\r",
-											"    \"returnmsg\": {\r",
-											"      \"type\": \"string\"\r",
-											"    }\r",
-											"  },\r",
-											"  \"required\": [\r",
-											"    \"returnmsg\"\r",
-											"  ]\r",
-											"}\r",
-											"pm.test(\"Validate Schema\"),function(){\r",
-											"    pm.response.to.have.jsonSchema(schemaconstant);\r",
-											"}\r",
+											"\r",
 											"\r",
 											"\r",
 											""
@@ -2542,7 +2527,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"userRoleList\": [\r\n{\r\n\"roleId\": \"R02\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n]\r\n}",
+									"raw": "{\r\n\"userRoleList\": [\r\n{\r\n\"roleId\": \"R03\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
