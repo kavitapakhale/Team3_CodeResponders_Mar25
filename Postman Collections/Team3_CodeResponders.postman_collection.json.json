@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6b92f49d-5788-4a9d-a692-c53cab4ad45f",
+		"_postman_id": "12f32e0c-8eb8-47cb-aff3-2b8b16392376",
 		"name": "Team3_CodeResponders",
 		"schema": "https://schema.postman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -49,7 +49,7 @@
 							}
 						}
 					],
-					"id": "7b7a0350-53f3-46a6-abe0-628e3ea33d12",
+					"id": "31952c94-aa19-4abe-a183-06636403f4c7",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -73,14 +73,14 @@
 					"response": []
 				}
 			],
-			"id": "62ebfba9-b3c2-4cb7-a492-dc55d0cd8502"
+			"id": "3312d922-fda6-46ec-b80a-04af3e260030"
 		},
 		{
 			"name": "Program",
 			"item": [
 				{
 					"name": "AddNewProgram_Mandatory",
-					"id": "1e18e14e-83eb-4bee-b60f-505c1ccbb5c4",
+					"id": "646e43fb-ea5a-462c-a776-c82b2eec8692",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -102,7 +102,7 @@
 				},
 				{
 					"name": "AddNewProgram_AllData",
-					"id": "d24a44bd-9c10-43cd-80f1-77fcca0e2490",
+					"id": "48002a7e-52e0-49b4-8a80-a91ca25ec9db",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -140,7 +140,7 @@
 							}
 						}
 					],
-					"id": "dd26bcfe-bfd0-4488-b4a9-39e51467c9c8",
+					"id": "8559b002-7de4-4f58-95d9-64452ccc334d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -169,7 +169,7 @@
 							}
 						}
 					],
-					"id": "55a7fa98-c345-4da6-a94f-6c3aecf88c34",
+					"id": "e80473db-d8c5-4120-a3df-c7933f20df0f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -197,7 +197,7 @@
 							}
 						}
 					],
-					"id": "b0d52db6-a9b1-4aba-9dda-ea450407c6c9",
+					"id": "96218ddb-88de-45d9-a59d-354be54b2620",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -215,6 +215,7 @@
 							],
 							"variable": [
 								{
+									"id": "0993069f-4ce2-4a43-87d1-b7e19d5b265d",
 									"key": "programId",
 									"value": "16225"
 								}
@@ -252,7 +253,7 @@
 							}
 						}
 					],
-					"id": "943fa7fa-6472-4e29-8593-c58304c8c1ab",
+					"id": "cea3d75e-8993-4dd3-9945-f0975ce58585",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -279,6 +280,7 @@
 							],
 							"variable": [
 								{
+									"id": "3c82a17c-3afd-4b19-8c80-870cf8d09dfd",
 									"key": "programName",
 									"value": "TestChatBot"
 								}
@@ -305,7 +307,7 @@
 							}
 						}
 					],
-					"id": "1b3ad132-8168-44f3-a44f-d3dd5fe1d494",
+					"id": "ce9f81d6-26d5-4243-9cb2-e42d68c9f5ca",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -332,6 +334,7 @@
 							],
 							"variable": [
 								{
+									"id": "e74a0d5c-aa67-499b-a3b6-0d4ec3fdbad9",
 									"key": "programId",
 									"value": "16487"
 								}
@@ -362,7 +365,7 @@
 							}
 						}
 					],
-					"id": "277ec926-5c15-453a-b5e9-29b51d32f850",
+					"id": "8abd7e75-2eda-4aa7-88b7-5fc9b978d342",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -380,6 +383,7 @@
 							],
 							"variable": [
 								{
+									"id": "168a475e-4976-4686-ba67-763914f6b768",
 									"key": "programId",
 									"value": ""
 								}
@@ -410,7 +414,7 @@
 							}
 						}
 					],
-					"id": "63381237-d78a-4051-9f75-717e1e23c049",
+					"id": "c60eb5a8-3d73-4ec4-ba34-c1658b29d2e4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -428,6 +432,7 @@
 							],
 							"variable": [
 								{
+									"id": "2e6285f9-62ac-4bf7-822a-32a2a575f22c",
 									"key": "programName",
 									"value": ""
 								}
@@ -437,7 +442,7 @@
 					"response": []
 				}
 			],
-			"id": "cebf6f34-f2c4-4439-9067-fd483d168029"
+			"id": "b2647423-abe4-44a8-b969-b94843f29a67"
 		},
 		{
 			"name": "Batch",
@@ -457,7 +462,7 @@
 							}
 						}
 					],
-					"id": "a2d7690e-0d37-4957-9c8d-424964647fa9",
+					"id": "99d983af-8c01-4ce7-b0cf-52156f1f1c69",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -469,7 +474,7 @@
 					"response": []
 				}
 			],
-			"id": "ae705100-802f-4758-a9c0-df74e4d857fc"
+			"id": "ce10b472-a538-424a-ae11-1292c830e503"
 		},
 		{
 			"name": "Class",
@@ -494,7 +499,7 @@
 									}
 								}
 							],
-							"id": "ec95cab1-a4b6-4b6f-ae19-e4f0ee2df589",
+							"id": "ba9cf145-14d5-4abc-9800-7e1b3a98b318",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -531,7 +536,7 @@
 									}
 								}
 							],
-							"id": "f748751a-21f6-4d92-b3c0-a721f16a8fc8",
+							"id": "22d1397a-c048-4f4e-b42b-c280be98fd1e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -574,7 +579,7 @@
 									}
 								}
 							],
-							"id": "e3979685-f5a1-4126-bb16-951aff624edc",
+							"id": "e03e7120-a505-4c94-b1dd-cb7e3ca0b363",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -611,7 +616,7 @@
 									}
 								}
 							],
-							"id": "5f4f3039-ea96-4b9b-bd12-bffa62e51fbc",
+							"id": "1c737c05-0f95-412d-8c74-6fef8cd196c0",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -645,7 +650,7 @@
 									}
 								}
 							],
-							"id": "4691b1df-c0c4-49fd-abfb-150a471ab189",
+							"id": "db739aeb-8abb-400a-b545-a4c154e34575",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -676,7 +681,7 @@
 									}
 								}
 							],
-							"id": "b637e6a9-706d-4932-b8f4-6f6be3575b64",
+							"id": "2c0106bb-1c73-4f3d-9756-f0dba026688c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -710,7 +715,7 @@
 									}
 								}
 							],
-							"id": "d6ca7a20-c03d-4e58-8093-20392467ccd2",
+							"id": "046ca8ff-6943-4de7-9dcc-801aa586994d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -744,7 +749,7 @@
 									}
 								}
 							],
-							"id": "482f43f9-feaa-4e2a-872a-161cd5b8193a",
+							"id": "38a9a8ff-d1c6-4b05-a515-e3c7b310f800",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -775,7 +780,7 @@
 									}
 								}
 							],
-							"id": "6b6789db-e9b7-49de-8347-b0d404571465",
+							"id": "a70e5832-e5a8-4fe8-8f74-af31b215cc5e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -809,7 +814,7 @@
 									}
 								}
 							],
-							"id": "8a49c288-7382-4544-a90e-82d112e69ada",
+							"id": "bfadd5a1-5fc5-479d-9b83-eee1ac4735bd",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -843,7 +848,7 @@
 									}
 								}
 							],
-							"id": "bc7e104a-d24a-4c48-b5e9-e840f32c2716",
+							"id": "44abc250-2f96-43df-9a8d-9fa19b1ff746",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -877,7 +882,7 @@
 									}
 								}
 							],
-							"id": "6412e806-a2d9-427e-a440-802625dc8b7b",
+							"id": "90cb7bd8-0120-41e4-af10-18d03a55886f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -911,7 +916,7 @@
 									}
 								}
 							],
-							"id": "bd7d5be6-c0d1-4197-a40a-8b1c8f1f7bcb",
+							"id": "5a4c3be9-8ed3-447c-8643-b89f4c44630a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -954,7 +959,7 @@
 									}
 								}
 							],
-							"id": "7a58d320-0fe1-4d5c-9b60-1a4ecf42f351",
+							"id": "43c95a36-0674-4710-84ef-b5ba24df382b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -988,7 +993,7 @@
 									}
 								}
 							],
-							"id": "34db8d3b-1136-42f8-9b3f-074d4174f458",
+							"id": "73f359a1-0629-447d-be7a-1accff7a7a3f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1019,7 +1024,7 @@
 									}
 								}
 							],
-							"id": "8648539c-c1be-4cd7-81b1-0bc1077e1641",
+							"id": "298d8941-fd9c-4cf0-823c-5eb1f3569e23",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1053,7 +1058,7 @@
 									}
 								}
 							],
-							"id": "25b3ab4d-39a9-4011-9362-579412b13aea",
+							"id": "83b4a8a3-d8c8-4a43-8071-74478dd80e44",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1096,7 +1101,7 @@
 									}
 								}
 							],
-							"id": "61ad6304-dc39-4ba7-a5cc-078d44bde0e1",
+							"id": "0e8577ce-7db5-4e65-9447-1cdb0ebc78a4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1130,7 +1135,7 @@
 									}
 								}
 							],
-							"id": "6efd3ced-fb13-4a79-b6eb-76cb1bfc07c0",
+							"id": "b1bf4a5c-2d11-4d26-8c4b-ed1b32e7dc9f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1161,7 +1166,7 @@
 									}
 								}
 							],
-							"id": "b1d583fa-52e3-4b36-8cc1-72fe15c8a7e1",
+							"id": "0318b542-5d31-4944-abbf-f254d5c7b280",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1195,7 +1200,7 @@
 									}
 								}
 							],
-							"id": "1d88325e-178e-4125-aa3a-fdf795a8b50f",
+							"id": "fe0a5247-3447-41d8-81a8-cf5f25d75c5a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1229,7 +1234,7 @@
 									}
 								}
 							],
-							"id": "05514172-299c-4954-bbd0-e3655573120d",
+							"id": "e3214e93-50b8-4d4f-ab64-478bfb76f424",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1263,7 +1268,7 @@
 									}
 								}
 							],
-							"id": "4e483ab2-bed1-4449-ab63-7b87a7d33f87",
+							"id": "60c0e472-517e-4b74-af3f-9efe5bdc52fd",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1297,7 +1302,7 @@
 									}
 								}
 							],
-							"id": "fcb8bc83-d6af-450a-a0d1-b276ce2dd396",
+							"id": "d4a8ad28-c151-4e10-9477-722153e26827",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1331,7 +1336,7 @@
 									}
 								}
 							],
-							"id": "262299f2-8950-458f-8e0e-2e6d7c096b4e",
+							"id": "77384f72-48bd-426a-8617-70b5e2620a05",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1362,7 +1367,7 @@
 									}
 								}
 							],
-							"id": "ba875f0f-77ee-4584-a4ae-8db503e5a343",
+							"id": "2f2e5c0a-df24-48e5-933c-fabdf84fd621",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1396,7 +1401,7 @@
 									}
 								}
 							],
-							"id": "2ef28c76-4c25-4f00-8f39-e2a2c77f20c2",
+							"id": "52e504ec-abb3-4e62-9ee5-94d650374593",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1430,7 +1435,7 @@
 									}
 								}
 							],
-							"id": "6ed5a370-a7d9-410a-9ffe-e40e908e058d",
+							"id": "e813720f-6161-40f9-9868-fd576265e74f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1464,7 +1469,7 @@
 									}
 								}
 							],
-							"id": "14de4947-1ab1-453c-a890-470ef3d81136",
+							"id": "e97a9f84-eee1-4774-b0c4-1958e464f52d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1482,15 +1487,15 @@
 							"response": []
 						}
 					],
-					"id": "b26c8d5e-80a2-4705-84d4-887c85e707cd"
+					"id": "8381426f-9c7b-488a-ac1e-0f5e6ee07df6"
 				},
 				{
 					"name": "Class_A",
 					"item": [],
-					"id": "e3f7e8fa-8c63-4f01-a149-a3aa9e156a66"
+					"id": "94bdcba5-c940-4da7-a7a0-5bf43438163d"
 				}
 			],
-			"id": "a00d91cd-42c2-4c66-bef9-0c0eb60714e7"
+			"id": "f182f213-6d11-4f60-baa0-bbac79bb628b"
 		},
 		{
 			"name": "Users",
@@ -1499,8 +1504,8 @@
 					"name": "Users_An",
 					"item": [
 						{
-							"name": "UserSignIn",
-							"id": "405a4051-343a-452d-bd7a-1d9f095d2ef8",
+							"name": "Create User with Admin",
+							"id": "04922686-18ae-4c3d-b659-ca9c8204a089",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1509,105 +1514,811 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
+									"raw": "{\r\n\"userComments\": \"Test data role R01\",\r\n\"userEduPg\": \"BCS\",\r\n\"userEduUg\": \"string\",\r\n\"userFirstName\": \"Testdatatwo\",\r\n\"userLastName\": \"Testdata\",\r\n\"userLinkedinUrl\": \"www.linkedin.com/in/Anjali-roy-d5622787/\",\r\n\"userLocation\": \"USA\",\r\n\"userMiddleName\": \"V\",\r\n\"userPhoneNumber\": \"+91 2624455122\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R01\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": \"test122@gmail.com\"\r\n}\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login"
+								"url": "{{baseURL}}/users/roleStatus"
 							},
 							"response": []
 						},
 						{
-							"name": "Get all Users with Facets/Filters",
-							"id": "ac5fdffb-d51d-4ceb-a304-cf5aefd638b6",
+							"name": "Create Users with Role Student",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0f2f7847-f0e4-4246-82c0-d3b12a7b7e11",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"//1. Status Line\r",
+											"pm.test(\"Status message is Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"//4. Schema Validation -- TO BE DONE\r",
+											"const schema = {\r",
+											"  \"type\": \"object\",\r",
+											"  \"properties\": {\r",
+											"    \"user\": {\r",
+											"      \"type\": \"object\",\r",
+											"      \"properties\": {\r",
+											"        \"userId\": { \"type\": \"string\" },\r",
+											"        \"userFirstName\": { \"type\": \"string\" },\r",
+											"        \"userLastName\": { \"type\": \"string\" },\r",
+											"        \"userMiddleName\": { \"type\": \"string\" },\r",
+											"        \"userPhoneNumber\": { \"type\": \"string\" },\r",
+											"        \"userLocation\": { \"type\": \"string\" },\r",
+											"        \"userTimeZone\": { \"type\": \"string\" },\r",
+											"        \"userLinkedinUrl\": { \"type\": \"string\" },\r",
+											"        \"userEduUg\": { \"type\": \"string\" },\r",
+											"        \"userEduPg\": { \"type\": \"string\" },\r",
+											"        \"userComments\": { \"type\": \"string\" },\r",
+											"        \"userVisaStatus\": { \"type\": \"string\" },\r",
+											"        \"userLoginEmail\": { \"type\": \"string\" }\r",
+											"      },\r",
+											"      \"required\": [\r",
+											"        \"userId\",\r",
+											"        \"userFirstName\",\r",
+											"        \"userLastName\",\r",
+											"        \"userMiddleName\",\r",
+											"        \"userPhoneNumber\",\r",
+											"        \"userLocation\",\r",
+											"        \"userTimeZone\",\r",
+											"        \"userLinkedinUrl\",\r",
+											"        \"userEduUg\",\r",
+											"        \"userEduPg\",\r",
+											"        \"userComments\",\r",
+											"        \"userVisaStatus\",\r",
+											"        \"userLoginEmail\"\r",
+											"      ]\r",
+											"    },\r",
+											"    \"roles\": {\r",
+											"      \"type\": \"array\",\r",
+											"      \"items\": {\r",
+											"        \"type\": \"object\",\r",
+											"        \"properties\": {\r",
+											"          \"roleId\": { \"type\": \"string\" },\r",
+											"          \"userRoleStatus\": { \"type\": \"string\" }\r",
+											"        },\r",
+											"        \"required\": [\"roleId\", \"userRoleStatus\"]\r",
+											"      }\r",
+											"    }\r",
+											"  },\r",
+											"  \"required\": [\"user\", \"roles\"]\r",
+											"};\r",
+											"\r",
+											"// Parse the response body\r",
+											"const responseJson = pm.response.json();\r",
+											"\r",
+											"// Validate the response body against the schema\r",
+											"pm.test(\"Response matches the expected schema\", function () {\r",
+											"  pm.expect(tv4.validate(responseJson, schema)).to.be.true;\r",
+											"});\r",
+											"\r",
+											"//5. Request VS Response Body Validation\r",
+											"pm.test(\"Program name matches\", function () {\r",
+											"\r",
+											"    // Get the raw request body and Parse it to JSON\r",
+											"    const rawRequestBody = pm.request.body.raw;\r",
+											"    const requestBody = JSON.parse(rawRequestBody);\r",
+											"\r",
+											"    pm.expect(requestBody.userLinkedinUrl).to.eql(response.userLinkedinUrl);\r",
+											"    pm.expect(requestBody.userComments).to.eql(response.userComments);\r",
+											"    pm.expect(requestBody.userEduPg).to.eql(response.userEduPg);\r",
+											"    pm.expect(requestBody.userEduUg).to.eql(response.userEduUg);\r",
+											"    pm.expect(requestBody.userLastName).to.eql(response.userLastName);\r",
+											"    pm.expect(requestBody.userFirstName).to.eql(response.userFirstName);\r",
+											"    pm.expect(requestBody.userMiddleName).to.eql(response.userMiddleName);\r",
+											"    pm.expect(requestBody.userPhoneNumber).to.eql(response.userPhoneNumber);\r",
+											"    pm.expect(requestBody.userTimeZone).to.eql(response.userTimeZone);\r",
+											"    pm.expect(requestBody.userVisaStatus).to.eql(response.userVisaStatus);\r",
+											"    pm.expect(requestBody.userLoginEmail).to.eql(response.userLoginEmail);\r",
+											"\r",
+											"    \r",
+											"    \r",
+											"\r",
+											"\r",
+											"   \r",
+											"\r",
+											"});\r",
+											"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!)\r",
+											"pm.collectionVariables.set(\"Student_Id\", response.user.userId)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "57c24f75-5b25-4ae6-8bd7-8daf78327742",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w"
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userComments\": \"string\",\r\n\"userEduPg\": \"string\",\r\n\"userEduUg\": \"string\",\r\n\"userFirstName\": \"Testdata\",\r\n\"userLastName\": \"two\",\r\n\"userLinkedinUrl\": \"www.linkedin.com/in/prakash-roy-d5622787/\",\r\n\"userLocation\": \"string\",\r\n\"userMiddleName\": \"string\",\r\n\"userPhoneNumber\": \"+91 2624567852\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R03\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": \"data2@gmail.com\"\r\n}\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
 									}
 								},
-								"method": "GET",
+								"url": "{{baseURL}}/users/roleStatus"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Users with Staff Role",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0f2f7847-f0e4-4246-82c0-d3b12a7b7e11",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"//1. Status Line\r",
+											"pm.test(\"Status message is Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"//4. Schema Validation -- TO BE DONE\r",
+											"\r",
+											"\r",
+											"//5. Request VS Response Body Validation\r",
+											"pm.test(\"user name matches\", function () {\r",
+											"\r",
+											"    // Get the raw request body and Parse it to JSON\r",
+											"    const rawRequestBody = pm.request.body.raw;\r",
+											"    const requestBody = JSON.parse(rawRequestBody);\r",
+											"\r",
+											"    pm.expect(requestBody.userLinkedinUrl).to.eql(response.userLinkedinUrl);\r",
+											"    pm.expect(requestBody.userComments).to.eql(response.userComments);\r",
+											"    pm.expect(requestBody.userEduPg).to.eql(response.userEduPg);\r",
+											"    pm.expect(requestBody.userEduUg).to.eql(response.userEduUg);\r",
+											"    pm.expect(requestBody.userLastName).to.eql(response.userLastName);\r",
+											"    pm.expect(requestBody.userFirstName).to.eql(response.userFirstName);\r",
+											"    pm.expect(requestBody.userMiddleName).to.eql(response.userMiddleName);\r",
+											"    pm.expect(requestBody.userPhoneNumber).to.eql(response.userPhoneNumber);\r",
+											"    pm.expect(requestBody.userTimeZone).to.eql(response.userTimeZone);\r",
+											"    pm.expect(requestBody.userVisaStatus).to.eql(response.userVisaStatus);\r",
+											"    pm.expect(requestBody.userLoginEmail).to.eql(response.userLoginEmail);\r",
+											"\r",
+											"    \r",
+											"    \r",
+											"\r",
+											"\r",
+											"   \r",
+											"\r",
+											"});\r",
+											"\r",
+											"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!)\r",
+											"pm.collectionVariables.set(\"Staff_Id\", response.user.userId)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "133e5360-c385-4abb-9a8f-f2f0fbe27323",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/v2/users"
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userComments\": \"string\",\r\n\"userEduPg\": \"string\",\r\n\"userEduUg\": \"string\",\r\n\"userFirstName\": \"Staff\",\r\n\"userLastName\": \"string\",\r\n\"userLinkedinUrl\": \"www.linkedin.com/in/prakash-roy-d5622787/\",\r\n\"userLocation\": \"string\",\r\n\"userMiddleName\": \"string\",\r\n\"userPhoneNumber\": \"+91 2624227833\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R02\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": \"R02toR03@gmail.com\"\r\n}\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/users/roleStatus"
 							},
 							"response": []
 						},
 						{
 							"name": "Get all users",
-							"id": "76f32fa5-d10e-457d-a089-0de49cc4ed92",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "38b76818-cf33-4625-9f4d-8ab54a8d232e",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c2d199d6-5f04-4581-babd-cf5ffe2a247a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w"
-									}
-								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users"
+								"url": "{{baseURL}}/users"
 							},
 							"response": []
 						},
 						{
-							"name": "Get User Info by ID",
-							"id": "84eb3d83-7bf9-4c0d-8e0c-0f682093d184",
+							"name": "Get all Active User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "75bb4a08-82b7-4a9c-8394-943b2410363c",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "cd6df083-f592-4774-bf65-60c7067de2c9",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w"
-									}
-								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/users/U53"
+								"url": "{{baseURL}}/users/activeUsers"
 							},
 							"response": []
 						},
 						{
-							"name": "Facets/Filters with invalid endpoint",
-							"id": "db1643f4-69e6-431b-98ba-3536472c25ae",
+							"name": "Get emails of all users with active status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "25e09dd3-0b29-4082-8d36-a235d49a11d3",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3cb5dc52-f5e2-43e3-8fab-a7c940fde0a1",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTg1NSwiZXhwIjoxNzQxNDA0NjU1fQ.3YMgSYFD4mq_EBIvRNiR6VoK1ui4RDQ3f9fRhuK5-cMqVmf_sLmL7h7kkaA8K9DA0oWZ5wAHAetoqKqYYBA1-w"
-									}
-								},
 								"method": "GET",
 								"header": [],
-								"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/v2/usersInvalid"
+								"url": "{{baseURL}}/fetch-emails"
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Roles",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "751b4de8-707a-468e-8654-484403fb0b62",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "25df65b2-1c55-4524-9980-9bac0e48645b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/roles"
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Info by userId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d1231ceb-a289-4b10-ac44-d4daefa5dfbb",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"//4. Schema Validation -- TO BE DONE\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "6e097ded-b187-4443-bf65-79a38573a7b0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/users/U330"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Users with roles",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d1231ceb-a289-4b10-ac44-d4daefa5dfbb",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"//4. Schema Validation -- TO BE DONE\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "106ca4ce-3b73-4e0c-b5d0-cc9068fb0e09",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/users/roles"
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "dba1bbfb-194f-40f0-9820-8a8a34020a9e",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "4810b4ee-755e-4d3d-a35c-264b02fb340d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userComments\": \"String\",\r\n\"userEduPg\": \"String\",\r\n\"userEduUg\": \"String\",\r\n\"userFirstName\": \"Ram\",\r\n\"userId\": \"String\",\r\n\"userLastName\": \"Sandy\",\r\n\"userMiddleName\": \"string\",\r\n\"userLinkedinUrl\": \"www.linkedin.com\",\r\n\"userLocation\": \"String\",\r\n\"userLoginEmail\": \"Test1@gmail.com\",\r\n\"userPhoneNumber\": \"+91 2624567894\",\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/users/U330"
+							},
+							"response": []
+						},
+						{
+							"name": "Update User RoleId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cc62d710-6117-4d3c-a429-02ae24e4d8f4",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "98f71043-a0ef-4923-801f-0c5344ce9754",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userRoleList\": [\r\n{\r\n\"roleId\": \"R03\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/users/roleId/U650"
+							},
+							"response": []
+						},
+						{
+							"name": "Assign Update User Role Program Batch Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "00366d36-835f-4688-9b7c-226c1d6cd6cd",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "fabd78f1-3f1f-40ec-b667-92b33b90c85c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"programI\": 0,\r\n\"roleId\": \"string\",\r\n\"userId\": \"string\",\r\n\"userRoleProgramBatches\": [\r\n{\r\n\"batchId\": 0,\r\n\"userRoleProgramBatchStatus\":\r\n\"string\"\r\n}\r\n]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}//users/roleProgramBatchStatus/{userId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Update User Login Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5525b58d-5a1a-49b7-a2f4-b489cf258cac",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "666a2660-2751-4071-a009-3d8ec870b03b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"loginStatus\": \"string\",\r\n\"password\": \"string\",\r\n\"roleIds\": [\r\n\"string\"\r\n],\r\n\"status\": \"string\",\r\n\"userLoginEmail\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}///users/userLogin/{userId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User-staff",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "351cbed9-051a-412b-b65d-fbfabb6d63e1",
+										"exec": [
+											"var userid_staff = pm.collectionVariables.get(\"Staff_Id\")\r",
+											"pm.variables.set(\"userid_staff\",userid_staff)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "49b68ab6-a962-438f-a5c0-2d967e71c8ea",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/:userid",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										":userid"
+									],
+									"variable": [
+										{
+											"key": "userid",
+											"value": "{{userid_staff}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User-student",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "351cbed9-051a-412b-b65d-fbfabb6d63e1",
+										"exec": [
+											"var userid_student = pm.collectionVariables.get(\"Student_Id\")\r",
+											"pm.variables.set(\"userid_student\",userid_student)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "170672ae-77d8-440e-b4d8-499474793a4b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/:userid",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										":userid"
+									],
+									"variable": [
+										{
+											"key": "userid",
+											"value": "{{userid_staff}}"
+										}
+									]
+								}
 							},
 							"response": []
 						}
 					],
-					"id": "110e7a3e-7fa0-48a3-a016-aeb8136c2d73"
+					"id": "f705aeb9-4eb4-4cb8-b77c-ebacbad1b4da"
 				}
 			],
-			"id": "ac94d086-3b0f-459e-82a5-a8b4dfa537e2"
+			"id": "7d2c0f15-7473-45c7-aa30-fd9565751346"
 		},
 		{
 			"name": "Tear Down and Logout",
 			"item": [
 				{
 					"name": "Logout",
-					"id": "6c64072c-651e-4ab2-b31b-8741802b1701",
+					"id": "d73507bc-e2f7-4c55-a8b6-45f42c674551",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1619,7 +2330,7 @@
 					"response": []
 				}
 			],
-			"id": "1408e38f-5719-4e08-b9a8-d3ccbd19a17b"
+			"id": "1a9cce7f-3ac9-4faf-896c-b31dd875cc26"
 		}
 	],
 	"auth": {
@@ -1665,6 +2376,14 @@
 			"key": "baseUrl",
 			"value": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
 			"type": "default"
+		},
+		{
+			"key": "Student_Id",
+			"value": ""
+		},
+		{
+			"key": "Staff_Id",
+			"value": ""
 		}
 	]
 }
