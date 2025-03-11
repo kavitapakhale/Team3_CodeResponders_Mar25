@@ -4939,6 +4939,280 @@
 								"url": "{{baseURL}}/allClasses"
 							},
 							"response": []
+						},
+						{
+							"name": "Get all Classes by BatchId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b712cead-5010-4cb6-93ec-fbf616db3183",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3392a857-99fb-4943-83db-52afe2a8394d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/classesbyBatch/9721"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by BatchIdInvalid",
+							"id": "1fa0de83-bf81-41a7-9d4b-dbf030281e30",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/classesbyBatch/!!!"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by StaffId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d65d35dc-ac44-4511-bca7-1df9a80a5b2c",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "459f4fa9-235d-4bbe-99cc-cfcefafc5bb7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/classesByStaff/U34"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Classes by StaffIdInvalid",
+							"id": "26e5a2c8-75b8-499d-8bcb-0955ee7746a1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/classesByStaff/UWM"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all recordings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0e034a8d-2d08-4db5-8dae-d56bc5c0841f",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "dd229c7f-f6ed-4845-8684-4630978dd069",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/classrecordings"
+							},
+							"response": []
+						},
+						{
+							"name": "Get all recordingsInvalid",
+							"id": "f60967e3-0657-4964-a4ae-64cf8def24cb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseURL}}/classrecordings/ABN"
+							},
+							"response": []
+						},
+						{
+							"name": "Update New Class",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fde4e6e8-5705-4a0a-817d-23dca0e8994e",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"//2. Status Line\r",
+											"pm.test(\"Status message is OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "eec56a6d-2cd8-4e06-a77d-b19e6f301261",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"batchId\": 8452,\r\n\"classNo\":1,\r\n\"classDate\": \"2025-06-06T19:04:41.220Z\",\r\n\"classTopic\": \"Math\",\r\n\"classStatus\": \"string\",\r\n\"classStaffId\": \"U70\",\r\n\"classDescription\": \"String\",\r\n\"classComments\": \"string\",\r\n\"classNotes\": \"string\",\r\n\"classRecordingPath\": \"string\",\r\n\"classScheduledDates\": [\"2025-06-06T19:04:41.220Z\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/updateClass/304"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete class by Class Id2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a8233490-305a-4d7c-9500-9d03cd8d2c85",
+										"exec": [
+											"var classid = pm.collectionVariables.get(\"class_Id\")\r",
+											"pm.variables.set(\"classid \",classid)\r",
+											"\r",
+											"pm.test(\"Successfully deleted the resource\", function () {    pm.response.to.have.status(200); \r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "a9c0b923-0cf6-451e-b089-fd18842e53ed",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/deleteByClass/:classId",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"deleteByClass",
+										":classId"
+									],
+									"variable": [
+										{
+											"id": "e81b741e-35e3-4251-b1ed-30a4c3f81063",
+											"key": "classId",
+											"value": "{{classid}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "e3f7e8fa-8c63-4f01-a149-a3aa9e156a66"
