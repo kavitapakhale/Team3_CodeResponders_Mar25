@@ -4461,23 +4461,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/:userid",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								":userid"
-							],
-							"variable": [
-								{
-									"id": "bf4a0152-5986-4007-9c99-3eb4d9749ac4",
-									"key": "userid",
-									"value": "{{userid_staff}}"
-								}
-							]
-						}
+						"url": "{{baseURL}}/users/{{user_id}}"
 					},
 					"response": []
 				}
