@@ -3286,14 +3286,10 @@
 									"    pm.expect(requestBody.userTimeZone).to.eql(response.userTimeZone);\r",
 									"    pm.expect(requestBody.userVisaStatus).to.eql(response.userVisaStatus);\r",
 									"    pm.expect(requestBody.userLoginEmail).to.eql(response.userLoginEmail);\r",
-									"\r",
-									"    \r",
-									"    \r",
-									"\r",
-									"\r",
 									"   \r",
 									"\r",
 									"});\r",
+									"\r",
 									"\r",
 									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!)\r",
 									"console.log(response.roles[0].roleId)\r",
@@ -3341,14 +3337,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"userComments\": \"{{userComment}}\",\r\n\"userEduPg\": \"{{pgDegree}}\",\r\n\"userEduUg\": \"{{ugDegree}}\",\r\n\"userFirstName\": \"{{firstName}}\",\r\n\"userLastName\": \"{{lastName}}\",\r\n\"userLinkedinUrl\": \"{{linkedInUrl}}\",\r\n\"userLocation\": \"{{location}}\",\r\n\"userMiddleName\": \"{{middleName}}\",\r\n\"userPhoneNumber\": \"{{phoneNumber}}\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"{{roleId}}\",\r\n\"userRoleStatus\": \"{{roleStatus}}\"\r\n}\r\n],\r\n\"userTimeZone\": \"{{timeZone}}\",\r\n\"userVisaStatus\": \"{{visaStatus}}\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"{{loginStatus}}\",\r\n\"userLoginEmail\": \"{{loginEmail}}\"\r\n}\r\n}\r\n",
+							"raw": "{\r\n\"userComments\": \"string\",\r\n\"userEduPg\": \"string\",\r\n\"userEduUg\": \"string\",\r\n\"userFirstName\": \"Testdata\",\r\n\"userLastName\": \"nine\",\r\n\"userLinkedinUrl\": \"www.linkedin.com/in/prakash-roy-d5622787/\",\r\n\"userLocation\": \"string\",\r\n\"userMiddleName\": \"string\",\r\n\"userPhoneNumber\": \"+91 2628767999\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R03\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": \"datkjkk@gmail.com\"\r\n}\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseUrl}}/users/roleStatus"
+						"url": "{{baseURL}}/users/roleStatus"
 					},
 					"response": []
 				},
