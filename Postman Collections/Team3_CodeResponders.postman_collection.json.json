@@ -3353,6 +3353,317 @@
 					"response": []
 				},
 				{
+					"name": "Get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "38b76818-cf33-4625-9f4d-8ab54a8d232e",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//3. Test for Content-Type header having a particular value\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"//4 Schema validation\r",
+									"\r",
+									"const schemaconstant = \r",
+									"{\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"array\",\r",
+									"  \"items\": [\r",
+									"    {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"userComments\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userEduPg\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userEduUg\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userFirstName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userId\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLastName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLinkedinUrl\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLocation\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userMiddleName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userPhoneNumber\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"userTimeZone\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userVisaStatus\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLoginEmail\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"userComments\",\r",
+									"        \"userEduPg\",\r",
+									"        \"userEduUg\",\r",
+									"        \"userFirstName\",\r",
+									"        \"userId\",\r",
+									"        \"userLastName\",\r",
+									"        \"userLinkedinUrl\",\r",
+									"        \"userLocation\",\r",
+									"        \"userMiddleName\",\r",
+									"        \"userPhoneNumber\",\r",
+									"        \"userTimeZone\",\r",
+									"        \"userVisaStatus\",\r",
+									"        \"userLoginEmail\"\r",
+									"      ]\r",
+									"    }\r",
+									"  ]\r",
+									"}\r",
+									"pm.test(\"Validate Schema\"),function(){\r",
+									"    pm.response.to.have.jsonSchema(schemaconstant);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "c2d199d6-5f04-4581-babd-cf5ffe2a247a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Active User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75bb4a08-82b7-4a9c-8394-943b2410363c",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//3. Test for Content-Type header having a particular value\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"//4. Schema validation\r",
+									"const schemaconstant = \r",
+									"{\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"array\",\r",
+									"  \"items\": [\r",
+									"    {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"userComments\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userEduPg\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userEduUg\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userFirstName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userId\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLastName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLinkedinUrl\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLocation\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userMiddleName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userPhoneNumber\": {\r",
+									"          \"type\": \"integer\"\r",
+									"        },\r",
+									"        \"userTimeZone\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userVisaStatus\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLoginEmail\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"userComments\",\r",
+									"        \"userEduPg\",\r",
+									"        \"userEduUg\",\r",
+									"        \"userFirstName\",\r",
+									"        \"userId\",\r",
+									"        \"userLastName\",\r",
+									"        \"userLinkedinUrl\",\r",
+									"        \"userLocation\",\r",
+									"        \"userMiddleName\",\r",
+									"        \"userPhoneNumber\",\r",
+									"        \"userTimeZone\",\r",
+									"        \"userVisaStatus\",\r",
+									"        \"userLoginEmail\"\r",
+									"      ]\r",
+									"    }\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Validate Schema\"),function(){\r",
+									"    pm.response.to.have.jsonSchema(schemaconstant);\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "cd6df083-f592-4774-bf65-60c7067de2c9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/users/activeUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get emails of all users with active status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "25e09dd3-0b29-4082-8d36-a235d49a11d3",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//3. Test for Content-Type header having a particular value\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"//4 Schema validation\r",
+									"const schemaconstant = \r",
+									"{\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"array\",\r",
+									"  \"items\": [\r",
+									"    {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"creationTime\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"lastModTime\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"roleDesc\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"roleId\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"roleName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"creationTime\",\r",
+									"        \"lastModTime\",\r",
+									"        \"roleDesc\",\r",
+									"        \"roleId\",\r",
+									"        \"roleName\"\r",
+									"      ]\r",
+									"    }\r",
+									"  ]\r",
+									"}\r",
+									"pm.test(\"Validate Schema\"),function(){\r",
+									"    pm.response.to.have.jsonSchema(schemaconstant);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "3cb5dc52-f5e2-43e3-8fab-a7c940fde0a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/fetch-emails"
+					},
+					"response": []
+				},
+				{
 					"name": "Get All Roles",
 					"event": [
 						{
@@ -3531,402 +3842,6 @@
 					"response": []
 				},
 				{
-					"name": "Get all Active User",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "75bb4a08-82b7-4a9c-8394-943b2410363c",
-								"exec": [
-									"const response = pm.response.json();\r",
-									"\r",
-									"//POSITIVE TEST VALIDATION\r",
-									"//1. Status\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"//2. Status Line\r",
-									"pm.test(\"Status message is OK\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"\r",
-									"//3. Test for Content-Type header having a particular value\r",
-									"pm.test(\"Content-Type header is application/json\", () => {\r",
-									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-									"});\r",
-									"\r",
-									"//4. Schema validation\r",
-									"const schemaconstant = \r",
-									"{\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"array\",\r",
-									"  \"items\": [\r",
-									"    {\r",
-									"      \"type\": \"object\",\r",
-									"      \"properties\": {\r",
-									"        \"userComments\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userEduPg\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userEduUg\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userFirstName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userId\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLastName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLinkedinUrl\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLocation\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userMiddleName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userPhoneNumber\": {\r",
-									"          \"type\": \"integer\"\r",
-									"        },\r",
-									"        \"userTimeZone\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userVisaStatus\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLoginEmail\": {\r",
-									"          \"type\": \"string\"\r",
-									"        }\r",
-									"      },\r",
-									"      \"required\": [\r",
-									"        \"userComments\",\r",
-									"        \"userEduPg\",\r",
-									"        \"userEduUg\",\r",
-									"        \"userFirstName\",\r",
-									"        \"userId\",\r",
-									"        \"userLastName\",\r",
-									"        \"userLinkedinUrl\",\r",
-									"        \"userLocation\",\r",
-									"        \"userMiddleName\",\r",
-									"        \"userPhoneNumber\",\r",
-									"        \"userTimeZone\",\r",
-									"        \"userVisaStatus\",\r",
-									"        \"userLoginEmail\"\r",
-									"      ]\r",
-									"    }\r",
-									"  ]\r",
-									"}\r",
-									"\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemaconstant);\r",
-									"}\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "cd6df083-f592-4774-bf65-60c7067de2c9",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{baseURL}}/users/activeUsers"
-					},
-					"response": []
-				},
-				{
-					"name": "GetUsersByProgram",
-					"id": "6ef92f20-1c44-49ed-b450-1d7f73d5016b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/programBatch/:Batchid",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								"programBatch",
-								":Batchid"
-							],
-							"variable": [
-								{
-									"id": "e00bcb57-ece7-4299-954f-00192f0f6be1",
-									"key": "Batchid",
-									"value": "9178"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get all users",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "38b76818-cf33-4625-9f4d-8ab54a8d232e",
-								"exec": [
-									"const response = pm.response.json();\r",
-									"\r",
-									"//POSITIVE TEST VALIDATION\r",
-									"//1. Status\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"//2. Status Line\r",
-									"pm.test(\"Status message is OK\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"\r",
-									"//3. Test for Content-Type header having a particular value\r",
-									"pm.test(\"Content-Type header is application/json\", () => {\r",
-									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-									"});\r",
-									"//4 Schema validation\r",
-									"\r",
-									"const schemaconstant = \r",
-									"{\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"array\",\r",
-									"  \"items\": [\r",
-									"    {\r",
-									"      \"type\": \"object\",\r",
-									"      \"properties\": {\r",
-									"        \"userComments\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userEduPg\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userEduUg\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userFirstName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userId\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLastName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLinkedinUrl\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLocation\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userMiddleName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userPhoneNumber\": {\r",
-									"          \"type\": \"integer\"\r",
-									"        },\r",
-									"        \"userTimeZone\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userVisaStatus\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"userLoginEmail\": {\r",
-									"          \"type\": \"string\"\r",
-									"        }\r",
-									"      },\r",
-									"      \"required\": [\r",
-									"        \"userComments\",\r",
-									"        \"userEduPg\",\r",
-									"        \"userEduUg\",\r",
-									"        \"userFirstName\",\r",
-									"        \"userId\",\r",
-									"        \"userLastName\",\r",
-									"        \"userLinkedinUrl\",\r",
-									"        \"userLocation\",\r",
-									"        \"userMiddleName\",\r",
-									"        \"userPhoneNumber\",\r",
-									"        \"userTimeZone\",\r",
-									"        \"userVisaStatus\",\r",
-									"        \"userLoginEmail\"\r",
-									"      ]\r",
-									"    }\r",
-									"  ]\r",
-									"}\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemaconstant);\r",
-									"}\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "c2d199d6-5f04-4581-babd-cf5ffe2a247a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{baseURL}}/users"
-					},
-					"response": []
-				},
-				{
-					"name": "GetV2Users",
-					"id": "b5be5a08-37e4-4c7a-a5a9-dc4102400077",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{baseUrl}}/v2/users"
-					},
-					"response": []
-				},
-				{
-					"name": "GetUsersByRoleId",
-					"id": "83c4857f-9133-4612-bd4f-61bff88d98ee",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/roles/:roleid",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								"roles",
-								":roleid"
-							],
-							"variable": [
-								{
-									"id": "8766dfcd-bb39-4717-8199-0db46ea52cdf",
-									"key": "roleid",
-									"value": "R01"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"id": "1c1dc470-d4d6-434d-9f55-9b48fab8559c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Get emails of all users with active status",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "25e09dd3-0b29-4082-8d36-a235d49a11d3",
-								"exec": [
-									"const response = pm.response.json();\r",
-									"\r",
-									"//POSITIVE TEST VALIDATION\r",
-									"//1. Status\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"//2. Status Line\r",
-									"pm.test(\"Status message is OK\", function () {\r",
-									"    pm.response.to.have.status(\"OK\");\r",
-									"});\r",
-									"\r",
-									"//3. Test for Content-Type header having a particular value\r",
-									"pm.test(\"Content-Type header is application/json\", () => {\r",
-									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-									"});\r",
-									"\r",
-									"//4 Schema validation\r",
-									"const schemaconstant = \r",
-									"{\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"array\",\r",
-									"  \"items\": [\r",
-									"    {\r",
-									"      \"type\": \"object\",\r",
-									"      \"properties\": {\r",
-									"        \"creationTime\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"lastModTime\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"roleDesc\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"roleId\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"roleName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        }\r",
-									"      },\r",
-									"      \"required\": [\r",
-									"        \"creationTime\",\r",
-									"        \"lastModTime\",\r",
-									"        \"roleDesc\",\r",
-									"        \"roleId\",\r",
-									"        \"roleName\"\r",
-									"      ]\r",
-									"    }\r",
-									"  ]\r",
-									"}\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemaconstant);\r",
-									"}"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "3cb5dc52-f5e2-43e3-8fab-a7c940fde0a1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{baseURL}}/fetch-emails"
-					},
-					"response": []
-				},
-				{
 					"name": "Get all Users with roles",
 					"event": [
 						{
@@ -4090,6 +4005,109 @@
 						"method": "GET",
 						"header": [],
 						"url": "{{baseURL}}/users/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsersByProgram",
+					"id": "6ef92f20-1c44-49ed-b450-1d7f73d5016b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/programBatch/:Batchid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"programBatch",
+								":Batchid"
+							],
+							"variable": [
+								{
+									"id": "e00bcb57-ece7-4299-954f-00192f0f6be1",
+									"key": "Batchid",
+									"value": "9178"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsersByProgramBatch",
+					"id": "00439800-1fa5-4dd0-99f9-cccb156b2b06",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/programBatch/:Batchid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"programBatch",
+								":Batchid"
+							],
+							"variable": [
+								{
+									"id": "b9f630cf-3b34-47f2-a5c9-47b99880719c",
+									"key": "Batchid",
+									"value": "9755"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetV2Users",
+					"id": "b5be5a08-37e4-4c7a-a5a9-dc4102400077",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/v2/users"
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsersByRoleId",
+					"id": "83c4857f-9133-4612-bd4f-61bff88d98ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/roles/:roleid",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"roles",
+								":roleid"
+							],
+							"variable": [
+								{
+									"id": "8766dfcd-bb39-4717-8199-0db46ea52cdf",
+									"key": "roleid",
+									"value": "R01"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -4287,6 +4305,62 @@
 					"response": []
 				},
 				{
+					"name": "Update User RoleId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc62d710-6117-4d3c-a429-02ae24e4d8f4",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//3. Test for Content-Type header having a particular value\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"//4. Schema validation\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "98f71043-a0ef-4923-801f-0c5344ce9754",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"userRoleList\": [\r\n{\r\n\"roleId\": \"R03\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/users/roleId/U650"
+					},
+					"response": []
+				},
+				{
 					"name": "Assign Update User Role Program Batch Status",
 					"event": [
 						{
@@ -4334,6 +4408,92 @@
 							}
 						},
 						"url": "{{baseURL}}//users/roleProgramBatchStatus/{userId}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User-staff",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "351cbed9-051a-412b-b65d-fbfabb6d63e1",
+								"exec": [
+									"var userid_staff = pm.collectionVariables.get(\"Staff_Id\")\r",
+									"pm.variables.set(\"userid_staff\",userid_staff)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "49b68ab6-a962-438f-a5c0-2d967e71c8ea",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/:userid",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								":userid"
+							],
+							"variable": [
+								{
+									"id": "76dc0697-4334-4ef5-bbc0-45c535a150be",
+									"key": "userid",
+									"value": "{{userid_staff}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User-student",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "351cbed9-051a-412b-b65d-fbfabb6d63e1",
+								"exec": [
+									"var userid_student = pm.collectionVariables.get(\"Student_Id\")\r",
+									"pm.variables.set(\"userid_student\",userid_student)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "170672ae-77d8-440e-b4d8-499474793a4b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/:userid",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								":userid"
+							],
+							"variable": [
+								{
+									"id": "bf4a0152-5986-4007-9c99-3eb4d9749ac4",
+									"key": "userid",
+									"value": "{{userid_staff}}"
+								}
+							]
+						}
 					},
 					"response": []
 				}
