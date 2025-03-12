@@ -4072,6 +4072,34 @@
 					"response": []
 				},
 				{
+					"name": "GetCountUsers",
+					"id": "cf453c83-9a89-44d3-b6e4-80ad8aa6263d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/byStatus?id=R03",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"byStatus"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "R03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update User",
 					"event": [
 						{
