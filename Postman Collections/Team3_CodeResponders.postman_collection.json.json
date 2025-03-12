@@ -2417,7 +2417,9 @@
 											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
 											"});\r",
 											"\r",
-											"//4. Schema Validation -- TO BE DONE\r",
+											"//4. Schema Validation -- \r",
+											"//const schemaconstant = \r",
+											"\r",
 											""
 										],
 										"type": "text/javascript",
@@ -2432,7 +2434,22 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "{{baseURL}}/users/U330"
+								"url": {
+									"raw": "{{baseURL}}/users/:userId",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{Staff_Id}}"
+										}
+									]
+								}
 							},
 							"response": []
 						},
