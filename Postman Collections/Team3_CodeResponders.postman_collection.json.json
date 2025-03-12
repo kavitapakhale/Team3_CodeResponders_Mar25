@@ -3998,7 +3998,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/users/byStatus?id=R03",
+							"raw": "{{baseUrl}}/users/byStatus?id={{role_id}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -4009,7 +4009,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "R03"
+									"value": "{{role_id}}"
 								}
 							]
 						}
@@ -4025,24 +4025,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/programBatch/:Batchid",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								"programBatch",
-								":Batchid"
-							],
-							"variable": [
-								{
-									"id": "b9f630cf-3b34-47f2-a5c9-47b99880719c",
-									"key": "Batchid",
-									"value": "9755"
-								}
-							]
-						}
+						"url": "{{baseUrl}}/users/programBatch/{{batchID_ModuleIntegration}}"
 					},
 					"response": []
 				},
@@ -4055,24 +4038,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/programBatch/:Batchid",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								"programBatch",
-								":Batchid"
-							],
-							"variable": [
-								{
-									"id": "e00bcb57-ece7-4299-954f-00192f0f6be1",
-									"key": "Batchid",
-									"value": "9178"
-								}
-							]
-						}
+						"url": "{{baseUrl}}/users/programBatch/{{batchID_ModuleIntegration}}"
 					},
 					"response": []
 				},
@@ -4085,24 +4051,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/roles/:roleid",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								"roles",
-								":roleid"
-							],
-							"variable": [
-								{
-									"id": "8766dfcd-bb39-4717-8199-0db46ea52cdf",
-									"key": "roleid",
-									"value": "R01"
-								}
-							]
-						}
+						"url": "{{baseUrl}}/users/roles/{{role_id}}"
 					},
 					"response": []
 				},
@@ -4115,7 +4064,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseUrl}}/v2/users"
+						"url": "{{baseURL}}/v2/users"
 					},
 					"response": []
 				},
@@ -4166,7 +4115,7 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}///users/userLogin/{userId}"
+						"url": "{{baseURL}}///users/userLogin/{{user_Id}}"
 					},
 					"response": []
 				},
@@ -4280,7 +4229,7 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/U330"
+						"url": "{{baseURL}}/users/{{user_id}}"
 					},
 					"response": []
 				},
@@ -4336,7 +4285,7 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/roleId/U650"
+						"url": "{{baseURL}}/users/roleId/{{user_id}}"
 					},
 					"response": []
 				},
@@ -4414,23 +4363,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/:userid",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								":userid"
-							],
-							"variable": [
-								{
-									"id": "76dc0697-4334-4ef5-bbc0-45c535a150be",
-									"key": "userid",
-									"value": "{{userid_staff}}"
-								}
-							]
-						}
+						"url": "{{baseURL}}/users/{{user_id}}"
 					},
 					"response": []
 				},
