@@ -71,6 +71,157 @@
 						"url": "{{baseURL}}/login"
 					},
 					"response": []
+				},
+				{
+					"name": "Negative - Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b51eb5c2-d1aa-471e-9042-a8d29be81441",
+								"exec": [
+									"//INCORRECT ENDPOINT SHOULD GIVE 404 BOT FOUND. DEFECT --> GETTING 401 UNAUTHORIZED\r",
+									"\r",
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const expMessage = pm.collectionVariables.get(\"message\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(expMessage);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3d6426d2-99aa-40a9-9493-c07787f807e3",
+								"exec": [
+									"setTimeout(() => {}, 1000);\r",
+									"console.log(\"Inside pre-requisite\")\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"\r",
+									"//For every iteration, set the credentials and baseURL to base true values\r",
+									"pm.variables.set(\"baseURL\", pm.environment.get('baseURL'))\r",
+									"pm.variables.set(\"userLoginEmailId\", pm.environment.get('userLoginEmailId'))\r",
+									"pm.variables.set(\"password\", pm.environment.get('password'))\r",
+									"\r",
+									"\r",
+									"//Tweak data based on scenario needs\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+									"}\r",
+									"else if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"else if(scenarioName === \"Incorrect Content-Type\"){\r",
+									"    var contentType = \"application/xml\"; \r",
+									"\r",
+									"    // Set the header for Content-Type\r",
+									"    pm.request.headers.add({\r",
+									"        key: \"Content-Type\",\r",
+									"        value: contentType\r",
+									"    });\r",
+									"}\r",
+									"else if(scenarioName === \"Incorrect UserLogin\"){\r",
+									"    pm.variables.set(\"userLoginEmailId\", pm.collectionVariables.get('userLoginEmailId'))\r",
+									"}\r",
+									"else if(scenarioName === \"Empty Credentials\"){\r",
+									"    pm.variables.set(\"userLoginEmailId\", \"\")\r",
+									"    pm.variables.set(\"password\", \"\")\r",
+									"}\r",
+									"else if(scenarioName === \"Empty UserLogin\"){\r",
+									"    pm.variables.set(\"userLoginEmailId\", \"\")\r",
+									"}\r",
+									"else if(scenarioName === \"Empty password\"){\r",
+									"    pm.variables.set(\"password\", \"\")\r",
+									"}\r",
+									"else if(scenarioName === \"Incorrect UserLogin\"){\r",
+									"    pm.variables.set(\"password\", pm.collectionVariables.get(\"userLoginEmailId\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"space\")){\r",
+									"    pm.variables.set(\"password\", pm.environment.get(\"password\"+\" \")) //add space to correct password value at environment level\r",
+									"}\r",
+									"else {\r",
+									"    pm.variables.set(\"password\", pm.collectionVariables.get(\"password\"))\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "d1c067bb-29a8-4e14-bfd5-99de6728fcc1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"password\": \"{{password}}\",\r\n \"userLoginEmailId\": \"{{userLoginEmailId}}\"\r\n } \r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/{{endPoint}}"
+					},
+					"response": []
 				}
 			],
 			"id": "62ebfba9-b3c2-4cb7-a492-dc55d0cd8502"
@@ -172,6 +323,110 @@
 						"method": "GET",
 						"header": [],
 						"url": "{{baseURL}}/allPrograms"
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - AllPrograms",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e152b533-6218-4ec0-bc43-a5d3ae19ea42",
+								"exec": [
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"/*\r",
+									"In Postman, the priority for variable resolution is as follows:\r",
+									"\r",
+									"Data Variables (from the CSV or JSON file used in collection runs) — Highest priority\r",
+									"Environment Variables — Second priority\r",
+									"Global Variables — Third priority\r",
+									"Collection Variables — Lowest priority\r",
+									" */\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2932fa53-5b2d-4f5d-9d5a-edf6e7de20d6",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(\"Validate Incorrect HTTP Method JSON Response msg\", () => {\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Endpoint\") {\r",
+									"    pm.test(\"Validate Incorrect Endpoint Response msg\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(\"Validate Incorrect BaseURL Response msg\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "092211b9-ef01-44aa-8912-dbfe073f6ac5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}"
 					},
 					"response": []
 				},
@@ -319,6 +574,98 @@
 							}
 						},
 						"url": "{{baseURL}}/saveprogram"
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - AddNewProgram_Mandatory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "adb5e00d-dbb4-4492-9fb4-ee85b63be627",
+								"exec": [
+									"pm.test(\"Incorrect BaseURL Test\", function () {\r",
+									"    // Get the raw response text (HTML)\r",
+									"    const responseText = pm.response.text();\r",
+									"\r",
+									"    // Log the raw HTML response to the console\r",
+									"    console.log(responseText);\r",
+									"\r",
+									"    // Check if the response contains some specific text or HTML element\r",
+									"    pm.expect(responseText).to.include('<title>Heroku | Application Error</title>');\r",
+									"});\r",
+									"\r",
+									"//const response = pm.response.json();\r",
+									"\r",
+									"//delete later program id = 17692, 17693\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "98767db8-9111-45b7-b2ca-b176472c0380",
+								"exec": [
+									"function getRandomLetterString() {\r",
+									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
+									"    let randomString = '';\r",
+									"    \r",
+									"    // Loop 3 times to generate a 3-letter string\r",
+									"    for (let i = 0; i < 3; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
+									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
+									"    }\r",
+									"\r",
+									"    return randomString;\r",
+									"}\r",
+									"\r",
+									"var programName_Mandatory_data = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
+									"//var programName_Mandatory_data = '3-Ten';\r",
+									"\r",
+									"pm.variables.set(\"programName_Mandatory_data\",programName_Mandatory_data)\r",
+									"console.log('randome data ' + programName_Mandatory_data)\r",
+									"\r",
+									"/**\r",
+									" * status code = 400\r",
+									"{   \r",
+									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
+									"    \"success\": false\r",
+									"}\r",
+									" */\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "0a4a4a7c-827c-49b1-864b-04968f88d9bf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "/*{\r\n \"programDescription\":\"description-desc\",\r\n \"programName\": \"{{programName_Mandatory_data}}\", //mandatory\r\n //\"programName\":true, //mandatory\r\n \"programStatus\": \"Active\" //mandatory\r\n}*/\r\n\r\n{\r\n \"programDescription\":\"\",\r\n //\"programName\": \"{{programName_Mandatory_data}}\", //mandatory\r\n \"programName\":\"\", //mandatory\r\n \"programStatus\": \"\" //mandatory\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
 					},
 					"response": []
 				},
@@ -771,6 +1118,117 @@
 					"response": []
 				},
 				{
+					"name": "Negative - ProgrambyProgramId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1fbc2e20-e724-4b6d-a436-fdadaa40a5b5",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.json().message).to.eql(`program with this: ${pathParameter}not found`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"String\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "530b8c98-a627-48d0-8649-6f3163d936fb",
+								"exec": [
+									"console.log(\"Inside pre-requisite\")\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "1745d6f2-0654-4c75-b037-fc8b8dcf3a07",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{programId}}"
+					},
+					"response": []
+				},
+				{
 					"name": "UpdateProgrambyProgramId",
 					"event": [
 						{
@@ -895,6 +1353,48 @@
 					"response": []
 				},
 				{
+					"name": "Negative - UpdateProgrambyProgramId",
+					"id": "e4a15d08-3eb4-4d70-b47e-025b32cdc6b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n \"programDescription\":\"update\",\r\n \"programName\":\"yaoza\", //also has to be unique\r\n \"programStatus\": \"Active\" //mandatory\r\n }\r\n\r\n//All fields empty - \r\n\r\n//POSSIBLE DEFECT: ONLY ACCEPTING HYPHENATED PROGRAM NAME\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"Mandatory Update\",\r\n    \"programName\": \"Mandatory Update\", \r\n    \"programStatus\": \"Active\" \r\n    }\r\n\r\n    ERROR CODE = 401 UNAUTHORIZED --> SHOULD HAVE BEEN 400 BAD REQUEST INSTEAD OF 401\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n/*==================================================================*/\r\n/*\r\nDifferent msgs from contract doc\r\nStatusCode:\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n\r\n response:[\r\n{\r\n    \"message\": \"Program Name TestChatBot already exists\",\r\n    \"success\": false\r\n}]*/",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/putprogram/:programId",
+							"protocol": "https",
+							"host": [
+								"lms-hackthon-feb25-803334c87fbe",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"lms",
+								"putprogram",
+								":programId"
+							],
+							"variable": [
+								{
+									"id": "adf71176-e856-4562-9fa2-92c9ed880d5f",
+									"key": "programId",
+									"value": "17692"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "UpdateProgrambyProgramName",
 					"event": [
 						{
@@ -1003,6 +1503,87 @@
 								{
 									"key": "programName",
 									"value": "{{programName_All}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - UpdateProgrambyProgramName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "32d21eff-919c-4433-93ea-80ce325f8667",
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "627b66a0-2fc2-44f9-9106-9676d8b12d1d",
+								"exec": [
+									"function getRandomLetterString() {\r",
+									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
+									"    let randomString = '';\r",
+									"    \r",
+									"    // Loop 3 times to generate a 3-letter string\r",
+									"    for (let i = 0; i < 3; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
+									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
+									"    }\r",
+									"\r",
+									"    return randomString;\r",
+									"}\r",
+									"\r",
+									"var programName_Mandatory_dataupdate = 'All-Update-'+ getRandomLetterString();\r",
+									"pm.variables.set(\"programName_Mandatory_dataupdate\",programName_Mandatory_dataupdate)\r",
+									"console.log('randome data ' + programName_Mandatory_dataupdate)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "0f01ea7f-1704-419a-b837-f53b6ad796c7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"programDescription\":\"jljklj\",\r\n \"programName\":\"Prog-Name-Updated\", //also has to be unique\r\n \"programStatus\":\"Active\" //mandatory\r\n }\r\n\r\n//POSSIBLE DEFECT\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"All Update\",\r\n    \"programName\": \"All Update\", //Mandatory\r\n    \"programStatus\": \"Active\" //Mandatory\r\n    }\r\n\r\n    ERROR CODE = 400\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n /*\r\n StatusCode:\r\n 200ok\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n */",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/program/:programName",
+							"protocol": "https",
+							"host": [
+								"lms-hackthon-feb25-803334c87fbe",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"lms",
+								"program",
+								":programName"
+							],
+							"variable": [
+								{
+									"id": "d644e83a-99e2-4908-adab-5e4ceb637b8c",
+									"key": "programName",
+									"value": "null"
 								}
 							]
 						}
@@ -1121,6 +1702,120 @@
 					"response": []
 				},
 				{
+					"name": "Negative - DelProgramByProgramID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2776f72-6515-460c-9854-74e5f1edc778",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`No active program with the program Id${pathParameter}`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"String\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6ace579e-4702-4892-a56a-8fc19157904a",
+								"exec": [
+									"console.log(\"Inside pre-requisite\")\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "98fbc7dd-0e33-4bc8-8268-e08545d56edc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{programId}}"
+					},
+					"response": []
+				},
+				{
 					"name": "ProgramByProgramName",
 					"event": [
 						{
@@ -1232,6 +1927,120 @@
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - DelProgramByProgramName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2776f72-6515-460c-9854-74e5f1edc778",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing Program Name\")||scenarioName.includes(\"Number\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Active Program with the program name ${pathParameter} Not found`); //work on this\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a57d31a9-20fe-4ece-b8a0-2d987f097c6a",
+								"exec": [
+									"console.log(\"Inside pre-requisite\")\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "d7123df4-d125-4c8b-8605-b7973a0b090c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{programName}}"
 					},
 					"response": []
 				}
@@ -5631,10 +6440,53 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "b97a558e-3951-43cc-b59a-64cd5f7adc26",
+				"id": "cc75d732-0622-4154-bcda-33d90cd37a35",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
+					"// Load data from json file to collection variable 'requestData'\r",
+					"if (typeof pm.variables.get('requestData') !== 'object') {\r",
+					"    pm.variables.set('requestData', pm.iterationData.toObject()); \r",
+					"}\r",
+					"\r",
+					"// Read input data from collection variable 'requestData'\r",
+					"const requestData = pm.variables.get('requestData');\r",
+					"//console.log('requestData', requestData); //in object form\r",
+					"\r",
+					"// If 'requestData'/input data is empty  Following block is for error handling, just in case we are not passing any data file\r",
+					"if (typeof requestData !== 'object' || Object.keys(requestData).length === 0) {\r",
+					"    console.log('No external data provided/data set is empty');\r",
+					"    return;\r",
+					"}\r",
+					"\r",
+					"// Find current request's data  contains request’s name along with list of data array\r",
+					"const currentRequest = requestData.requests.find(({ name }) => name === pm.info.requestName); \r",
+					"\r",
+					"// If no data found for current request\r",
+					"if (!currentRequest) {\r",
+					"    console.log(`Request ${pm.info.requestName} has no data.`);\r",
+					"    return;\r",
+					"}\r",
+					"\r",
+					"// If data found for current request\r",
+					"if (currentRequest && currentRequest.data && currentRequest.data.length > 0) {\r",
+					"    console.log(\"Size of current request data set = \" + currentRequest.data.length)\r",
+					"    const currentDataSet = currentRequest.data.shift(); //object\r",
+					"        \r",
+					"    if (currentDataSet) {\r",
+					"        Object.entries(currentDataSet).forEach(([key, value]) => {\r",
+					"            pm.collectionVariables.set(key,value)\r",
+					"        });\r",
+					"\r",
+					"        pm.collectionVariables.set(\"requestData\", JSON.stringify(requestData));\r",
+					"\r",
+					"        if (currentRequest.data.length > 0) {\r",
+					"            pm.execution.setNextRequest(pm.info.requestName);\r",
+					"        }\r",
+					"    } else {\r",
+					"        console.error('No variables found for this request.');\r",
+					"    }\r",
+					"}\r",
 					""
 				]
 			}
@@ -5642,7 +6494,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "451419f5-a208-45e8-a1e9-a09b68f047db",
+				"id": "4abd62f4-9c3a-489c-bb31-0a8b05fbdaae",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -5653,73 +6505,118 @@
 	],
 	"variable": [
 		{
-			"id": "69a39aa9-a40e-48c0-ab55-f83b84180eda",
+			"id": "67feb1bc-1430-4d11-8f9c-e48039e51a37",
 			"key": "BearerToken",
 			"value": ""
 		},
 		{
-			"id": "86af57e8-b92b-42cb-b914-e7df63fb86f1",
+			"id": "acffe57c-1800-4073-9478-c18f917cb81d",
 			"key": "Admin_UserID",
 			"value": ""
 		},
 		{
-			"id": "a21a779e-7d96-4840-b558-7242b4a8a4f3",
+			"id": "f2849313-7db9-4dab-bf15-6eefd3517001",
 			"key": "programID_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "56c7455e-2c71-4d45-a054-62e6d42af2ca",
+			"id": "57bbb406-641d-46e3-9cf3-12f6dfa284d9",
 			"key": "programName_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "f72b1d59-299d-440f-8140-230abf4e989a",
+			"id": "4b019cd7-c34d-4434-b8c3-57b9ef20e1d2",
 			"key": "programDesc_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "5bf69b25-e6c8-42c5-8d75-22a90481d2c8",
+			"id": "4a70f5c0-7f59-4c6e-b5da-2c275704d2c6",
 			"key": "programStatus_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "bae73b06-d434-4752-918c-fc4e8cf16e9f",
+			"id": "7a6bbe65-7770-4122-a549-4f2d08aedbd2",
 			"key": "BatchCount_BeforeAdd",
 			"value": ""
 		},
 		{
-			"id": "429f681d-f7a2-40f2-b9ef-bb4ba81a0469",
+			"id": "1ca28679-4cfc-4753-962e-7b3887abb40b",
 			"key": "batchID_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "c75a0f1f-23fe-49c1-9b7f-a50d28b07c39",
+			"id": "362ed4bd-d712-488c-b416-d295bb97c967",
 			"key": "batchName_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "be4db337-06be-4d22-ba13-47e0df085839",
+			"id": "0425b1db-5813-4fdd-b851-0dae2e02b02d",
 			"key": "batchNoOfClasses_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "4fc96e56-31e4-4364-a046-6f9f2ef09bdf",
+			"id": "32056a6c-3ed0-49ff-a968-d0ce5fc5c0e4",
 			"key": "batchDesc_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "2689330b-df5b-428c-878a-1a311d013d00",
+			"id": "3f34957f-298f-47b0-b398-43b064e8e6aa",
 			"key": "batchStatus_ModuleIntegration",
 			"value": ""
 		},
 		{
-			"id": "8f7c74af-ac3b-49de-96de-dca6e0309ad3",
-			"key": "currentBatch",
+			"id": "3db3d549-a484-4c3b-beae-38bff6473d0e",
+			"key": "scenarioName",
 			"value": ""
 		},
 		{
-			"id": "0c53cb4a-b6fe-4456-9cf4-dcd6cd63238c",
-			"key": "batchList",
+			"id": "64dbba3b-807b-4da9-9f08-d0c4c1a563f9",
+			"key": "httpMethod",
+			"value": ""
+		},
+		{
+			"id": "49e76c88-7655-4d8a-89b0-b3069b845f0d",
+			"key": "endPoint",
+			"value": ""
+		},
+		{
+			"id": "f2eaf896-2e9c-42db-b474-b47be48deb2d",
+			"key": "baseURL",
+			"value": ""
+		},
+		{
+			"id": "79f7cbe7-1741-4aa8-8b8f-46c74f498010",
+			"key": "statusCode",
+			"value": ""
+		},
+		{
+			"id": "ce5b2bef-07cc-4571-938c-da9751e4dd39",
+			"key": "statusLine",
+			"value": ""
+		},
+		{
+			"id": "b62bc42b-6eb1-4bc5-b646-7016b67948fa",
+			"key": "requestData",
+			"value": ""
+		},
+		{
+			"id": "357c1145-ffd9-4633-9b37-e0817b2b3f87",
+			"key": "pathParameter",
+			"value": ""
+		},
+		{
+			"id": "c3803b48-6b92-4a02-8341-224ea74c83c6",
+			"key": "message",
+			"value": ""
+		},
+		{
+			"id": "7863dee6-b935-441d-9dd9-acee12b11056",
+			"key": "userLoginEmailId",
+			"value": ""
+		},
+		{
+			"id": "b6237173-f518-41fd-be45-26827e0c9f12",
+			"key": "password",
 			"value": ""
 		}
 	]
