@@ -2995,7 +2995,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "3e3aadfb-775b-4602-bb64-06fed0295123",
+				"id": "334e6311-d80a-4454-be35-cf013690dc04",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -3006,7 +3006,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "49d463dd-0635-4d6c-91c6-4800c2d567d2",
+				"id": "bb148467-9991-4f21-97bb-6b26e341fa87",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -3041,6 +3041,26 @@
 			"key": "endPoint",
 			"value": "",
 			"type": "default"
+		},
+		{
+			"key": "statusCode",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "statusLine",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "httpMethod",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "scenarioName",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
