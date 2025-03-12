@@ -1646,7 +1646,7 @@
 							"response": []
 						},
 						{
-							"name": "Create Users with Role Student Copy",
+							"name": "Create Users with Role -",
 							"event": [
 								{
 									"listen": "test",
@@ -1776,7 +1776,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"userComments\": \"string\",\r\n\"userEduPg\": \"string\",\r\n\"userEduUg\": \"string\",\r\n\"userFirstName\": \"Testdata\",\r\n\"userLastName\": \"nine\",\r\n\"userLinkedinUrl\": \"www.linkedin.com/in/prakash-roy-d5622787/\",\r\n\"userLocation\": \"string\",\r\n\"userMiddleName\": \"string\",\r\n\"userPhoneNumber\": \"+91 2624567999\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R03\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": \"dat9999@gmail.com\"\r\n}\r\n}\r\n\r\n",
+									"raw": "{\r\n\"userComments\": {{userComments}},\r\n\"userEduPg\": {{userEduPg}},\r\n\"userEduUg\": {{userEduUg}},\r\n\"userFirstName\": {{userFirstName}},//mandatory\r\n\"userLastName\": {{userLastName}},\r\n\"userLinkedinUrl\": {{userLinkedinUrl}},\r\n\"userLocation\": {{userLocation}},\r\n\"userMiddleName\": {{userMiddleName}},\r\n\"userPhoneNumber\": {{userPhoneNumber}},\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": {{roleId}},\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": {{userTimeZone}} ,\r\n\"userVisaStatus\": {{userVisaStatus}},\r\n\"userLogin\": {\r\n\"loginStatus\" : \"String\",\r\n\"userLoginEmail\": {{userLoginEmail}}\r\n}\r\n}\r\n\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
