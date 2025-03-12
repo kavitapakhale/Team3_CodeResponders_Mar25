@@ -4384,14 +4384,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"programI\": 0,\r\n\"roleId\": \"string\",\r\n\"userId\": \"string\",\r\n\"userRoleProgramBatches\": [\r\n{\r\n\"batchId\": 0,\r\n\"userRoleProgramBatchStatus\":\r\n\"string\"\r\n}\r\n]\r\n}",
+							"raw": "{\r\n\"programId\": {{programID_ModuleIntegration}},\r\n\"roleId\": {{role_id}},\r\n\"userId\": {{user_id}},\r\n\"userRoleProgramBatches\": [\r\n{\r\n\"batchId\": {{batchID_ModuleIntegration}},\r\n\"userRoleProgramBatchStatus\":\"Active\"\r\n}\r\n]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}//users/roleProgramBatchStatus/{userId}"
+						"url": "{{baseURL}}//users/roleProgramBatchStatus/{{userId}}"
 					},
 					"response": []
 				},
