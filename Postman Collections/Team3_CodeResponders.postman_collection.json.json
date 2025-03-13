@@ -4800,6 +4800,7 @@
 									"var className = 'SeleniumPython-Ten'+ getRandomLetterString(); */\r",
 									"\r",
 									"pm.variables.set('batchId', pm.collectionVariables.get(\"batchID_ModuleIntegration\"))\r",
+									"pm.variables.set('classStaffId', pm.collectionVariables.get(\"Staff_UserID_All\"))\r",
 									""
 								],
 								"type": "text/javascript",
