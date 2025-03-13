@@ -7556,6 +7556,22 @@
 		{
 			"key": "ProgramCount_BeforeAdd",
 			"value": ""
+		},
+		{
+			"key": "programID_Mandatory",
+			"value": ""
+		},
+		{
+			"key": "programName_Mandatory",
+			"value": ""
+		},
+		{
+			"key": "programDesc_Mandatory",
+			"value": ""
+		},
+		{
+			"key": "programStatus_Mandatory",
+			"value": ""
 		}
 	]
 }
