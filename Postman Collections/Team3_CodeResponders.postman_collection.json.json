@@ -6063,6 +6063,10 @@
 			"key": "Staff_id",
 			"value": "",
 			"type": "string"
+		},
+		{
+			"key": "ClassCount_BeforeAdd",
+			"value": ""
 		}
 	]
 }
