@@ -6275,6 +6275,150 @@
 					"response": []
 				},
 				{
+					"name": "Get Class Recordings by Class Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6dd765a9-19fc-4322-9686-bc08665825a9",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//3. Test for Content-Type header having a particular value\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "a4f25d24-df06-4589-9da8-78d6971d98ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/classRecordings/371"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Class Recordings by Class Id Invalid",
+					"id": "0400a1b2-a13d-4013-a3db-ed53aa974c81",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/classRecordings/#%^&"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Class details by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c97ff18e-ba5e-4191-aeb8-98e277f3d375",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//3. Test for Content-Type header having a particular value\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "34dedfd3-b48b-4078-b7f7-52e8e6d784a8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/class/372"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Class details by classIDInvalid",
+					"id": "d834d5aa-59e0-4151-b330-2cfc1426f6d9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/class/@@@"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Batch recordings by BatchId",
+					"id": "20e8b024-8fba-4abd-8083-3f0095588e0e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/batchRecordings/8432"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Batch recordings by BatchIdInvalid",
+					"id": "5d2e695e-e865-4e0a-904f-2fe0640a3972",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/batchRecordings/@@@"
+					},
+					"response": []
+				},
+				{
 					"name": "Update New Class",
 					"event": [
 						{
