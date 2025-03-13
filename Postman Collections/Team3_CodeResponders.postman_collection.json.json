@@ -6646,7 +6646,7 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/updateClassRecording/51"
+						"url": "{{baseURL}}/updateClassRecording/{{classId}}"
 					},
 					"response": []
 				},
