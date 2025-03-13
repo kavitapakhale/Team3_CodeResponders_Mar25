@@ -1,0 +1,3037 @@
+[
+   {
+      "requests":[
+         {
+            "name":"Negative - Login",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"PUT",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"POST",
+                  "endPoint":"loginma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Content-Type",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":415,
+                  "statusLine":"Unsupported Media Type"
+               },
+               {
+                  "scenarioName":"Empty Credentials",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Password is mandatory"
+               },
+               {
+                  "scenarioName":"Empty UserLogin",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"EmailId is mandatory"
+               },
+               {
+                  "scenarioName":"Empty Password",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Password is mandatory"
+               },
+               {
+                  "scenarioName":"Incorrect UserLogin",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "userLoginEmailId":"coderesponders@gmail.com",
+                  "message":"Active User with given email Id Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect Password",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "password":"Coderesponders$0312",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               },
+               {
+                  "scenarioName":"Incorrect Password - less than 8 character",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "password":"Rs$0312",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               },
+               {
+                  "scenarioName":"Incorrect Password - more than 32 character",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "password":"Coderesponders$0312@)(*&^%$#@!_=-~",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               },
+               {
+                  "scenarioName":"Incorrect Password - contains no capital letter",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "password":"coderesponders$0312",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               },
+               {
+                  "scenarioName":"Incorrect Password - contains no small letter",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "password":"HELLO$0312",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               },
+               {
+                  "scenarioName":"Incorrect Password - contains no special character",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "password":"Hello0312",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               },
+               {
+                  "scenarioName":"Incorrect Password - contains no number",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "password":"Hello$NoNumbers",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               },
+               {
+                  "scenarioName":"Incorrect Password - contains space",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"password must contain atleast 8 to max 32 characters, a capital letter, a small letter, a special character, a number and no space"
+               }
+            ]
+         },
+         {
+            "name":"Negative - AllPrograms",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"POST",
+                  "endPoint":"allPrograms",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"allProgramsma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"allPrograms",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"allPrograms",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"AddNewProgram",
+            "data":[
+               
+               {
+                  "scenarioName":"Program with mandatory fields",
+                  "programDescription":"",
+				  "programName":"CodeResponder-Mannjkjk",
+				  "programStatus":"Active",
+                  "statusCode":201,
+                  "statusLine":"Created"
+               },
+			   {
+                  "scenarioName":"Program with All fields",
+                  "programDescription":"Program with All fields",
+				  "programName":"CodeResponder-Allllllllopop",
+				  "programStatus":"Active",
+                  "statusCode":201,
+                  "statusLine":"Created"
+               },
+               {
+                  "scenarioName":"Module Integration Data",
+                  "programDescription":"Module Integration Data",
+				  "programName":"CodeResponder-Mod",
+				  "programStatus":"Active",
+                  "statusCode":201,
+                  "statusLine":"Created"
+               }
+            ]
+         },
+		 {
+            "name":"Negative - AddNewProgram",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"GET",
+                  "endPoint":"saveprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name",
+				  "programStatus":"Active",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"saveprogramma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name",
+				  "programStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"saveprogram",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name",
+				  "programStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"saveprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name",
+				  "programStatus":"Active",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               },
+			   {
+                  "scenarioName":"Incorrect Content-Type",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name",
+				  "programStatus":"Active",
+                  "statusCode":415,
+                  "statusLine":"Unsupported Media Type"
+               },
+               {
+                  "scenarioName":"All Fields Empty",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"",
+				  "programName":"",
+				  "programStatus":"",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field programName Empty",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field programStatus Empty",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Negative-Prog-Name",
+				  "programStatus":"",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programName contains numbers only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":33,
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains alpha-numeric value only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"3-Ten",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains special characters only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"@-&",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains boolean value only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":true,
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Duplicate Program Name",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Run-time-existing-programName",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"cannot create program , since already exists"
+               },
+			   {
+                  "scenarioName":"programStatus contains numbers only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Negative-Prog-Name",
+				  "programStatus":33,
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains String value other than Active or Inactive",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Negative-Prog-Name",
+				  "programStatus":"Status",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains boolean value only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Negative-Prog-Name",
+				  "programStatus":true,
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains special characters only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Negative-Prog-Name",
+				  "programStatus":"@-$",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Program Description contains special characters only",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":"Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with number",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":"3-Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with comma",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":",Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with hyphen",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":"-Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with colon",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":":Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with period",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":".Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with underscore",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":"_Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with space",
+                  "httpMethod":"POST",
+                  "endPoint":"login",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":" Negative-Prog-Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               }
+            ]
+         },
+         {
+            "name":"Negative - ProgrambyProgramId",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"PUT",
+                  "endPoint":"programs",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"programsma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Non-existing ID",
+                  "httpMethod":"GET",
+                  "endPoint":"programs",
+                  "pathParameter":90856,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - String",
+                  "httpMethod":"GET",
+                  "endPoint":"programs",
+                  "pathParameter":"CodeResponders",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Special Character",
+                  "httpMethod":"GET",
+                  "endPoint":"programs",
+                  "pathParameter":"@-$",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Null Value",
+                  "httpMethod":"GET",
+                  "endPoint":"programs",
+                  "pathParameter":null,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"programs",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"programs",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"UpdateProgrambyProgramId",
+            "data":[
+               {
+                  "scenarioName":"Update Program Name field only with hyphenated value",
+                  "programDescription":"",
+				  "programName":"CodeRes-Prog-Update",
+				  "programStatus":"",
+                  "statusCode":200,
+                  "statusLine":"OK"
+               },          
+			   {
+                  "scenarioName":"Update Program Status field only",
+                  "programDescription":"",
+				  "programName":"",
+				  "programStatus":"Inactive",
+                  "statusCode":200,
+                  "statusLine":"OK"
+               },
+               {
+                  "scenarioName":"Update Program Description field only",
+                  "programDescription":"Update Program Description field only",
+				  "programName":"",
+				  "programStatus":"",
+                  "statusCode":200,
+                  "statusLine":"OK"
+               }
+            ]
+         },
+		 {
+            "name":"UpdateProgrambyProgramName",
+            "data":[
+               {
+                  "scenarioName":"Update Program Name field only with hyphenated value",
+                  "programDescription":"",
+				  "programName":"CodeRes-Prog-Update-Again",
+				  "programStatus":"",
+                  "statusCode":200,
+                  "statusLine":"OK"
+               },
+			   {
+                  "scenarioName":"Update Program Status field only",
+                  "programDescription":"",
+				  "programName":"",
+				  "programStatus":"Active",
+                  "statusCode":200,
+                  "statusLine":"OK"
+               },
+               {
+                  "scenarioName":"Update Program Description field only",
+                  "programDescription":"Update Program by Program Name",
+				  "programName":"",
+				  "programStatus":"",
+                  "statusCode":200,
+                  "statusLine":"OK"
+               }
+            ]
+         },
+		 {
+            "name":"Negative - UpdateProgrambyProgramId",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"GET",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               },
+			   {
+                  "scenarioName":"Incorrect Content-Type",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":415,
+                  "statusLine":"Unsupported Media Type"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - Non-existent Program ID",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":100,
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - String",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":"TeamThree",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - special character",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":"@!",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - null",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":null,
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"All Fields Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"",
+				  "programName":"",
+				  "programStatus":"",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field programName Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Mandatory Field programName Empty",
+				  "programName":"",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field programStatus Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Mandatory Field programName Empty",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programName contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains numbers only",
+				  "programName":33,
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains alpha-numeric value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains alpha-numeric value only",
+				  "programName":"3-Tennnn",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains special characters only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains special characters only",
+				  "programName":"@-&",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains boolean value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains boolean value only",
+				  "programName":true,
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Duplicate Program Name",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Duplicate Program Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"cannot create program , since already exists"
+               },
+			   {
+                  "scenarioName":"programStatus contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains numbers only",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":33,
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains String value other than Active or Inactive",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains String value other than Active or Inactive",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Status",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains boolean value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains boolean value only",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":true,
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains special characters only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains special characters only",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"@-$",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Program Description contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description contains special characters only",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"@,!",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with number",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"3Team",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with comma",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":",Team 3",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with hyphen",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"-Team 3",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with colon",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":":Program Description String starting with colon",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with period",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":".Program Description String starting with period",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with underscore",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"_Program Description String starting with underscore",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with space",
+                  "httpMethod":"PUT",
+                  "endPoint":"putprogram",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":" Program Description String starting with space",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               }
+            ]
+         },
+		 {
+            "name":"Negative - UpdateProgrambyProgramName",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"GET",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               },
+			   {
+                  "scenarioName":"Incorrect Content-Type",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":415,
+                  "statusLine":"Unsupported Media Type"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - Non-existent Program Name",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":"TeamThree",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - Number",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":100,
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - special character",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":"@!",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - null",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Program Desc",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+				  "pathParameter":null,
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"All Fields Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"",
+				  "programName":"",
+				  "programStatus":"",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field programName Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Mandatory Field programName Empty",
+				  "programName":"",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field programStatus Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Mandatory Field programName Empty",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programName contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains numbers only",
+				  "programName":33,
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains alpha-numeric value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains alpha-numeric value only",
+				  "programName":"3-Tennnn",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains special characters only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains special characters only",
+				  "programName":"@-&",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"programName contains boolean value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programName contains boolean value only",
+				  "programName":true,
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programName Must contain only letters and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Duplicate Program Name",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"Negative Desc",
+				  "programName":"Duplicate Program Name",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"cannot create program , since already exists"
+               },
+			   {
+                  "scenarioName":"programStatus contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains numbers only",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":33,
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains String value other than Active or Inactive",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains String value other than Active or Inactive",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Status",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains boolean value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains boolean value only",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":true,
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"programStatus contains special characters only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"programStatus contains special characters only",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"@-$",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Program Description contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":33,
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description contains special characters only",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"@,!",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with number",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"3Team",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with comma",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":",Team 3",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with hyphen",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"-Team 3",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with colon",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":":Program Description String starting with colon",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with period",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":".Program Description String starting with period",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with underscore",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":"_Program Description String starting with underscore",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Program Description String starting with space",
+                  "httpMethod":"PUT",
+                  "endPoint":"program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "programDescription":" Program Description String starting with space",
+				  "programName":"Negative-Program-Name-UpdateById",
+				  "programStatus":"Active",
+                  "statusCode":400,
+                  "statusLine":"Bad Request",
+                  "message":"programDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               }
+            ]
+         },
+         {
+            "name":"Negative - DelProgramByProgramID",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"GET",
+                  "endPoint":"deletebyprogid",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"DELETE",
+                  "endPoint":"deletebyprogidma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Non-existing ID",
+                  "httpMethod":"DELETE",
+                  "endPoint":"deletebyprogid",
+                  "pathParameter":90856,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - String",
+                  "httpMethod":"DELETE",
+                  "endPoint":"deletebyprogid",
+                  "pathParameter":"CodeResponders",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Special Character",
+                  "httpMethod":"DELETE",
+                  "endPoint":"deletebyprogid",
+                  "pathParameter":"@-$",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Null Value",
+                  "httpMethod":"DELETE",
+                  "endPoint":"deletebyprogid",
+                  "pathParameter":null,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"DELETE",
+                  "endPoint":"deletebyprogid",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"DELETE",
+                  "endPoint":"deletebyprogid",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"Negative - AllBatches",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"batchesma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"CreateNewBatch",
+            "data":[
+               
+               {
+                  "scenarioName":"Batch with mandatory fields",
+                  "batchDescription":"",
+				  "batchName":"Batch-Mandatory-fields",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":201,
+                  "statusLine":"Created"
+               },
+			   {
+                  "scenarioName":"Batch with All fields",
+                  "batchDescription":"Batch with All fields",
+				  "batchName":"Batch-All-fields",
+				  "batchNoOfClasses":6,
+				  "batchStatus":"Active",
+                  "statusCode":201,
+                  "statusLine":"Created"
+               }
+            ]
+         },
+		 {
+            "name": "Negative - CreateNewBatch",
+            "data": [
+					{
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch name without hyphenated value",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"POST",
+                  "endPoint":"batchesma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				 "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               },
+			   {
+                  "scenarioName":"Incorrect Content-Type",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":415,
+                  "statusLine":"Unsupported Media Type"
+               },
+               {
+                  "scenarioName":"All Fields Empty",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"",
+				  "batchName":"",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"",
+				  "programId":0,
+                  "statusCode":400,				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field Batch Name Empty",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Mandatory Field Batch Name Empty",
+				  "batchName":"",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Duplicate Batch Name",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name contains numbers only",
+				  "batchName":"",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch Name contains numbers only",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name contains numbers only",
+				  "batchName":33,
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch Name contains Boolean value only",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name contains numbers only",
+				  "batchName":true,
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch Name starts with non-letter",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name starts with non-letter",
+				  "batchName":"3-Team",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes field is zero",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes field is a negative number",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":-5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes field is a null value",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":null,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                 "scenarioName":"Batch No Of Classes - Mismatch data type - String",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":"Five",
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes - Mismatch Data Type - Boolean",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":true,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"JSON parse error: Cannot deserialize value of type `int` from Boolean value (token `JsonToken.VALUE_TRUE`)"
+               },
+			   {
+                  "scenarioName":"Batch Status field empty",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                 "scenarioName":"Batch Statusis a null value",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":null,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status field String value other than Active or Inactive",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"StatusString",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status contains boolean value only",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":true,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status contains special characters only",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"@!",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status contains numbers only",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":33,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Program Id value is zero",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Program Id value is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":0,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":" ProgramId should be a positive number "
+               },
+			   {
+                  "scenarioName":"Program Id value is a negative number",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":-9580,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":" ProgramId should be a positive number "
+               },
+			   {
+                  "scenarioName":"Program Id value is a null value",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":null,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":" ProgramId should be a positive number "
+               },
+			   {
+                  "scenarioName":"Program Id Mismatch data type - String",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":"FourThousand",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Program Id Mismatch data type - Boolean",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":true,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"JSON parse error: Cannot deserialize value of type `java.lang.Long` from Boolean value (token `JsonToken.VALUE_TRUE`)"
+               },
+			   {
+                  "scenarioName":"Batch Description field only contains number",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":33,
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field only boolean value",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":true,
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with number",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"1Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with comma",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":",Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with hyphen",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"-Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with colon",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":":Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with period",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":".Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with underscore",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"_Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with space",
+                  "httpMethod":"POST",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":" Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               }
+						
+            ]
+         },
+         {
+            "name":"Negative - BatchbyBatchId",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches/batchId",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchIdma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Non-existing ID",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchId",
+                  "pathParameter":40856,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - String",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchId",
+                  "pathParameter":"CodeResponders",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Special Character",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchId",
+                  "pathParameter":"@!",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Null Value",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchId",
+                  "pathParameter":null,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchId",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchId",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"Negative - BatchbyBatchName",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches/batchName",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchNamema",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Non-existing Batch Name",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchName",
+                  "pathParameter":"CodeResponders",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Number",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchName",
+                  "pathParameter":40856,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Special Character",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchName",
+                  "pathParameter":"@!",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Null Value",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchName",
+                  "pathParameter":null,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchName",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/batchName",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"Negative - BatchbyProgramId",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"DELETE",
+                  "endPoint":"batches/program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/programma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Non-existing ID",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/program",
+                  "pathParameter":40856,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - String",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/program",
+                  "pathParameter":"CodeResponders",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Special Character",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/program",
+                  "pathParameter":"@!",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Null Value",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/program",
+                  "pathParameter":null,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/program",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"batches/program",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"UpdatebyBatchId",
+            "data":[
+               {
+                  "scenarioName":"Update Batch Description field only",
+				  "batchDescription":"Update Batch Description field only",
+				  "batchName":"",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"",
+				  "programId":0,
+				  "programName":"",
+                  "statusCode":200,				  
+                  "statusLine":"OK"
+               },
+               {
+                  "scenarioName":"Update Batch Name field only",
+				  "batchDescription":"",
+				  "batchName":"Update-Batch-Name-field-only",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"",
+				  "programId":0,
+				  "programName":"",
+                  "statusCode":200,				  
+                  "statusLine":"OK"
+               },
+			   {
+                  "scenarioName":"Update Batch No Of Class field only",
+				  "batchDescription":"",
+				  "batchName":"",
+				  "batchNoOfClasses":15,
+				  "batchStatus":"",
+				  "programId":0,
+				  "programName":"",
+                  "statusCode":200,				  
+                  "statusLine":"OK"
+               },
+			   {
+                  "scenarioName":"Update Batch Status field only",
+				  "batchDescription":"",
+				  "batchName":"",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"Inactive",
+				  "programId":0,
+				  "programName":"",
+                  "statusCode":200,				  
+                  "statusLine":"OK"
+               },
+			   {
+                  "scenarioName":"Update Program ID field",
+				  "batchDescription":"",
+				  "batchName":"",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"Active",
+				  "programId":17692,
+				  "programName":"true",
+                  "statusCode":200,				  
+                  "statusLine":"OK"
+               }
+            ]
+         },
+		 {
+            "name":"Negative - UpdatebyBatchId",
+            "data":[
+				{
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch name without hyphenated value",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"PUT",
+                  "endPoint":"batchesma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				 "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               },
+			   {
+                  "scenarioName":"Incorrect Content-Type",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":415,
+                  "statusLine":"Unsupported Media Type"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - Non-existent ID",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "pathParameter": 1234,
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - String",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "pathParameter": "CodeResponder",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - special character",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "pathParameter": "@!",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+			   {
+                  "scenarioName":"Incorrect Path Parameter - null",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Incorrect Endpoint",
+				  "batchName":"Batchname-hyphenated-wawa",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "pathParameter":null,
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"All Fields Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"",
+				  "batchName":"",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"",
+				  "programId":0,
+                  "statusCode":400,				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Mandatory Field Batch Name Empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Mandatory Field Batch Name Empty",
+				  "batchName":"",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Duplicate Batch Name",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name contains numbers only",
+				  "batchName":"",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch Name contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name contains numbers only",
+				  "batchName":33,
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch Name contains Boolean value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name contains numbers only",
+				  "batchName":true,
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch Name starts with non-letter",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch Name starts with non-letter",
+				  "batchName":"3-Team",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes field is zero",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":0,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes field is a negative number",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":-5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes field is a null value",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":null,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                 "scenarioName":"Batch No Of Classes - Mismatch data type - String",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":"Five",
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Batch No Of Classes - Mismatch Data Type - Boolean",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":true,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"JSON parse error: Cannot deserialize value of type `int` from Boolean value (token `JsonToken.VALUE_TRUE`)"
+               },
+			   {
+                  "scenarioName":"Batch Status field empty",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                 "scenarioName":"Batch Statusis a null value",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":null,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status field String value other than Active or Inactive",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"StatusString",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status contains boolean value only",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":true,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status contains special characters only",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"@!",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Batch Status contains numbers only",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":33,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"Invalid Status: must be Active or Inactive"
+               },
+			   {
+                  "scenarioName":"Program Id value is zero",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Program Id value is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":0,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":" ProgramId should be a positive number "
+               },
+			   {
+                  "scenarioName":"Program Id value is a negative number",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":-9580,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":" ProgramId should be a positive number "
+               },
+			   {
+                  "scenarioName":"Program Id value is a null value",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":null,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":" ProgramId should be a positive number "
+               },
+			   {
+                  "scenarioName":"Program Id Mismatch data type - String",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":"FourThousand",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request"
+               },
+			   {
+                  "scenarioName":"Program Id Mismatch data type - Boolean",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"Batch No Of Classes field is zero",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+				  "programId":true,
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"JSON parse error: Cannot deserialize value of type `java.lang.Long` from Boolean value (token `JsonToken.VALUE_TRUE`)"
+               },
+			   {
+                  "scenarioName":"Batch Description field only contains number",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":33,
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field only boolean value",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":true,
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with number",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"1Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with comma",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":",Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with hyphen",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"-Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with colon",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":":Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with period",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":".Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with underscore",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":"_Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               },
+			   {
+                  "scenarioName":"Batch Description field starts with space",
+                  "httpMethod":"PUT",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+				  "batchDescription":" Batch Description field starts with number",
+				  "batchName":"Team-Three",
+				  "batchNoOfClasses":5,
+				  "batchStatus":"Active",
+                  "statusCode":400,				  				  
+                  "statusLine":"Bad Request",
+                  "message":"batchDescription must begin with letter and can only have letters, numbers, comma, hyphen, colon, period, underscore and space"
+               }
+						
+            ]
+         },
+		 {
+            "name":"Negative - DeletebatchbyBatchId",
+            "data":[
+               {
+                  "scenarioName":"Incorrect Http Method",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":405,
+                  "statusLine":"Method Not Allowed"
+               },
+               {
+                  "scenarioName":"Incorrect Endpoint",
+                  "httpMethod":"GET",
+                  "endPoint":"batchesma",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Non-existing ID",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "pathParameter":40856,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - String",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "pathParameter":"CodeResponders",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Special Character",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "pathParameter":"@!",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect PathParameter - Null Value",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "pathParameter":null,
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"Incorrect BaseURL",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthonm-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":404,
+                  "statusLine":"Not Found"
+               },
+               {
+                  "scenarioName":"No Auth",
+                  "httpMethod":"GET",
+                  "endPoint":"batches",
+                  "baseURL":"https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms",
+                  "statusCode":401,
+                  "statusLine":"Unauthorized"
+               }
+            ]
+         },
+		 {
+            "name":"CreateUserWithRole",
+            "data":[
+				   {
+						"scenarioName":"User with All fields-Admin",
+						"userComment": "Profile",
+						"pgDegree": "ME",
+						"ugDegree": "BE",
+						"firstName": "Sudha",
+						"lastName": "Murthy",
+						"linkedInUrl": "www.linkedin.com/sudha",
+						"location": "New Jersey",
+						"middleName": "Mur",
+						"phoneNumber": "+91 2684502288",
+						"roleId": "R01",
+						"roleStatus": "Active",					
+						"timeZone": "EST",
+						"visaStatus": "H4",					
+						"loginStatus" : "Active",
+						"loginEmail": "gviyadsfa@gmail.com",
+						"statusCode":201,
+						"statusLine":"Created"
+				   },
+				   {
+						"scenarioName":"User with All fields-Staff",
+						"userComment": "Profile",
+						"pgDegree": "MS",
+						"ugDegree": "BS",
+						"firstName": "Padma",
+						"lastName": "Elan",
+						"linkedInUrl": "www.linkedin.com/padma",
+						"location": "New Jersey",
+						"middleName": "Mur",
+						"phoneNumber": "+91 8768111432",
+						"roleId": "R02",
+						"roleStatus": "Active",					
+						"timeZone": "EST",
+						"visaStatus": "H4",					
+						"loginStatus" : "Active",
+						"loginEmail": "padma@gmail.com",
+						"statusCode":201,
+						"statusLine":"Created"
+				   },
+				   {
+						"scenarioName":"User with All fields-Student",
+						"userComment": "Profile",
+						"pgDegree": "MS",
+						"ugDegree": "BS",
+						"firstName": "John",
+						"lastName": "Allen",
+						"linkedInUrl": "www.linkedin.com/John",
+						"location": "New Jersey",
+						"middleName": "Mur",
+						"phoneNumber": "+91 9769785400",
+						"roleId": "R03",
+						"roleStatus": "Active",					
+						"timeZone": "EST",
+						"visaStatus": "H4",					
+						"loginStatus" : "Active",
+						"loginEmail": "john@gmail.com",
+						"statusCode":201,
+						"statusLine":"Created"
+				   },
+				   {
+					  "scenarioName":"User Mandatory Data- Admin",
+					  "userComment": "",
+						"pgDegree": "",
+						"ugDegree": "",
+						"firstName": "Allen",
+						"lastName": "Joseph",
+						"linkedInUrl": "",
+						"location": "",
+						"middleName": "",
+						"phoneNumber": "91 9656765432",
+						"roleId": "R01",
+						"roleStatus": "Active",					
+						"timeZone": "EST",
+						"visaStatus": "H4",					
+						"loginStatus" : "",
+						"loginEmail": "",
+					  "statusCode":201,
+					  "statusLine":"Created"
+				   	}, 
+					{
+					"scenarioName":"User Mandatory Data- Staff",
+					"userComment": "",
+					  "pgDegree": "",
+					  "ugDegree": "",
+					  "firstName": "Danen",
+					  "lastName": "Kisen",
+					  "linkedInUrl": "",
+					  "location": "",
+					  "middleName": "",
+					  "phoneNumber": "91 9650065432",
+					  "roleId": "R02",
+					  "roleStatus": "Active",					
+					  "timeZone": "EST",
+					  "visaStatus": "H4",					
+					  "loginStatus" : "",
+					  "loginEmail": "",
+					"statusCode":201,
+					"statusLine":"Created"
+				 },
+				 {
+					"scenarioName":"User Mandatory Data- Student",
+					"userComment": "",
+				    "pgDegree": "",
+					"ugDegree": "",
+					"firstName": "Daniek",
+					"lastName": "Tison",
+					"linkedInUrl": "",
+					"location": "",
+					"middleName": "",
+					"phoneNumber": "91 4650060432",
+					"roleId": "R03",
+					"roleStatus": "Active",					
+					"timeZone": "EST",
+					"visaStatus": "H4",					
+					"loginStatus" : "",
+					"loginEmail": "",
+					"statusCode":201,
+					"statusLine":"Created"
+				 },
+				 {
+					"scenarioName":"User With Empty Data",
+					"userComment": "",
+				    "pgDegree": "",
+					"ugDegree": "",
+					"firstName": "",
+					"lastName": "",
+					"linkedInUrl": "",
+					"location": "",
+					"middleName": "",
+					"phoneNumber": "",
+					"roleId": "",
+					"roleStatus": "",					
+					"timeZone": "",
+					"visaStatus": "",					
+					"loginStatus" : "",
+					"loginEmail": "",
+					"statusCode":400,
+					"statusLine":"Bad Request"
+				 }
+				]
+		},
+		{
+            "name":"Create New Class",
+            "data":[
+				   {
+					"scenarioName":"Class with mandatory fields",
+					"batchId": "", 
+					"classNo": "2",
+					"classDate": "2025-06-06T19:04:41.220Z",
+					"classTopic": "java",
+					"classStatus": "Active",
+					"classStaffId": "",
+					"classDescription": "Null",
+					"classComments": "Null" ,
+					"classNotes": "Null",
+					"classRecordingPath": "",
+					"classScheduledDates": ["2025-06-06T19:04:41.220Z"],
+					"statusCode":201,
+					"statusLine":"Created"
+				   },
+				   {
+					"scenarioName":"Class with All fields",
+					"batchId": "", 
+					"classNo": "2",
+					"classDate": "2025-06-06T19:04:41.220Z",
+					"classTopic": "java",
+					"classStatus": "Active",
+					"classStaffId": "",
+					"classDescription": "Core-java",
+					"classComments": "core-java" ,
+					"classNotes": "HTML_core-java",
+					"classRecordingPath": "Bostch-9.5",
+					"classScheduledDates": ["2025-06-06T19:04:41.220Z"],
+					"statusCode":201,
+					"statusLine":"Created"
+				   }				  
+				]
+		}
+      ]
+   }
+]
