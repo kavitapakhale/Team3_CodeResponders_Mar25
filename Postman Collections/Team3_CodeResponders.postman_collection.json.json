@@ -7059,7 +7059,6 @@
 							"script": {
 								"id": "35294a57-118c-4b8c-943f-952fcd5373e4",
 								"exec": [
-									"\r",
 									"const response = pm.response.json();\r",
 									"\r",
 									"//POSITIVE TEST VALIDATION\r",
@@ -7149,29 +7148,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"csId\": {{csId}}\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/updateClassRecording/:classId",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"updateClassRecording",
-								":classId"
-							],
-							"variable": [
-								{
-									"key": "classId",
-									"value": ""
-								}
-							]
-						}
+						"url": "{{baseURL}}/updateClassRecording/50"
 					},
 					"response": []
 				},
