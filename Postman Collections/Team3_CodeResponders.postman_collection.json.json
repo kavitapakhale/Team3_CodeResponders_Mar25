@@ -6639,14 +6639,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"csId\": 51\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/updateClassRecording/372"
+						"url": "{{baseURL}}/updateClassRecording/51"
 					},
 					"response": []
 				},
