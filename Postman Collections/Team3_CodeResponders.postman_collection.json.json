@@ -6944,6 +6944,10 @@
 		{
 			"key": "ClassCount_BeforeAdd",
 			"value": ""
+		},
+		{
+			"key": "classTopic_ModuleIntegration",
+			"value": ""
 		}
 	]
 }
