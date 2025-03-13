@@ -5993,6 +5993,17 @@
 								"type": "text/javascript",
 								"packages": {}
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "89cbc92c-e0e9-47f1-9086-547bc242490c",
+								"exec": [
+									"pm.variables.set( \"batchID\", pm.collectionVariables.set(\"batchID_ModuleIntegration\"))"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
 					],
 					"id": "f6b3f093-ac12-430e-8758-912b65b6900d",
