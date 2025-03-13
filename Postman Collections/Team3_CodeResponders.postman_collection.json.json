@@ -6601,6 +6601,90 @@
 						"url": "{{baseURL}}/updateClass/{{classId}}"
 					},
 					"response": []
+				},
+				{
+					"name": "Update Class Recordings by class Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "35294a57-118c-4b8c-943f-952fcd5373e4",
+								"exec": [
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "71638137-eb67-4483-ac95-e8215c569341",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"batchId\":1234,\r\n\"classComments\": \"string\",\r\n\"classDate\":\"2025-06-21T15:11:08.750+00:00\",\r\n\"classDescription\": \"string\",\r\n\"classNo\":722,\r\n\"classNotes\": \"string\",\r\n\"classRecordingPath\": \"string \",\r\n\"classStaffId\": \"U34\",\r\n\"classTopic\": \"Chemistry\",\r\n\"csId\":50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/updateClassRecording/372"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete class by Class Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "606335fa-dbff-4791-a140-4ffa4daef5e3",
+								"exec": [
+									"pm.test(\"Successfully deleted the resource\", function () {    pm.response.to.have.status(200); \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "cdeed683-9cfb-490c-9367-6c2725f2b82a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/deleteByClass/479"
+					},
+					"response": []
 				}
 			],
 			"id": "94a0a82c-0257-4b0a-9327-0bed210d9df1"
