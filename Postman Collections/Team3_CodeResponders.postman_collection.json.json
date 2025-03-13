@@ -4783,6 +4783,7 @@
 							"script": {
 								"id": "0d29c538-7b1c-4894-8a41-04fedafdc273",
 								"exec": [
+									"/*\r",
 									"function getRandomLetterString() {\r",
 									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
 									"    let randomString = '';\r",
@@ -4796,7 +4797,9 @@
 									"    return randomString;\r",
 									"}\r",
 									"\r",
-									"var className = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
+									"var className = 'SeleniumPython-Ten'+ getRandomLetterString(); */\r",
+									"\r",
+									"pm.variables.set('batchId', pm.collectionVariables.get(\"batchID_ModuleIntegration\"))\r",
 									""
 								],
 								"type": "text/javascript",
