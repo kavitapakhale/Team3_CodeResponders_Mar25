@@ -4401,628 +4401,8 @@
 			"name": "Class",
 			"item": [
 				{
-					"name": "User Sign In Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d7879f0f-737d-4293-b2a7-bec56b12e059",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "3aa9d022-1950-45f9-8860-2a0218341559",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"password\": \"March@2025\",\r\n\"userLoginEmailId\":\"sdetorganizer@gmail.com\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/login"
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Class List Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c8131416-8a75-4753-be8b-d67b5ce3eceb",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "91ed9128-6bd5-45fd-ae02-729f2afdeb93",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTU1MjI4NCwiZXhwIjoxNzQxNTgxMDg0fQ.jGbkebO41m-X9k86Ph9_R9AXNhrAGUM8FqCjFMZhybb4ucj14h3SiM3EhT3aBWweKijg6YMl8DRtJGpxFipKgw"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/allClasses"
-					},
-					"response": []
-				},
-				{
-					"name": "Upcoming Classes for particular Student Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "162e9c59-bf49-4cfb-b4e5-d569eed50eda",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "e3f3784f-09ba-4ce0-9c9b-eda2c1d7d82c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/upcomingClasses/297"
-					},
-					"response": []
-				},
-				{
-					"name": "Update New Class Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d350511c-fc91-4538-99ee-cb45faff617e",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "ef80e75c-628b-4973-a83a-414961d3e82f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
-							}
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"csId\": 65,\r\n  \"batchId\": 78,\r\n  \"classNo\": 0,\r\n  \"classDate\": \"2025-03-07T21:02:04.502Z\",\r\n  \"classTopic\": \"java\",\r\n  \"classStatus\": \"null\",\r\n  \"classStaffId\": \"U78\",\r\n  \"classDescription\": \"lodk2 o-D-66_MdRIdH6oSFhkqPbb0VcTPy\",\r\n  \"classComments\": \"  \",\r\n  \"classNotes\": \"null\",\r\n  \"classRecordingPath\": \"c:\\\\recordings\",\r\n  \"batchName\": \"java2.5\",\r\n  \"classScheduledDates\": [\r\n    \"2025-03-07T21:02:04.504Z\"]\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/updateClass/62"
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Recordings Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4b8734d8-b6bd-4f63-b803-b59dbb1adf9c",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "ffae6c33-95e9-462b-a30c-bc209da6797f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZGV0b3JnYW5pemVyQGdtYWlsLmNvbSIsImlhdCI6MTc0MTM3NTA4MiwiZXhwIjoxNzQxNDAzODgyfQ.h3EmuVdOucUj3pDJim8Il9bNUsKc7SyqtjDOvUM6E_FpG1u7CXfNuTYweLZ3nBXs3ySwQLnsL_juCSA8RL47lA"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/classrecordings"
-					},
-					"response": []
-				}
-			],
-			"id": "616b64b3-c280-41af-902f-20aa5c7d6578"
-		},
-		{
-			"name": "Class1",
-			"item": [
-				{
 					"name": "Class_K",
 					"item": [
-						{
-							"name": "Create New Class",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "fc70e53d-7e6a-4583-a90d-b4941e1c79f1",
-										"exec": [
-											"const response = pm.response.json();\r",
-											"\r",
-											"//POSITIVE TEST VALIDATION\r",
-											"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
-											"\r",
-											"    //1. Status\r",
-											"    pm.test(\"Status code is 201\", function () {\r",
-											"        pm.response.to.have.status(201);\r",
-											"    });\r",
-											"\r",
-											"    //2. Status Line\r",
-											"    pm.test(\"Status message is Created\", function () {\r",
-											"        pm.response.to.have.status();\r",
-											"    });\r",
-											"\r",
-											"    //3. Test for Content-Type header having a particular value\r",
-											"    pm.test(\"Content-Type header is application/json\", () => {\r",
-											"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-											"    });\r",
-											"\r",
-											"    //4. Schema Validation -- TO BE DONE\r",
-											"    const jsonData = pm.response.json();\r",
-											"    const schema =\r",
-											" {\r",
-											"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-											"  \"type\": \"object\",\r",
-											"  \"properties\": \r",
-											"  {\r",
-											"    \"batchId\": \r",
-											"    {\r",
-											"      \"type\": \"integer\"\r",
-											"    },\r",
-											"    \"classComments\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classDate\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classDescription\":\r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classNo\": \r",
-											"    {\r",
-											"      \"type\": \"integer\"\r",
-											"    },\r",
-											"    \"classNotes\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classRecordingPath\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classStaffId\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classTopic\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"csId\": \r",
-											"    {\r",
-											"      \"type\": \"integer\"\r",
-											"    }\r",
-											"  },\r",
-											"  \"required\": [\r",
-											"    \"batchId\",\r",
-											"    \"classComments\",\r",
-											"    \"classDate\",\r",
-											"    \"classDescription\",\r",
-											"    \"classNo\",\r",
-											"    \"classNotes\",\r",
-											"    \"classRecordingPath\",\r",
-											"    \"classStaffId\",\r",
-											"    \"classTopic\",\r",
-											"    \"csId\"\r",
-											"  ]\r",
-											"}\r",
-											"\r",
-											"    //5. Request VS Response Body Validation\r",
-											"    pm.test(\"Class details in Request and Response matches\", function () {\r",
-											"\r",
-											"        // Get the raw request body and Parse it to JSON\r",
-											"        const rawRequestBody = pm.request.body.raw;\r",
-											"        const requestBody = JSON.parse(rawRequestBody);\r",
-											"\r",
-											"       // pm.expect(response).to.include(\"classId\");\r",
-											"        pm.expect(response).to.have.property(\"csId\");\r",
-											"        pm.expect(requestBody.batchId).to.eql(response.batchId);\r",
-											"        pm.expect(requestBody.classNo).to.eql(response.classNo);\r",
-											"        pm.expect(requestBody.classDate).to.eql(response.classDate);\r",
-											"        pm.expect(requestBody.classTopic).to.eql(response.classTopic);\r",
-											"        pm.expect(requestBody.classStaffId).to.eql(response.classStaffId);\r",
-											"        pm.expect(requestBody.classDescription).to.eql(response.classDescription);\r",
-											"        pm.expect(requestBody.classComments).to.eql(response.classComments);\r",
-											"        pm.expect(requestBody.classNotes).to.eql(response.classNotes);\r",
-											"        pm.expect(requestBody.classRecordingPath).to.eql(response.classRecordingPath);\r",
-											"    \r",
-											"\r",
-											"    });\r",
-											"\r",
-											"    //GET ALL CLASS COUNT AFTER CLASS CREATION\r",
-											"    pm.test(\"Check Total Class Count increased by 1\", function () {\r",
-											"        \r",
-											"        // Perform GET request classically\r",
-											"        pm.sendRequest({\r",
-											"            url: pm.environment.get(\"baseURL\")+'/allClasses',  \r",
-											"            method: 'GET',\r",
-											"            header: {\r",
-											"               'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\") \r",
-											"            }\r",
-											"        }, function (err, res) {\r",
-											"            if (err) {\r",
-											"                console.log(err);\r",
-											"                   // pm.expect(err).to.be.null; // Ensure there is no error\r",
-											"                return;\r",
-											"            } else {\r",
-											"               \r",
-											"                const classes = res.json(); \r",
-											"                const count = classes.length; \r",
-											"\r",
-											"                   pm.expect(count).to.equal((pm.collectionVariables.get(\"ClassCount_BeforeAdd\"))+1); \r",
-											"                \r",
-											"            }\r",
-											"        });\r",
-											"    });\r",
-											"\r",
-											"}\r",
-											"\r",
-											"\r",
-											"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS CLASS OBJECT!!!!)\r",
-											"pm.collectionVariables.set(\"classId\", response.classId)\r",
-											"pm.collectionVariables.set(\"batchId\", response.batchId)\r",
-											"pm.collectionVariables.set(\"classNo\", response.classNo)\r",
-											"pm.collectionVariables.set(\"classDate\", response.classDate)\r",
-											"pm.collectionVariables.set(\"classTopic\", response.classTopic)\r",
-											"pm.collectionVariables.set(\"classStaffId\", response.classStaffId)\r",
-											"pm.collectionVariables.set(\"classDescription\", response.classDescription)\r",
-											"pm.collectionVariables.set(\"classComments\", response.classComments)\r",
-											"pm.collectionVariables.set(\"classNotes\", response.classNotes)\r",
-											"pm.collectionVariables.set(\"classRecordingPath\", response.classRecordingPath)\r",
-											"\r",
-											"\r",
-											"//NEGATIVE TEST VALIDATION\r",
-											"\r",
-											"\r",
-											"/**\r",
-											" * status code = 400\r",
-											"{   \r",
-											"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-											"    \"success\": false\r",
-											"}\r",
-											" */"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "0d29c538-7b1c-4894-8a41-04fedafdc273",
-										"exec": [
-											"function getRandomLetterString() {\r",
-											"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-											"    let randomString = '';\r",
-											"    \r",
-											"    // Loop 3 times to generate a 3-letter string\r",
-											"    for (let i = 0; i < 3; i++) {\r",
-											"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-											"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-											"    }\r",
-											"\r",
-											"    return randomString;\r",
-											"}\r",
-											"\r",
-											"var className = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "af7def45-3346-479f-9f18-028d200bb181",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{ \r\n\"batchId\": {{batchId}},\r\n\"classNo\": {{classNo}},\r\n\"classDate\": \"{{classDate}}\",\r\n\"classTopic\": \"{{classTopic}}\",\r\n\"classStatus\": \"{{classStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{classDescription}}\",\r\n\"classComments\": \"{{classComments}}\" ,\r\n\"classNotes\": \"{{classNotes}}\",\r\n\"classRecordingPath\": \"{{classRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{classScheduledDates}}\"]\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseURL}}/CreateClassSchedule"
-							},
-							"response": []
-						},
-						{
-							"name": "Negative - Create New Class",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "fc70e53d-7e6a-4583-a90d-b4941e1c79f1",
-										"exec": [
-											"const response = pm.response.json();\r",
-											"\r",
-											"//POSITIVE TEST VALIDATION\r",
-											"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
-											"\r",
-											"    //1. Status\r",
-											"    pm.test(\"Status code is 201\", function () {\r",
-											"        pm.response.to.have.status(201);\r",
-											"    });\r",
-											"\r",
-											"    //2. Status Line\r",
-											"    pm.test(\"Status message is Created\", function () {\r",
-											"        pm.response.to.have.status();\r",
-											"    });\r",
-											"\r",
-											"    //3. Test for Content-Type header having a particular value\r",
-											"    pm.test(\"Content-Type header is application/json\", () => {\r",
-											"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-											"    });\r",
-											"\r",
-											"    //4. Schema Validation -- TO BE DONE\r",
-											"    const jsonData = pm.response.json();\r",
-											"    const schema =\r",
-											" {\r",
-											"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-											"  \"type\": \"object\",\r",
-											"  \"properties\": \r",
-											"  {\r",
-											"    \"batchId\": \r",
-											"    {\r",
-											"      \"type\": \"integer\"\r",
-											"    },\r",
-											"    \"classComments\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classDate\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classDescription\":\r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classNo\": \r",
-											"    {\r",
-											"      \"type\": \"integer\"\r",
-											"    },\r",
-											"    \"classNotes\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classRecordingPath\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classStaffId\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"classTopic\": \r",
-											"    {\r",
-											"      \"type\": \"string\"\r",
-											"    },\r",
-											"    \"csId\": \r",
-											"    {\r",
-											"      \"type\": \"integer\"\r",
-											"    }\r",
-											"  },\r",
-											"  \"required\": [\r",
-											"    \"batchId\",\r",
-											"    \"classComments\",\r",
-											"    \"classDate\",\r",
-											"    \"classDescription\",\r",
-											"    \"classNo\",\r",
-											"    \"classNotes\",\r",
-											"    \"classRecordingPath\",\r",
-											"    \"classStaffId\",\r",
-											"    \"classTopic\",\r",
-											"    \"csId\"\r",
-											"  ]\r",
-											"}\r",
-											"\r",
-											"    //5. Request VS Response Body Validation\r",
-											"    pm.test(\"Class details in Request and Response matches\", function () {\r",
-											"\r",
-											"        // Get the raw request body and Parse it to JSON\r",
-											"        const rawRequestBody = pm.request.body.raw;\r",
-											"        const requestBody = JSON.parse(rawRequestBody);\r",
-											"\r",
-											"       // pm.expect(response).to.include(\"classId\");\r",
-											"        pm.expect(response).to.have.property(\"csId\");\r",
-											"        pm.expect(requestBody.batchId).to.eql(response.batchId);\r",
-											"        pm.expect(requestBody.classNo).to.eql(response.classNo);\r",
-											"        pm.expect(requestBody.classDate).to.eql(response.classDate);\r",
-											"        pm.expect(requestBody.classTopic).to.eql(response.classTopic);\r",
-											"        pm.expect(requestBody.classStaffId).to.eql(response.classStaffId);\r",
-											"        pm.expect(requestBody.classDescription).to.eql(response.classDescription);\r",
-											"        pm.expect(requestBody.classComments).to.eql(response.classComments);\r",
-											"        pm.expect(requestBody.classNotes).to.eql(response.classNotes);\r",
-											"        pm.expect(requestBody.classRecordingPath).to.eql(response.classRecordingPath);\r",
-											"    \r",
-											"\r",
-											"    });\r",
-											"\r",
-											"    //GET ALL CLASS COUNT AFTER CLASS CREATION\r",
-											"    pm.test(\"Check Total Class Count increased by 1\", function () {\r",
-											"        \r",
-											"        // Perform GET request classically\r",
-											"        pm.sendRequest({\r",
-											"            url: pm.environment.get(\"baseURL\")+'/allClasses',  \r",
-											"            method: 'GET',\r",
-											"            header: {\r",
-											"               'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\") \r",
-											"            }\r",
-											"        }, function (err, res) {\r",
-											"            if (err) {\r",
-											"                console.log(err);\r",
-											"                   // pm.expect(err).to.be.null; // Ensure there is no error\r",
-											"                return;\r",
-											"            } else {\r",
-											"               \r",
-											"                const classes = res.json(); \r",
-											"                const count = classes.length; \r",
-											"\r",
-											"                   pm.expect(count).to.equal((pm.collectionVariables.get(\"ClassCount_BeforeAdd\"))+1); \r",
-											"                \r",
-											"            }\r",
-											"        });\r",
-											"    });\r",
-											"\r",
-											"}\r",
-											"\r",
-											"\r",
-											"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS CLASS OBJECT!!!!)\r",
-											"pm.collectionVariables.set(\"classId\", response.classId)\r",
-											"pm.collectionVariables.set(\"batchId\", response.batchId)\r",
-											"pm.collectionVariables.set(\"classNo\", response.classNo)\r",
-											"pm.collectionVariables.set(\"classDate\", response.classDate)\r",
-											"pm.collectionVariables.set(\"classTopic\", response.classTopic)\r",
-											"pm.collectionVariables.set(\"classStaffId\", response.classStaffId)\r",
-											"pm.collectionVariables.set(\"classDescription\", response.classDescription)\r",
-											"pm.collectionVariables.set(\"classComments\", response.classComments)\r",
-											"pm.collectionVariables.set(\"classNotes\", response.classNotes)\r",
-											"pm.collectionVariables.set(\"classRecordingPath\", response.classRecordingPath)\r",
-											"\r",
-											"\r",
-											"//NEGATIVE TEST VALIDATION\r",
-											"\r",
-											"\r",
-											"/**\r",
-											" * status code = 400\r",
-											"{   \r",
-											"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-											"    \"success\": false\r",
-											"}\r",
-											" */"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "0d29c538-7b1c-4894-8a41-04fedafdc273",
-										"exec": [
-											"function getRandomLetterString() {\r",
-											"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-											"    let randomString = '';\r",
-											"    \r",
-											"    // Loop 3 times to generate a 3-letter string\r",
-											"    for (let i = 0; i < 3; i++) {\r",
-											"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-											"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-											"    }\r",
-											"\r",
-											"    return randomString;\r",
-											"}\r",
-											"\r",
-											"var className = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "0080aea5-1567-421e-a8d2-835b5285c496",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{ \r\n\"batchId\": {{batchId}},\r\n\"classNo\": {{classNo}},\r\n\"classDate\": \"{{classDate}}\",\r\n\"classTopic\": \"{{classTopic}}\",\r\n\"classStatus\": \"{{classStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{classDescription}}\",\r\n\"classComments\": \"{{classComments}}\" ,\r\n\"classNotes\": \"{{classNotes}}\",\r\n\"classRecordingPath\": \"{{classRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{classScheduledDates}}\"]\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseURL}}/{{endPoint}}"
-							},
-							"response": []
-						},
 						{
 							"name": "Get All Class List",
 							"event": [
@@ -5731,6 +5111,438 @@
 					"name": "Class_A",
 					"item": [],
 					"id": "4247633c-ba8f-4246-b127-2b95f828edc9"
+				},
+				{
+					"name": "Create New Class",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc70e53d-7e6a-4583-a90d-b4941e1c79f1",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
+									"\r",
+									"    //1. Status\r",
+									"    pm.test(\"Status code is 201\", function () {\r",
+									"        pm.response.to.have.status(201);\r",
+									"    });\r",
+									"\r",
+									"    //2. Status Line\r",
+									"    pm.test(\"Status message is Created\", function () {\r",
+									"        pm.response.to.have.status();\r",
+									"    });\r",
+									"\r",
+									"    //3. Test for Content-Type header having a particular value\r",
+									"    pm.test(\"Content-Type header is application/json\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"    });\r",
+									"\r",
+									"    //4. Schema Validation -- TO BE DONE\r",
+									"    const jsonData = pm.response.json();\r",
+									"    const schema =\r",
+									" {\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": \r",
+									"  {\r",
+									"    \"batchId\": \r",
+									"    {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"classComments\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classDate\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classDescription\":\r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classNo\": \r",
+									"    {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"classNotes\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classRecordingPath\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classStaffId\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classTopic\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"csId\": \r",
+									"    {\r",
+									"      \"type\": \"integer\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"batchId\",\r",
+									"    \"classComments\",\r",
+									"    \"classDate\",\r",
+									"    \"classDescription\",\r",
+									"    \"classNo\",\r",
+									"    \"classNotes\",\r",
+									"    \"classRecordingPath\",\r",
+									"    \"classStaffId\",\r",
+									"    \"classTopic\",\r",
+									"    \"csId\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"    //5. Request VS Response Body Validation\r",
+									"    pm.test(\"Class details in Request and Response matches\", function () {\r",
+									"\r",
+									"        // Get the raw request body and Parse it to JSON\r",
+									"        const rawRequestBody = pm.request.body.raw;\r",
+									"        const requestBody = JSON.parse(rawRequestBody);\r",
+									"\r",
+									"       // pm.expect(response).to.include(\"classId\");\r",
+									"        pm.expect(response).to.have.property(\"csId\");\r",
+									"        pm.expect(requestBody.batchId).to.eql(response.batchId);\r",
+									"        pm.expect(requestBody.classNo).to.eql(response.classNo);\r",
+									"        pm.expect(requestBody.classDate).to.eql(response.classDate);\r",
+									"        pm.expect(requestBody.classTopic).to.eql(response.classTopic);\r",
+									"        pm.expect(requestBody.classStaffId).to.eql(response.classStaffId);\r",
+									"        pm.expect(requestBody.classDescription).to.eql(response.classDescription);\r",
+									"        pm.expect(requestBody.classComments).to.eql(response.classComments);\r",
+									"        pm.expect(requestBody.classNotes).to.eql(response.classNotes);\r",
+									"        pm.expect(requestBody.classRecordingPath).to.eql(response.classRecordingPath);\r",
+									"    \r",
+									"\r",
+									"    });\r",
+									"\r",
+									"    //GET ALL CLASS COUNT AFTER CLASS CREATION\r",
+									"    pm.test(\"Check Total Class Count increased by 1\", function () {\r",
+									"        \r",
+									"        // Perform GET request classically\r",
+									"        pm.sendRequest({\r",
+									"            url: pm.environment.get(\"baseURL\")+'/allClasses',  \r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"               'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\") \r",
+									"            }\r",
+									"        }, function (err, res) {\r",
+									"            if (err) {\r",
+									"                console.log(err);\r",
+									"                   // pm.expect(err).to.be.null; // Ensure there is no error\r",
+									"                return;\r",
+									"            } else {\r",
+									"               \r",
+									"                const classes = res.json(); \r",
+									"                const count = classes.length; \r",
+									"\r",
+									"                   pm.expect(count).to.equal((pm.collectionVariables.get(\"ClassCount_BeforeAdd\"))+1); \r",
+									"                \r",
+									"            }\r",
+									"        });\r",
+									"    });\r",
+									"\r",
+									"}\r",
+									"\r",
+									"\r",
+									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS CLASS OBJECT!!!!)\r",
+									"pm.collectionVariables.set(\"classId\", response.classId)\r",
+									"pm.collectionVariables.set(\"batchId\", response.batchId)\r",
+									"pm.collectionVariables.set(\"classNo\", response.classNo)\r",
+									"pm.collectionVariables.set(\"classDate\", response.classDate)\r",
+									"pm.collectionVariables.set(\"classTopic\", response.classTopic)\r",
+									"pm.collectionVariables.set(\"classStaffId\", response.classStaffId)\r",
+									"pm.collectionVariables.set(\"classDescription\", response.classDescription)\r",
+									"pm.collectionVariables.set(\"classComments\", response.classComments)\r",
+									"pm.collectionVariables.set(\"classNotes\", response.classNotes)\r",
+									"pm.collectionVariables.set(\"classRecordingPath\", response.classRecordingPath)\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"\r",
+									"\r",
+									"/**\r",
+									" * status code = 400\r",
+									"{   \r",
+									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
+									"    \"success\": false\r",
+									"}\r",
+									" */"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0d29c538-7b1c-4894-8a41-04fedafdc273",
+								"exec": [
+									"function getRandomLetterString() {\r",
+									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
+									"    let randomString = '';\r",
+									"    \r",
+									"    // Loop 3 times to generate a 3-letter string\r",
+									"    for (let i = 0; i < 3; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
+									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
+									"    }\r",
+									"\r",
+									"    return randomString;\r",
+									"}\r",
+									"\r",
+									"var className = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "af7def45-3346-479f-9f18-028d200bb181",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"batchId\": {{batchId}},\r\n\"classNo\": {{classNo}},\r\n\"classDate\": \"{{classDate}}\",\r\n\"classTopic\": \"{{classTopic}}\",\r\n\"classStatus\": \"{{classStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{classDescription}}\",\r\n\"classComments\": \"{{classComments}}\" ,\r\n\"classNotes\": \"{{classNotes}}\",\r\n\"classRecordingPath\": \"{{classRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{classScheduledDates}}\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/CreateClassSchedule"
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - Create New Class",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc70e53d-7e6a-4583-a90d-b4941e1c79f1",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
+									"\r",
+									"    //1. Status\r",
+									"    pm.test(\"Status code is 201\", function () {\r",
+									"        pm.response.to.have.status(201);\r",
+									"    });\r",
+									"\r",
+									"    //2. Status Line\r",
+									"    pm.test(\"Status message is Created\", function () {\r",
+									"        pm.response.to.have.status();\r",
+									"    });\r",
+									"\r",
+									"    //3. Test for Content-Type header having a particular value\r",
+									"    pm.test(\"Content-Type header is application/json\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"    });\r",
+									"\r",
+									"    //4. Schema Validation -- TO BE DONE\r",
+									"    const jsonData = pm.response.json();\r",
+									"    const schema =\r",
+									" {\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": \r",
+									"  {\r",
+									"    \"batchId\": \r",
+									"    {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"classComments\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classDate\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classDescription\":\r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classNo\": \r",
+									"    {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"classNotes\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classRecordingPath\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classStaffId\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"classTopic\": \r",
+									"    {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"csId\": \r",
+									"    {\r",
+									"      \"type\": \"integer\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"batchId\",\r",
+									"    \"classComments\",\r",
+									"    \"classDate\",\r",
+									"    \"classDescription\",\r",
+									"    \"classNo\",\r",
+									"    \"classNotes\",\r",
+									"    \"classRecordingPath\",\r",
+									"    \"classStaffId\",\r",
+									"    \"classTopic\",\r",
+									"    \"csId\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"    //5. Request VS Response Body Validation\r",
+									"    pm.test(\"Class details in Request and Response matches\", function () {\r",
+									"\r",
+									"        // Get the raw request body and Parse it to JSON\r",
+									"        const rawRequestBody = pm.request.body.raw;\r",
+									"        const requestBody = JSON.parse(rawRequestBody);\r",
+									"\r",
+									"       // pm.expect(response).to.include(\"classId\");\r",
+									"        pm.expect(response).to.have.property(\"csId\");\r",
+									"        pm.expect(requestBody.batchId).to.eql(response.batchId);\r",
+									"        pm.expect(requestBody.classNo).to.eql(response.classNo);\r",
+									"        pm.expect(requestBody.classDate).to.eql(response.classDate);\r",
+									"        pm.expect(requestBody.classTopic).to.eql(response.classTopic);\r",
+									"        pm.expect(requestBody.classStaffId).to.eql(response.classStaffId);\r",
+									"        pm.expect(requestBody.classDescription).to.eql(response.classDescription);\r",
+									"        pm.expect(requestBody.classComments).to.eql(response.classComments);\r",
+									"        pm.expect(requestBody.classNotes).to.eql(response.classNotes);\r",
+									"        pm.expect(requestBody.classRecordingPath).to.eql(response.classRecordingPath);\r",
+									"    \r",
+									"\r",
+									"    });\r",
+									"\r",
+									"    //GET ALL CLASS COUNT AFTER CLASS CREATION\r",
+									"    pm.test(\"Check Total Class Count increased by 1\", function () {\r",
+									"        \r",
+									"        // Perform GET request classically\r",
+									"        pm.sendRequest({\r",
+									"            url: pm.environment.get(\"baseURL\")+'/allClasses',  \r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"               'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\") \r",
+									"            }\r",
+									"        }, function (err, res) {\r",
+									"            if (err) {\r",
+									"                console.log(err);\r",
+									"                   // pm.expect(err).to.be.null; // Ensure there is no error\r",
+									"                return;\r",
+									"            } else {\r",
+									"               \r",
+									"                const classes = res.json(); \r",
+									"                const count = classes.length; \r",
+									"\r",
+									"                   pm.expect(count).to.equal((pm.collectionVariables.get(\"ClassCount_BeforeAdd\"))+1); \r",
+									"                \r",
+									"            }\r",
+									"        });\r",
+									"    });\r",
+									"\r",
+									"}\r",
+									"\r",
+									"\r",
+									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS CLASS OBJECT!!!!)\r",
+									"pm.collectionVariables.set(\"classId\", response.classId)\r",
+									"pm.collectionVariables.set(\"batchId\", response.batchId)\r",
+									"pm.collectionVariables.set(\"classNo\", response.classNo)\r",
+									"pm.collectionVariables.set(\"classDate\", response.classDate)\r",
+									"pm.collectionVariables.set(\"classTopic\", response.classTopic)\r",
+									"pm.collectionVariables.set(\"classStaffId\", response.classStaffId)\r",
+									"pm.collectionVariables.set(\"classDescription\", response.classDescription)\r",
+									"pm.collectionVariables.set(\"classComments\", response.classComments)\r",
+									"pm.collectionVariables.set(\"classNotes\", response.classNotes)\r",
+									"pm.collectionVariables.set(\"classRecordingPath\", response.classRecordingPath)\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"\r",
+									"\r",
+									"/**\r",
+									" * status code = 400\r",
+									"{   \r",
+									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
+									"    \"success\": false\r",
+									"}\r",
+									" */"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0d29c538-7b1c-4894-8a41-04fedafdc273",
+								"exec": [
+									"function getRandomLetterString() {\r",
+									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
+									"    let randomString = '';\r",
+									"    \r",
+									"    // Loop 3 times to generate a 3-letter string\r",
+									"    for (let i = 0; i < 3; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
+									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
+									"    }\r",
+									"\r",
+									"    return randomString;\r",
+									"}\r",
+									"\r",
+									"var className = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "0080aea5-1567-421e-a8d2-835b5285c496",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"batchId\": {{batchId}},\r\n\"classNo\": {{classNo}},\r\n\"classDate\": \"{{classDate}}\",\r\n\"classTopic\": \"{{classTopic}}\",\r\n\"classStatus\": \"{{classStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{classDescription}}\",\r\n\"classComments\": \"{{classComments}}\" ,\r\n\"classNotes\": \"{{classNotes}}\",\r\n\"classRecordingPath\": \"{{classRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{classScheduledDates}}\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/{{endPoint}}"
+					},
+					"response": []
 				}
 			],
 			"id": "94a0a82c-0257-4b0a-9327-0bed210d9df1"
