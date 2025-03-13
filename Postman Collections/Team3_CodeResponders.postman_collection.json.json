@@ -6685,6 +6685,52 @@
 						"url": "{{baseURL}}/deleteByClass/479"
 					},
 					"response": []
+				},
+				{
+					"name": "Delete class by Class Id2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8233490-305a-4d7c-9500-9d03cd8d2c85",
+								"exec": [
+									"var classid = pm.collectionVariables.get(\"class_Id\")\r",
+									"pm.variables.set(\"classid \",classid)\r",
+									"\r",
+									"pm.test(\"Successfully deleted the resource\", function () {    pm.response.to.have.status(200); \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "a9c0b923-0cf6-451e-b089-fd18842e53ed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/deleteByClass/:classId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"deleteByClass",
+								":classId"
+							],
+							"variable": [
+								{
+									"id": "e81b741e-35e3-4251-b1ed-30a4c3f81063",
+									"key": "classId",
+									"value": "{{classid}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "94a0a82c-0257-4b0a-9327-0bed210d9df1"
@@ -6704,312 +6750,9 @@
 						"url": "{{baseURL}}//logoutlms"
 					},
 					"response": []
-				},
-				{
-					"name": "DeletebatchbyBatchId Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "1c22dca5-5599-48da-93e9-54e395d43d6b",
-								"exec": [
-									"//const response = pm.response.json();\r",
-									"console.log(pm.response) //doesnt contain the message displayed\r",
-									"//Happy Path - Positive\r",
-									"if(pm.response.to.have.status(200)){\r",
-									"\r",
-									"    //1. Status Code\r",
-									"    pm.test(\"Status code is 200\", function () {\r",
-									"        pm.response.to.have.status(200);\r",
-									"    });\r",
-									"\r",
-									"    //2. Status Line\r",
-									"    pm.test(\"Status message is OK\", function () {\r",
-									"        pm.response.to.have.status(\"OK\");\r",
-									"    });\r",
-									"\r",
-									"    //3. Test for Content-Type header having a particular value\r",
-									"    pm.test(\"Content-Type header is application/json\", () => {\r",
-									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-									"    });\r",
-									"\r",
-									"    //4. Schema Validation -- TO BE DONE\r",
-									"\r",
-									"    //5. Data Validation   DEFECT!! ERROR ENCOUNTERED --> JSONError: Unexpected token 'M' at 1:1 Message: Batch with Id-9684 deleted Successfully! ^  -- CANNOT VALIDATE DELETE MSG SINCE  Unexpected token 'M' at 1:1: This means that Postman was expecting JSON data (starting with {, [, or other JSON-valid characters), but it found the character 'M' (the first character of \"Message: Batch with Id-9684 deleted Successfully!\").  Message: Batch with Id-9684 deleted Successfully!: This is the raw text from your response body, which is not in valid JSON format\r",
-									"    /*\r",
-									"    pm.test(\"Validate stored Batch data with response data\", function () {\r",
-									"        console.log('response in using JSON.stringify() = '+JSON.stringify(pm.response.json()));\r",
-									"        pm.expect(JSON.stringify(pm.response.json())).to.include('Message: Batch with Id-'+9684+' deleted Successfully!');\r",
-									"    });\r",
-									"    */\r",
-									"    //5. Validate Delete Program status has changed to Inactive\r",
-									"        // Programmatically make a GET request using the ProgramID\r",
-									"    /*    pm.sendRequest({\r",
-									"            url:  pm.environment.get(\"baseURL\") + `/batches/batchId/` + currentBatch , \r",
-									"            method: 'GET',\r",
-									"            header: {\r",
-									"                'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\") \r",
-									"            }\r",
-									"        }, function (err, res) {\r",
-									"            if (err) {\r",
-									"                pm.test(\"GET BatchByID request failed after Batch Deletion\", function() {\r",
-									"                  console.log(err);\r",
-									"                return;\r",
-									"                });\r",
-									"            } else {\r",
-									"                pm.test(\"GET BatchByID request Successful after Batch Deletion\", function() {\r",
-									"\r",
-									"                    pm.expect(res.json().batchStatus).to.eql(\"Inactive\")\r",
-									"\r",
-									"                    if(res.json().batchId === pm.collectionVariables.get(\"batchID_Mandatory\")){\r",
-									"                        // remove the batch info at collection level\r",
-									"                        pm.collectionVariables.unset(\"batchID_Mandatory\");\r",
-									"                        pm.collectionVariables.unset(\"batchName_Mandatory\")\r",
-									"                        pm.collectionVariables.unset(\"batchDesc_Mandatory\")\r",
-									"                        pm.collectionVariables.unset(\"batchNoOfClasses_Mandatory\")\r",
-									"                        pm.collectionVariables.unset(\"batchStatus_Mandatory\")  \r",
-									"                    }\r",
-									"                    else{\r",
-									"\r",
-									"                        // remove the batch info at collection level\r",
-									"                        pm.collectionVariables.unset(\"batchID_All\");\r",
-									"                        pm.collectionVariables.unset(\"batchName_All\")\r",
-									"                        pm.collectionVariables.unset(\"batchDesc_All\")\r",
-									"                        pm.collectionVariables.unset(\"batchNoOfClasses_All\")\r",
-									"                        pm.collectionVariables.unset(\"batchStatus_All\") \r",
-									"                    }   \r",
-									"                });\r",
-									"\r",
-									"                \r",
-									"            }\r",
-									"    });*/\r",
-									"\r",
-									"\r",
-									"\r",
-									"}\r",
-									"\r",
-									"\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"Batch not found with Id : 91799 \",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"programBatch with name activejava43456 not found\",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */\r",
-									"\r",
-									"\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"Batch id not found or not exists 925122\",\r",
-									"    \"success\": false\r",
-									"} \r",
-									"*/"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "eaee0068-97f3-4ffe-bb5b-e62eeb433c10",
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "f5f7f6fd-e91c-453d-80b2-234994b7288c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/batches/:id",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"batches",
-								":id"
-							],
-							"variable": [
-								{
-									"id": "8ad4056f-3968-445b-9abd-6f59395d0e04",
-									"key": "id",
-									"value": "9877"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "a8cb1d51-a3e7-48cf-ac5d-3192c611c3a9",
-							"name": "DeletebatchbyBatchIdResponse",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseURL}}/batches/:id",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"batches",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "9865"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "Cowboy"
-								},
-								{
-									"key": "Report-To",
-									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1741625597&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=PDLt%2B00Gslhxfgkc1x%2FIEozuZjdj88gMBe2QrUbcjjE%3D\"}]}"
-								},
-								{
-									"key": "Reporting-Endpoints",
-									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1741625597&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=PDLt%2B00Gslhxfgkc1x%2FIEozuZjdj88gMBe2QrUbcjjE%3D"
-								},
-								{
-									"key": "Nel",
-									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Method"
-								},
-								{
-									"key": "Vary",
-									"value": "Access-Control-Request-Headers"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-Xss-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=31536000 ; includeSubDomains"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "49"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 10 Mar 2025 16:53:17 GMT"
-								},
-								{
-									"key": "Via",
-									"value": "1.1 vegur"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "Message: Batch with Id-9865 deleted Successfully!"
-						}
-					]
 				}
 			],
 			"id": "1408e38f-5719-4e08-b9a8-d3ccbd19a17b"
-		},
-		{
-			"name": "Delete class by Class Id2",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "a8233490-305a-4d7c-9500-9d03cd8d2c85",
-						"exec": [
-							"var classid = pm.collectionVariables.get(\"class_Id\")\r",
-							"pm.variables.set(\"classid \",classid)\r",
-							"\r",
-							"pm.test(\"Successfully deleted the resource\", function () {    pm.response.to.have.status(200); \r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "a9c0b923-0cf6-451e-b089-fd18842e53ed",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/deleteByClass/:classId",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"deleteByClass",
-						":classId"
-					],
-					"variable": [
-						{
-							"id": "e81b741e-35e3-4251-b1ed-30a4c3f81063",
-							"key": "classId",
-							"value": "{{classid}}"
-						}
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"auth": {
