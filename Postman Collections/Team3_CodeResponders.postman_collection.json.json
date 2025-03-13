@@ -3268,6 +3268,71 @@
 									"});\r",
 									"\r",
 									"//4. Schema Validation -- TO BE DONE\r",
+									"//4. Schema Validation -- TO BE DONE\r",
+									"const schemastruct = \r",
+									"{\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"userComments\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userEduPg\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userEduUg\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userFirstName\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userId\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userLastName\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userLinkedinUrl\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userLocation\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userMiddleName\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userPhoneNumber\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"userTimeZone\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userVisaStatus\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"userLoginEmail\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"userComments\",\r",
+									"    \"userEduPg\",\r",
+									"    \"userEduUg\",\r",
+									"    \"userFirstName\",\r",
+									"    \"userId\",\r",
+									"    \"userLastName\",\r",
+									"    \"userLinkedinUrl\",\r",
+									"    \"userLocation\",\r",
+									"    \"userMiddleName\",\r",
+									"    \"userPhoneNumber\",\r",
+									"    \"userTimeZone\",\r",
+									"    \"userVisaStatus\",\r",
+									"    \"userLoginEmail\"\r",
+									"  ]\r",
+									"}\r",
+									"pm.test(\"Validate Schema\"),function(){\r",
+									"    pm.response.to.have.jsonSchema(schemastruct);\r",
+									"}\r",
 									"\r",
 									"\r",
 									"//5. Request VS Response Body Validation\r",
@@ -5292,6 +5357,34 @@
 					"response": []
 				},
 				{
+					"name": "Get All Recordings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b8734d8-b6bd-4f63-b803-b59dbb1adf9c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "4bae87aa-dc5f-445f-a9c8-9944f3374c37",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/classrecordings"
+					},
+					"response": []
+				},
+				{
 					"name": "Negative- Get All Recordings",
 					"event": [
 						{
@@ -5320,34 +5413,6 @@
 					"response": []
 				},
 				{
-					"name": "Negative- Get all Classes by Batch Id",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f535f038-e7b3-4c30-b164-067147d5ab35",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "bb4f7c99-b81d-4808-8d9b-5fc6cc7e76ff",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{baseURL}}/classesbyBatch/{{batchID_ModuleIntegration}}"
-					},
-					"response": []
-				},
-				{
 					"name": "Get all Classes By Staff Id",
 					"event": [
 						{
@@ -5365,6 +5430,34 @@
 						}
 					],
 					"id": "d529ddc8-1838-4145-9575-3e2339df1887",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/classesByStaff/{{Staff_id}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Negative- Get all Classes By Staff Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab47f3c0-47e8-4418-9003-3ad576455204",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "ddf85210-0931-4859-98e6-09b9cddfa789",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -5404,12 +5497,12 @@
 					"response": []
 				},
 				{
-					"name": "Negative- Get all Classes By Staff Id",
+					"name": "Negative- Get all Classes by Batch Id",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "ab47f3c0-47e8-4418-9003-3ad576455204",
+								"id": "f535f038-e7b3-4c30-b164-067147d5ab35",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -5420,42 +5513,14 @@
 							}
 						}
 					],
-					"id": "ddf85210-0931-4859-98e6-09b9cddfa789",
+					"id": "bb4f7c99-b81d-4808-8d9b-5fc6cc7e76ff",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/classesByStaff/{{Staff_id}}"
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Recordings",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4b8734d8-b6bd-4f63-b803-b59dbb1adf9c",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "4bae87aa-dc5f-445f-a9c8-9944f3374c37",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "{{baseURL}}/classrecordings"
+						"url": "{{baseURL}}/classesbyBatch/{{batchID_ModuleIntegration}}"
 					},
 					"response": []
 				},
