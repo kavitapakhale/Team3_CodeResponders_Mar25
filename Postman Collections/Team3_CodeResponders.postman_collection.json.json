@@ -1873,6 +1873,91 @@
 							"response": []
 						},
 						{
+							"name": "Create Users with only Edu",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0f2f7847-f0e4-4246-82c0-d3b12a7b7e11",
+										"exec": [
+											"const response = pm.response.json();\r",
+											"\r",
+											"//POSITIVE TEST VALIDATION\r",
+											"//1. Status\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"//1. Status Line\r",
+											"pm.test(\"Status message is Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"//3. Test for Content-Type header having a particular value\r",
+											"pm.test(\"Content-Type header is application/json\", () => {\r",
+											"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+											"});\r",
+											"\r",
+											"//4. Schema Validation -- TO BE DONE\r",
+											"\r",
+											"\r",
+											"//5. Request VS Response Body Validation\r",
+											"pm.test(\"user name matches\", function () {\r",
+											"\r",
+											"    // Get the raw request body and Parse it to JSON\r",
+											"    const rawRequestBody = pm.request.body.raw;\r",
+											"    const requestBody = JSON.parse(rawRequestBody);\r",
+											"\r",
+											"    pm.expect(requestBody.userLinkedinUrl).to.eql(response.userLinkedinUrl);\r",
+											"    pm.expect(requestBody.userComments).to.eql(response.userComments);\r",
+											"    pm.expect(requestBody.userEduPg).to.eql(response.userEduPg);\r",
+											"    pm.expect(requestBody.userEduUg).to.eql(response.userEduUg);\r",
+											"    pm.expect(requestBody.userLastName).to.eql(response.userLastName);\r",
+											"    pm.expect(requestBody.userFirstName).to.eql(response.userFirstName);\r",
+											"    pm.expect(requestBody.userMiddleName).to.eql(response.userMiddleName);\r",
+											"    pm.expect(requestBody.userPhoneNumber).to.eql(response.userPhoneNumber);\r",
+											"    pm.expect(requestBody.userTimeZone).to.eql(response.userTimeZone);\r",
+											"    pm.expect(requestBody.userVisaStatus).to.eql(response.userVisaStatus);\r",
+											"    pm.expect(requestBody.userLoginEmail).to.eql(response.userLoginEmail);\r",
+											"\r",
+											"    \r",
+											"    \r",
+											"\r",
+											"\r",
+											"   \r",
+											"\r",
+											"});\r",
+											"\r",
+											"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!)\r",
+											"pm.collectionVariables.set(\"Staff_Id\", response.user.userId)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "1faee849-426d-4463-b997-00a69a86e639",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"userComments\": \"\",\r\n\"userEduPg\": \"\",\r\n\"userEduUg\": \"\",\r\n\"userFirstName\": \"mantatory\",\r\n\"userLastName\": \"string\",\r\n\"userLinkedinUrl\": \"\",\r\n\"userLocation\": \"\",\r\n\"userMiddleName\": \"\",\r\n\"userPhoneNumber\": \"+91 2624227833\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R02\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"EST\",\r\n\"userVisaStatus\": \"H4\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"\",\r\n\"userLoginEmail\": \"\"\r\n}\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}/users/roleStatus"
+							},
+							"response": []
+						},
+						{
 							"name": "Negative - AllUsers",
 							"event": [
 								{
