@@ -5461,7 +5461,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/upcomingClasses/{{Student_id}}"
+						"url": "{{baseURL}}/{{endPoint}}/{{Student_id}}"
 					},
 					"response": []
 				},
@@ -5605,7 +5605,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/classrecordings"
+						"url": "{{baseURL}}/{{endPoint}}"
 					},
 					"response": []
 				},
