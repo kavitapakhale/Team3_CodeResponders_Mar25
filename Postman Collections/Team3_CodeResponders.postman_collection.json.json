@@ -6997,6 +6997,98 @@
 		{
 			"key": "classTopic_ModuleIntegration",
 			"value": ""
+		},
+		{
+			"key": "userComment",
+			"value": ""
+		},
+		{
+			"key": "pgDegree",
+			"value": ""
+		},
+		{
+			"key": "ugDegree",
+			"value": ""
+		},
+		{
+			"key": "firstName",
+			"value": ""
+		},
+		{
+			"key": "lastName",
+			"value": ""
+		},
+		{
+			"key": "linkedInUrl",
+			"value": ""
+		},
+		{
+			"key": "location",
+			"value": ""
+		},
+		{
+			"key": "middleName",
+			"value": ""
+		},
+		{
+			"key": "phoneNumber",
+			"value": ""
+		},
+		{
+			"key": "roleId",
+			"value": ""
+		},
+		{
+			"key": "roleStatus",
+			"value": ""
+		},
+		{
+			"key": "timeZone",
+			"value": ""
+		},
+		{
+			"key": "visaStatus",
+			"value": ""
+		},
+		{
+			"key": "loginStatus",
+			"value": ""
+		},
+		{
+			"key": "loginEmail",
+			"value": ""
+		},
+		{
+			"key": "Admin_UserID_All",
+			"value": ""
+		},
+		{
+			"key": "Admin_roleId_All",
+			"value": ""
+		},
+		{
+			"key": "Staff_Id",
+			"value": ""
+		},
+		{
+			"key": "Staff_UserID_All",
+			"value": ""
+		},
+		{
+			"key": "Staff_roleId_All",
+			"value": ""
+		},
+		{
+			"key": "Student_Id",
+			"value": ""
+		},
+		{
+			"key": "Student_UserID_All",
+			"value": ""
+		},
+		{
+			"key": "Student_roleId_All",
+			"value": ""
 		}
 	]
 }
