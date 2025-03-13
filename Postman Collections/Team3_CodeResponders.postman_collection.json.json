@@ -6639,14 +6639,29 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"csId\": 738\r\n}",
+							"raw": "{\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"csId\": {{csId}}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/updateClassRecording/{{classId}}"
+						"url": {
+							"raw": "{{baseURL}}/updateClassRecording/:classId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"updateClassRecording",
+								":classId"
+							],
+							"variable": [
+								{
+									"key": "classId",
+									"value": "738"
+								}
+							]
+						}
 					},
 					"response": []
 				},
