@@ -4738,16 +4738,7 @@
 									"pm.collectionVariables.set(\"classRecordingPath\", response.classRecordingPath)\r",
 									"\r",
 									"\r",
-									"//NEGATIVE TEST VALIDATION\r",
-									"\r",
-									"\r",
-									"/**\r",
-									" * status code = 400\r",
-									"{   \r",
-									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -6167,6 +6158,28 @@
 									"//SET TOTAL COUNT\r",
 									"console.log(response.length)\r",
 									"pm.collectionVariables.set(\"ClassCount_BeforeAdd\",response.length)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c9105d67-a465-4682-a5d5-2c45fb8ef635",
+								"exec": [
+									"function getRandomLetterString() {\r",
+									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
+									"    let randomString = '';\r",
+									"    \r",
+									"    // Loop 3 times to generate a 3-letter string\r",
+									"    for (let i = 0; i < 3; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
+									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
+									"    }\r",
+									"\r",
+									"    return randomString;\r",
+									"}"
 								],
 								"type": "text/javascript",
 								"packages": {}
