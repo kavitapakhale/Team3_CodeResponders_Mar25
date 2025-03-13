@@ -5964,7 +5964,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/classesbyBatch/{{batchID_ModuleIntegration}}"
+						"url": "{{baseURL}}/classesbyBatch/{{batchID}}"
 					},
 					"response": []
 				},
@@ -6055,7 +6055,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/{{endPoint}}/{{batchID_ModuleIntegration}}"
+						"url": "{{baseURL}}/{{endPoint}}/{{batchID}}"
 					},
 					"response": []
 				},
