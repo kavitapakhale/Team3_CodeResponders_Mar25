@@ -255,9 +255,8 @@
 									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
 									"});\r",
 									"\r",
-									"//4. Schema Validation -- \r",
-									"const schemastruct = \r",
-									"{\r",
+									"//4. Schema Validation -- TO BE DONE\r",
+									"const schema = {\r",
 									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
 									"  \"type\": \"array\",\r",
 									"  \"items\": [\r",
@@ -294,9 +293,6 @@
 									"    }\r",
 									"  ]\r",
 									"}\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemastruct);\r",
-									"}\r",
 									"\r",
 									"//SET TOTAL COUNT\r",
 									"console.log(response.length)\r",
@@ -319,7 +315,7 @@
 							}
 						}
 					],
-					"id": "dd26bcfe-bfd0-4488-b4a9-39e51467c9c8",
+					"id": "9945d83b-a5dd-4e84-a2a6-5842e7781dcd",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -423,7 +419,7 @@
 							}
 						}
 					],
-					"id": "092211b9-ef01-44aa-8912-dbfe073f6ac5",
+					"id": "4732177d-bdba-4c4f-8e44-8406de8c24a6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -435,7 +431,7 @@
 					"response": []
 				},
 				{
-					"name": "AddNewProgram_Mandatory",
+					"name": "AddNewProgram",
 					"event": [
 						{
 							"listen": "test",
@@ -443,10 +439,9 @@
 								"id": "adb5e00d-dbb4-4492-9fb4-ee85b63be627",
 								"exec": [
 									"const response = pm.response.json();\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
 									"\r",
 									"//POSITIVE TEST VALIDATION\r",
-									"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
-									"\r",
 									"    //1. Status\r",
 									"    pm.test(\"Status code is 201\", function () {\r",
 									"        pm.response.to.have.status(201);\r",
@@ -462,44 +457,8 @@
 									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
 									"    });\r",
 									"\r",
-									"    //4. Schema Validation -- \r",
-									"    const schemastruct = \r",
-									"    {\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"object\",\r",
-									"  \"properties\": {\r",
-									"    \"programId\": {\r",
-									"      \"type\": \"integer\"\r",
-									"    },\r",
-									"    \"programName\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programDescription\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programStatus\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"creationTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"lastModTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    }\r",
-									"  },\r",
-									"  \"required\": [\r",
-									"    \"programId\",\r",
-									"    \"programName\",\r",
-									"    \"programDescription\",\r",
-									"    \"programStatus\",\r",
-									"    \"creationTime\",\r",
-									"    \"lastModTime\"\r",
-									"  ]\r",
-									"}\r",
+									"    //4. Schema Validation -- TO BE DONE\r",
 									"\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemastruct);\r",
-									"}\r",
 									"    //5. Request VS Response Body Validation\r",
 									"    pm.test(\"Program details in Request and Response matches\", function () {\r",
 									"\r",
@@ -532,36 +491,41 @@
 									"               \r",
 									"                const programs = res.json(); \r",
 									"                const count = programs.length; \r",
+									"                if(!pm.collectionVariables.get(\"i\")){\r",
+									"                    var i = 1;\r",
+									"                }else var i =  pm.collectionVariables.get(\"i\")\r",
+									"                \r",
 									"\r",
 									"                    pm.expect(programs).to.include(response.programName);\r",
-									"                    pm.expect(count).to.equal((pm.collectionVariables.get(\"ProgramCount_BeforeAdd\"))+1); \r",
+									"                    pm.expect(count).to.equal((pm.collectionVariables.get(\"ProgramCount_BeforeAdd\"))+i); \r",
+									"                    pm.collectionVariables.set(\"i\", i++)\r",
 									"                \r",
 									"            }\r",
 									"        });\r",
 									"    });\r",
 									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"//SET VALUE AT RUN TIME\r",
+									"if(scenarioName === \"Program with mandatory fields\"){\r",
+									"    pm.collectionVariables.set(\"programID_Mandatory\", response.programId)\r",
+									"    pm.collectionVariables.set(\"programName_Mandatory\", response.programName)\r",
+									"    pm.collectionVariables.set(\"programDesc_Mandatory\", response.programDescription)\r",
+									"    pm.collectionVariables.set(\"programStatus_Mandatory\", response.programStatus)\r",
 									"}\r",
-									"\r",
-									"\r",
-									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!)\r",
-									"pm.collectionVariables.set(\"programID_Mandatory\", response.programId)\r",
-									"pm.collectionVariables.set(\"programName_Mandatory\", response.programName)\r",
-									"pm.collectionVariables.set(\"programDesc_Mandatory\", response.programDescription)\r",
-									"pm.collectionVariables.set(\"programStatus_Mandatory\", response.programStatus)\r",
-									"\r",
-									"\r",
-									"//NEGATIVE TEST VALIDATION\r",
-									"\r",
-									"\r",
-									"/**\r",
-									" * status code = 400\r",
-									"{   \r",
-									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-									"    \"success\": false\r",
+									"else if(scenarioName === \"Program with All fields\"){\r",
+									"    pm.collectionVariables.set(\"programID_All\", response.programId)\r",
+									"    pm.collectionVariables.set(\"programName_All\", response.programName)\r",
+									"    pm.collectionVariables.set(\"programDesc_All\", response.programDescription)\r",
+									"    pm.collectionVariables.set(\"programStatus_All\", response.programStatus)\r",
 									"}\r",
-									" */\r",
-									"\r",
-									"\r",
+									"else {\r",
+									"     pm.collectionVariables.set(\"programID_ModuleIntegration\", response.programId)\r",
+									"    pm.collectionVariables.set(\"programName_ModuleIntegration\", response.programName)\r",
+									"    pm.collectionVariables.set(\"programDesc_ModuleIntegration\", response.programDescription)\r",
+									"    pm.collectionVariables.set(\"programStatus_ModuleIntegration\", response.programStatus)\r",
+									"}\r",
 									""
 								],
 								"type": "text/javascript",
@@ -573,22 +537,22 @@
 							"script": {
 								"id": "98767db8-9111-45b7-b2ca-b176472c0380",
 								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-									"    let randomString = '';\r",
+									"// function getRandomLetterString() {\r",
+									"//     const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
+									"//     let randomString = '';\r",
 									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-									"    }\r",
+									"//     // Loop 3 times to generate a 3-letter string\r",
+									"//     for (let i = 0; i < 3; i++) {\r",
+									"//         const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
+									"//         randomString += letters[randomIndex]; // Add the random letter to the string\r",
+									"//     }\r",
 									"\r",
-									"    return randomString;\r",
-									"}\r",
+									"//     return randomString;\r",
+									"// }\r",
 									"\r",
-									"var programName_Mandatory_data = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
-									"pm.variables.set(\"programName_Mandatory_data\",programName_Mandatory_data)\r",
-									"console.log('randome data ' + programName_Mandatory_data)\r",
+									"// var programName_Mandatory_data = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
+									"// pm.variables.set(\"programName_Mandatory_data\",programName_Mandatory_data)\r",
+									"// console.log('randome data ' + programName_Mandatory_data)\r",
 									"\r",
 									""
 								],
@@ -597,7 +561,7 @@
 							}
 						}
 					],
-					"id": "1e18e14e-83eb-4bee-b60f-505c1ccbb5c4",
+					"id": "6a517ea9-b6b2-45fe-b85d-08f66447b43d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -606,7 +570,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"programDescription\":\"\",\r\n \"programName\":\"{{programName_Mandatory_data}}\", //mandatory\r\n \"programStatus\":\"Active\" //mandatory\r\n }",
+							"raw": "{\r\n \"programDescription\":\"{{programDescription}}\",\r\n \"programName\":\"{{programName}}\", \r\n \"programStatus\":\"{{programStatus}}\" \r\n }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -618,29 +582,73 @@
 					"response": []
 				},
 				{
-					"name": "Negative - AddNewProgram_Mandatory",
+					"name": "Negative - AddNewProgram",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "adb5e00d-dbb4-4492-9fb4-ee85b63be627",
 								"exec": [
-									"pm.test(\"Incorrect BaseURL Test\", function () {\r",
-									"    // Get the raw response text (HTML)\r",
-									"    const responseText = pm.response.text();\r",
+									"setTimeout(() => {}, 1000);\r",
 									"\r",
-									"    // Log the raw HTML response to the console\r",
-									"    console.log(responseText);\r",
+									"//INCORRECT ENDPOINT SHOULD GIVE 404 BOT FOUND. DEFECT --> GETTING 401 UNAUTHORIZED\r",
 									"\r",
-									"    // Check if the response contains some specific text or HTML element\r",
-									"    pm.expect(responseText).to.include('<title>Heroku | Application Error</title>');\r",
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const expMessage = pm.collectionVariables.get(\"message\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
 									"});\r",
 									"\r",
-									"//const response = pm.response.json();\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")) {\r",
+									"    pm.test(`Validate ${scenarioName} Text Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(!scenarioName.includes(\"Incorrect Http Method\") && !scenarioName.includes(\"Incorrect Endpoint\") && !scenarioName.includes(\"Incorrect BaseURL\") && !scenarioName.includes(\"No Auth\") && !scenarioName.includes(\"Content-Type\")) {\r",
+									"\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"            pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"            pm.expect(pm.response.json().message).to.include(expMessage);\r",
+									"            pm.expect(pm.response.json().success).to.eql(false);\r",
+									"            \r",
+									"    });\r",
+									"}\r",
 									"\r",
 									"//delete later program id = 17692, 17693\r",
 									"\r",
-									"//NEGATIVE TEST VALIDATION\r",
 									"\r",
 									"\r",
 									"\r",
@@ -656,32 +664,35 @@
 							"script": {
 								"id": "98767db8-9111-45b7-b2ca-b176472c0380",
 								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-									"    }\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Inside pre-requisite = Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"baseURL\",pm.collectionVariables.get(\"baseURL\"));\r",
 									"\r",
-									"    return randomString;\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
 									"}\r",
 									"\r",
-									"var programName_Mandatory_data = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
-									"//var programName_Mandatory_data = '3-Ten';\r",
 									"\r",
-									"pm.variables.set(\"programName_Mandatory_data\",programName_Mandatory_data)\r",
-									"console.log('randome data ' + programName_Mandatory_data)\r",
-									"\r",
-									"/**\r",
-									" * status code = 400\r",
-									"{   \r",
-									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-									"    \"success\": false\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
 									"}\r",
-									" */\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Content-Type\"){\r",
+									"    var contentType = \"application/xml\"; \r",
+									"\r",
+									"    // Set the header for Content-Type\r",
+									"    pm.request.headers.add({\r",
+									"        key: \"Content-Type\",\r",
+									"        value: contentType\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Duplicate Program Name\"){\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get('programName_Mandatory'))\r",
+									"}\r",
 									""
 								],
 								"type": "text/javascript",
@@ -689,7 +700,7 @@
 							}
 						}
 					],
-					"id": "0a4a4a7c-827c-49b1-864b-04968f88d9bf",
+					"id": "62c07b6a-c1d1-4741-a977-93ec9f9fc3c6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -698,374 +709,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "/*{\r\n \"programDescription\":\"description-desc\",\r\n \"programName\": \"{{programName_Mandatory_data}}\", //mandatory\r\n //\"programName\":true, //mandatory\r\n \"programStatus\": \"Active\" //mandatory\r\n}*/\r\n\r\n{\r\n \"programDescription\":\"\",\r\n //\"programName\": \"{{programName_Mandatory_data}}\", //mandatory\r\n \"programName\":\"\", //mandatory\r\n \"programStatus\": \"\" //mandatory\r\n}",
+							"raw": "{\r\n \"programDescription\":\"{{programDescription}}\",\r\n \"programName\":\"{{programName}}\", //mandatory\r\n \"programStatus\":\"{{programStatus}}\" //mandatory\r\n }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/saveprogram"
-					},
-					"response": []
-				},
-				{
-					"name": "AddNewProgram_AllData",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "97f11445-4b2d-4a2f-a5c3-fa351beef767",
-								"exec": [
-									"const response = pm.response.json();\r",
-									"\r",
-									"//POSITIVE TEST VALIDATION\r",
-									"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
-									"\r",
-									"    //1. Status\r",
-									"    pm.test(\"Status code is 201\", function () {\r",
-									"        pm.response.to.have.status(201);\r",
-									"    });\r",
-									"\r",
-									"    //2. Status Line\r",
-									"    pm.test(\"Status message is Created\", function () {\r",
-									"        pm.response.to.have.status(\"Created\");\r",
-									"    });\r",
-									"\r",
-									"    //3. Test for Content-Type header having a particular value\r",
-									"    pm.test(\"Content-Type header is application/json\", () => {\r",
-									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-									"    });\r",
-									"\r",
-									"    //4. Schema Validation -- TO BE DONE\r",
-									"const schemastruct = \r",
-									"    {\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"object\",\r",
-									"  \"properties\": {\r",
-									"    \"programId\": {\r",
-									"      \"type\": \"integer\"\r",
-									"    },\r",
-									"    \"programName\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programDescription\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programStatus\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"creationTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"lastModTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    }\r",
-									"  },\r",
-									"  \"required\": [\r",
-									"    \"programId\",\r",
-									"    \"programName\",\r",
-									"    \"programDescription\",\r",
-									"    \"programStatus\",\r",
-									"    \"creationTime\",\r",
-									"    \"lastModTime\"\r",
-									"  ]\r",
-									"}\r",
-									"\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemastruct);\r",
-									"}\r",
-									"\r",
-									"    //5. Request VS Response Body Validation\r",
-									"    pm.test(\"Program name matches\", function () {\r",
-									"\r",
-									"        // Get the raw request body and Parse it to JSON\r",
-									"        const rawRequestBody = pm.request.body.raw;\r",
-									"        const requestBody = JSON.parse(rawRequestBody);\r",
-									"\r",
-									"        pm.expect(response).to.have.property(\"programId\")\r",
-									"        pm.expect(requestBody.programName).to.eql(response.programName);\r",
-									"        pm.expect(requestBody.programDescription).to.eql(response.programDescription);\r",
-									"        pm.expect(requestBody.programStatus).to.eql(response.programStatus);\r",
-									"\r",
-									"    });\r",
-									"\r",
-									"    //GET ALL PROGRAMS COUNT AFTER PROGRAM CREATION\r",
-									"    pm.test(\"Check Total Program Count increased by 1\", function () {\r",
-									"        \r",
-									"        // Perform GET request programmatically\r",
-									"        pm.sendRequest({\r",
-									"            url: pm.environment.get(\"baseURL\")+'/allPrograms',  \r",
-									"            method: 'GET',\r",
-									"            header: {\r",
-									"               'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\") \r",
-									"            }\r",
-									"        }, function (err, res) {\r",
-									"            if (err) {\r",
-									"                console.log(err);\r",
-									"                   // pm.expect(err).to.be.null; // Ensure there is no error\r",
-									"                return;\r",
-									"            } else {\r",
-									"               \r",
-									"                const programs = res.json(); \r",
-									"                const count = programs.length; \r",
-									"\r",
-									"                    pm.expect(programs).to.include(response.programName);\r",
-									"                    pm.expect(count).to.equal((pm.collectionVariables.get(\"ProgramCount_BeforeAdd\"))+2); \r",
-									"                \r",
-									"            }\r",
-									"        });\r",
-									"    });\r",
-									"\r",
-									"}\r",
-									"\r",
-									"\r",
-									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!!!!)\r",
-									"pm.collectionVariables.set(\"programID_All\", response.programId)\r",
-									"pm.collectionVariables.set(\"programName_All\", response.programName)\r",
-									"pm.collectionVariables.set(\"programDesc_All\", response.programDescription)\r",
-									"pm.collectionVariables.set(\"programStatus_All\", response.programStatus)\r",
-									"\r",
-									"\r",
-									"//NEGATIVE TEST VALIDATION\r",
-									"\r",
-									"\r",
-									"/**\r",
-									" * status code = 400\r",
-									"{   \r",
-									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "39732b31-aa79-47c8-90b0-e315ef0523cd",
-								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-									"    }\r",
-									"\r",
-									"    return randomString;\r",
-									"}\r",
-									"\r",
-									"var programName_Mandatory_data = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
-									"pm.variables.set(\"programName_Mandatory_data\",programName_Mandatory_data)\r",
-									"console.log('randome data ' + programName_Mandatory_data)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "d24a44bd-9c10-43cd-80f1-77fcca0e2490",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n \"programDescription\":\"Payload has data for all fields\",\r\n \"programName\":\"{{programName_Mandatory_data}}\", //mandatory and unique\r\n \"programStatus\":\"Active\" //mandatory\r\n }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseURL}}/saveprogram"
-					},
-					"response": []
-				},
-				{
-					"name": "AddNewProgram_ModuleInt",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "97f11445-4b2d-4a2f-a5c3-fa351beef767",
-								"exec": [
-									"const response = pm.response.json();\r",
-									"\r",
-									"//POSITIVE TEST VALIDATION\r",
-									"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
-									"\r",
-									"    //1. Status\r",
-									"    pm.test(\"Status code is 201\", function () {\r",
-									"        pm.response.to.have.status(201);\r",
-									"    });\r",
-									"\r",
-									"    //2. Status Line\r",
-									"    pm.test(\"Status message is Created\", function () {\r",
-									"        pm.response.to.have.status(\"Created\");\r",
-									"    });\r",
-									"\r",
-									"    //3. Test for Content-Type header having a particular value\r",
-									"    pm.test(\"Content-Type header is application/json\", () => {\r",
-									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-									"    });\r",
-									"\r",
-									"    //4. Schema Validation -- \r",
-									"\r",
-									"const schemastruct = \r",
-									"    {\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"object\",\r",
-									"  \"properties\": {\r",
-									"    \"programId\": {\r",
-									"      \"type\": \"integer\"\r",
-									"    },\r",
-									"    \"programName\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programDescription\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programStatus\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"creationTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"lastModTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    }\r",
-									"  },\r",
-									"  \"required\": [\r",
-									"    \"programId\",\r",
-									"    \"programName\",\r",
-									"    \"programDescription\",\r",
-									"    \"programStatus\",\r",
-									"    \"creationTime\",\r",
-									"    \"lastModTime\"\r",
-									"  ]\r",
-									"}\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemastruct);\r",
-									"\r",
-									"    \r",
-									"    //5. Request VS Response Body Validation\r",
-									"    pm.test(\"Program name matches\", function () {\r",
-									"\r",
-									"        // Get the raw request body and Parse it to JSON\r",
-									"        const rawRequestBody = pm.request.body.raw;\r",
-									"        const requestBody = JSON.parse(rawRequestBody);\r",
-									"\r",
-									"        pm.expect(response).to.have.property(\"programId\")\r",
-									"        pm.expect(requestBody.programName).to.eql(response.programName);\r",
-									"        pm.expect(requestBody.programDescription).to.eql(response.programDescription);\r",
-									"        pm.expect(requestBody.programStatus).to.eql(response.programStatus);\r",
-									"\r",
-									"    });\r",
-									"\r",
-									"    //GET ALL PROGRAMS COUNT AFTER PROGRAM CREATION\r",
-									"    pm.test(\"Check Total Program Count increased by 1\", function () {\r",
-									"        \r",
-									"        // Perform GET request programmatically\r",
-									"        pm.sendRequest({\r",
-									"            url: pm.environment.get(\"baseURL\")+'/allPrograms',  \r",
-									"            method: 'GET',\r",
-									"            header: {\r",
-									"               'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\") \r",
-									"            }\r",
-									"        }, function (err, res) {\r",
-									"            if (err) {\r",
-									"                console.log(err);\r",
-									"                   // pm.expect(err).to.be.null; // Ensure there is no error\r",
-									"                return;\r",
-									"            } else {\r",
-									"               \r",
-									"                const programs = res.json(); \r",
-									"                const count = programs.length; \r",
-									"\r",
-									"                    pm.expect(programs).to.include(response.programName);\r",
-									"                    pm.expect(count).to.equal((pm.collectionVariables.get(\"ProgramCount_BeforeAdd\"))+2); \r",
-									"                \r",
-									"            }\r",
-									"        });\r",
-									"    });\r",
-									"\r",
-									"}\r",
-									"\r",
-									"\r",
-									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!!!!)\r",
-									"pm.collectionVariables.set(\"programID_ModuleIntegration\", response.programId)\r",
-									"pm.collectionVariables.set(\"programName_ModuleIntegration\", response.programName)\r",
-									"pm.collectionVariables.set(\"programDesc_ModuleIntegration\", response.programDescription)\r",
-									"pm.collectionVariables.set(\"programStatus_ModuleIntegration\", response.programStatus)\r",
-									"\r",
-									"\r",
-									"//NEGATIVE TEST VALIDATION\r",
-									"\r",
-									"\r",
-									"/**\r",
-									" * status code = 400\r",
-									"{   \r",
-									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "39732b31-aa79-47c8-90b0-e315ef0523cd",
-								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-									"    }\r",
-									"\r",
-									"    return randomString;\r",
-									"}\r",
-									"\r",
-									"var programName_Mandatory_data = 'SeleniumPython-Ten'+ getRandomLetterString();\r",
-									"pm.variables.set(\"programName_Mandatory_data\",programName_Mandatory_data)\r",
-									"console.log('randome data ' + programName_Mandatory_data)"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "a4e52baa-9421-4aac-97ab-6d36ee624ded",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n \"programDescription\":\"Payload has data for all fields\",\r\n \"programName\":\"{{programName_Mandatory_data}}\", //mandatory and unique\r\n \"programStatus\":\"Active\" //mandatory\r\n }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseURL}}/saveprogram"
+						"url": "{{baseURL}}/{{endPoint}}"
 					},
 					"response": []
 				},
@@ -1087,7 +738,7 @@
 							}
 						}
 					],
-					"id": "55a7fa98-c345-4da6-a94f-6c3aecf88c34",
+					"id": "b864eeec-db6c-4ff9-ac30-ff10d5a7a277",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1128,49 +779,8 @@
 									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
 									"    });\r",
 									"\r",
-									"    //4. Schema Validation -- \r",
-									"    const schemastruct = \r",
-									"    {\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"array\",\r",
-									"  \"items\": [\r",
-									"    {\r",
-									"      \"type\": \"object\",\r",
-									"      \"properties\": {\r",
-									"        \"programId\": {\r",
-									"          \"type\": \"integer\"\r",
-									"        },\r",
-									"        \"programName\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"programDescription\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"programStatus\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"creationTime\": {\r",
-									"          \"type\": \"string\"\r",
-									"        },\r",
-									"        \"lastModTime\": {\r",
-									"          \"type\": \"string\"\r",
-									"        }\r",
-									"      },\r",
-									"      \"required\": [\r",
-									"        \"programId\",\r",
-									"        \"programName\",\r",
-									"        \"programDescription\",\r",
-									"        \"programStatus\",\r",
-									"        \"creationTime\",\r",
-									"        \"lastModTime\"\r",
-									"      ]\r",
-									"    }\r",
-									"  ]\r",
-									"}\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemastruct);\r",
-									"}\r",
-									"    \r",
+									"    //4. Schema Validation -- TO BE DONE\r",
+									"\r",
 									"    //5. Data Validation\r",
 									"    if(pm.variables.get(\"programId\") === pm.collectionVariables.get(\"programID_Mandatory\")){\r",
 									"        \r",
@@ -1246,7 +856,7 @@
 							}
 						}
 					],
-					"id": "b0d52db6-a9b1-4aba-9dda-ea450407c6c9",
+					"id": "c86b04be-8ba3-4a3d-8fe9-e09d793afb31",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1295,6 +905,7 @@
 									"\r",
 									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
 									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');        \r",
 									"        pm.expect(pm.response.json().message).to.eql(`program with this: ${pathParameter}not found`);\r",
 									"        pm.expect(pm.response.json().success).to.eql(false);\r",
 									"        \r",
@@ -1335,7 +946,7 @@
 									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_ModuleIntegration\"))\r",
 									"\r",
 									"if(scenarioName === \"Incorrect Http Method\"){\r",
-									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
 									"}\r",
 									"\r",
 									"if(scenarioName.includes(\"PathParameter\")){\r",
@@ -1348,6 +959,7 @@
 									"}\r",
 									"\r",
 									"if(scenarioName === \"No Auth\"){\r",
+									"\r",
 									"    pm.variables.set(\"BearerToken\",\"\")\r",
 									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
 									"}"
@@ -1357,7 +969,7 @@
 							}
 						}
 					],
-					"id": "1745d6f2-0654-4c75-b037-fc8b8dcf3a07",
+					"id": "278251e7-094d-49cc-a90d-09ada9ceb5eb",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1378,8 +990,6 @@
 								"exec": [
 									"\r",
 									"//POSITIVE TEST VALIDATION\r",
-									"if(pm.response.to.have.status(200)){ // HAPPY PATH\r",
-									"\r",
 									"    //1. Status\r",
 									"    pm.test(\"Status code is 200\", function () {\r",
 									"        pm.response.to.have.status(200);\r",
@@ -1395,45 +1005,7 @@
 									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
 									"    });\r",
 									"\r",
-									"    //4. Schema Validation -- \r",
-									"    const schemastruct = \r",
-									"{\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"object\",\r",
-									"  \"properties\": {\r",
-									"    \"programId\": {\r",
-									"      \"type\": \"integer\"\r",
-									"    },\r",
-									"    \"programName\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programDescription\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programStatus\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"creationTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"lastModTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    }\r",
-									"  },\r",
-									"  \"required\": [\r",
-									"    \"programId\",\r",
-									"    \"programName\",\r",
-									"    \"programDescription\",\r",
-									"    \"programStatus\",\r",
-									"    \"creationTime\",\r",
-									"    \"lastModTime\"\r",
-									"  ]\r",
-									"}\r",
-									"\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemastruct);\r",
-									"}\r",
-									"\r",
+									"    //4. Schema Validation -- TO BE DONE\r",
 									"\r",
 									"    //5. Request VS Response Body Validation\r",
 									"    pm.test(\"Program details in Request and Response matches\", function () {\r",
@@ -1456,7 +1028,6 @@
 									"\r",
 									"    });\r",
 									"\r",
-									"}\r",
 									"\r",
 									"\r",
 									"\r",
@@ -1473,29 +1044,28 @@
 							"script": {
 								"id": "b4044272-d1b8-4e79-a1c9-34f76d956f0b",
 								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-									"    }\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\")\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_Mandatory\"))\r",
+									"pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName_Mandatory\"))\r",
+									"pm.variables.set(\"programDescription\", pm.collectionVariables.get(\"programDesc_Mandatory\"))\r",
+									"pm.variables.set(\"programStatus\", pm.collectionVariables.get(\"programStatus_Mandatory\"))\r",
 									"\r",
-									"    return randomString;\r",
+									"if(scenarioName.includes(\"Update Program Name\")){\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName\"))\r",
 									"}\r",
-									"\r",
-									"var programName_Mandatory_dataupdate = 'Mandatory-Update-'+ getRandomLetterString();\r",
-									"pm.variables.set(\"programName_Mandatory_dataupdate\",programName_Mandatory_dataupdate)\r",
-									"console.log('randome data ' + programName_Mandatory_dataupdate)"
+									"else if(scenarioName.includes(\"Update Program Status\")){\r",
+									"    pm.variables.set(\"programStatus\", pm.collectionVariables.get(\"programStatus\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"Update Program Description\")){\r",
+									"    pm.variables.set(\"programDescription\", pm.collectionVariables.get(\"programDescription\"))\r",
+									"}"
 								],
 								"type": "text/javascript",
 								"packages": {}
 							}
 						}
 					],
-					"id": "1b3ad132-8168-44f3-a44f-d3dd5fe1d494",
+					"id": "806ca7b7-22e4-4225-83e6-181b58fda35e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1504,35 +1074,128 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n \"programDescription\":\"Mandatory Update\",\r\n \"programName\":\"{{programName_Mandatory_dataupdate}}\", //also has to be unique\r\n \"programStatus\":\"Active\" //mandatory\r\n }\r\n\r\n//POSSIBLE DEFECT: ONLY ACCEPTING HYPHENATED PROGRAM NAME\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"Mandatory Update\",\r\n    \"programName\": \"Mandatory Update\", \r\n    \"programStatus\": \"Active\" \r\n    }\r\n\r\n    ERROR CODE = 401 UNAUTHORIZED --> SHOULD HAVE BEEN 400 BAD REQUEST INSTEAD OF 401\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n/*==================================================================*/\r\n/*\r\nDifferent msgs from contract doc\r\nStatusCode:\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n\r\n response:[\r\n{\r\n    \"message\": \"Program Name TestChatBot already exists\",\r\n    \"success\": false\r\n}]*/",
+							"raw": " {\r\n \"programDescription\":\"{{programDescription}}\",\r\n \"programName\":\"{{programName}}\", //also has to be unique\r\n \"programStatus\":\"{{programStatus}}\" //mandatory\r\n }\r\n\r\n//POSSIBLE DEFECT: ONLY ACCEPTING HYPHENATED PROGRAM NAME\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"Mandatory Update\",\r\n    \"programName\": \"Mandatory Update\", \r\n    \"programStatus\": \"Active\" \r\n    }\r\n\r\n    ERROR CODE = 401 UNAUTHORIZED --> SHOULD HAVE BEEN 400 BAD REQUEST INSTEAD OF 401\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n/*==================================================================*/\r\n/*\r\nDifferent msgs from contract doc\r\nStatusCode:\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n\r\n response:[ Duplicate\r\n{\r\n    \"message\": \"Program Name TestChatBot already exists\",\r\n    \"success\": false\r\n}]*/",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/putprogram/:programId",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"putprogram",
-								":programId"
-							],
-							"variable": [
-								{
-									"key": "programId",
-									"value": "{{programID_Mandatory}}"
-								}
-							]
-						}
+						"url": "{{baseURL}}/putprogram/{{programId}}"
 					},
 					"response": []
 				},
 				{
 					"name": "Negative - UpdateProgrambyProgramId",
-					"id": "e4a15d08-3eb4-4d70-b47e-025b32cdc6b3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6c80eb2-0c14-419b-8191-0cd10764e897",
+								"exec": [
+									"setTimeout(() => {}, 2000);\r",
+									"\r",
+									"//INCORRECT ENDPOINT SHOULD GIVE 404 BOT FOUND. DEFECT --> GETTING 401 UNAUTHORIZED\r",
+									"\r",
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const expMessage = pm.collectionVariables.get(\"message\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Validation\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")) {\r",
+									"    pm.test(`Validate ${scenarioName} Text Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(!scenarioName.includes(\"Incorrect Http Method\") && !scenarioName.includes(\"Incorrect Endpoint\") && !scenarioName.includes(\"Incorrect BaseURL\") && !scenarioName.includes(\"No Auth\") && !scenarioName.includes(\"Content-Type\")) {\r",
+									"\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"            pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"            pm.expect(pm.response.json().message).to.include(expMessage);\r",
+									"            pm.expect(pm.response.json().success).to.eql(false);\r",
+									"            \r",
+									"    });\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b4044272-d1b8-4e79-a1c9-34f76d956f0b",
+								"exec": [
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\")\r",
+									"console.log(\"Scenario Name = \"+scenarioName)\r",
+									"\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_Mandatory\"))\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"baseURL\",pm.collectionVariables.get(\"baseURL\"));\r",
+									"\r",
+									"//Tweak data based on scenario needs\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+									"}\r",
+									"else if(scenarioName === \"Incorrect Content-Type\"){\r",
+									"    var contentType = \"application/xml\"; \r",
+									"\r",
+									"    // Set the header for Content-Type\r",
+									"    pm.request.headers.add({\r",
+									"        key: \"Content-Type\",\r",
+									"        value: contentType\r",
+									"    });\r",
+									"}\r",
+									"else if(scenarioName === \"Duplicate Program Name\"){\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName_All\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"Incorrect Path Parameter\")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "fccc1bcc-0c59-4103-b2c5-67153de377d8",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1541,34 +1204,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n \"programDescription\":\"update\",\r\n \"programName\":\"yaoza\", //also has to be unique\r\n \"programStatus\": \"Active\" //mandatory\r\n }\r\n\r\n//All fields empty - \r\n\r\n//POSSIBLE DEFECT: ONLY ACCEPTING HYPHENATED PROGRAM NAME\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"Mandatory Update\",\r\n    \"programName\": \"Mandatory Update\", \r\n    \"programStatus\": \"Active\" \r\n    }\r\n\r\n    ERROR CODE = 401 UNAUTHORIZED --> SHOULD HAVE BEEN 400 BAD REQUEST INSTEAD OF 401\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n/*==================================================================*/\r\n/*\r\nDifferent msgs from contract doc\r\nStatusCode:\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n\r\n response:[\r\n{\r\n    \"message\": \"Program Name TestChatBot already exists\",\r\n    \"success\": false\r\n}]*/",
+							"raw": " {\r\n \"programDescription\":\"{{programDescription}}\",\r\n \"programName\":\"{{programName}}\", \r\n \"programStatus\":\"{{programStatus}}\" \r\n }\r\n\r\n//All fields empty - \r\n\r\n//POSSIBLE DEFECT: ONLY ACCEPTING HYPHENATED PROGRAM NAME\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"Mandatory Update\",\r\n    \"programName\": \"Mandatory Update\", \r\n    \"programStatus\": \"Active\" \r\n    }\r\n\r\n    ERROR CODE = 401 UNAUTHORIZED --> SHOULD HAVE BEEN 400 BAD REQUEST INSTEAD OF 401\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n/*==================================================================*/\r\n/*\r\nDifferent msgs from contract doc\r\nStatusCode:\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n\r\n response:[\r\n{\r\n    \"message\": \"Program Name TestChatBot already exists\",\r\n    \"success\": false\r\n}]*/",
 							"options": {
 								"raw": {
-									"language": "text"
+									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/putprogram/:programId",
-							"protocol": "https",
-							"host": [
-								"lms-hackthon-feb25-803334c87fbe",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"lms",
-								"putprogram",
-								":programId"
-							],
-							"variable": [
-								{
-									"id": "adf71176-e856-4562-9fa2-92c9ed880d5f",
-									"key": "programId",
-									"value": "17692"
-								}
-							]
-						}
+						"url": "{{baseURL}}/{{endPoint}}/{{programId}}"
 					},
 					"response": []
 				},
@@ -1583,8 +1226,6 @@
 									"const response = pm.response.json();\r",
 									"\r",
 									"//POSITIVE TEST VALIDATION\r",
-									"if(pm.response.to.have.status(200)){ // HAPPY PATH\r",
-									"\r",
 									"    //1. Status\r",
 									"    pm.test(\"Status code is 200\", function () {\r",
 									"        pm.response.to.have.status(200);\r",
@@ -1600,43 +1241,7 @@
 									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
 									"    });\r",
 									"\r",
-									"    //4. Schema Validation -- \r",
-									"const schemastruct = \r",
-									"    {\r",
-									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
-									"  \"type\": \"object\",\r",
-									"  \"properties\": {\r",
-									"    \"programId\": {\r",
-									"      \"type\": \"integer\"\r",
-									"    },\r",
-									"    \"programName\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programDescription\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"programStatus\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"creationTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    },\r",
-									"    \"lastModTime\": {\r",
-									"      \"type\": \"string\"\r",
-									"    }\r",
-									"  },\r",
-									"  \"required\": [\r",
-									"    \"programId\",\r",
-									"    \"programName\",\r",
-									"    \"programDescription\",\r",
-									"    \"programStatus\",\r",
-									"    \"creationTime\",\r",
-									"    \"lastModTime\"\r",
-									"  ]\r",
-									"}\r",
-									"pm.test(\"Validate Schema\"),function(){\r",
-									"    pm.response.to.have.jsonSchema(schemastruct);\r",
-									"}\r",
+									"    //4. Schema Validation -- TO BE DONE\r",
 									"\r",
 									"    //5. Request VS Response Body Validation\r",
 									"    pm.test(\"Program details in Request and Response matches\", function () {\r",
@@ -1645,14 +1250,13 @@
 									"        const rawRequestBody = pm.request.body.raw;\r",
 									"        const requestBody = JSON.parse(rawRequestBody);\r",
 									"\r",
-									"        pm.expect(pm.collectionVariables.get(\"programID_All\")).to.eql(response.programId)\r",
+									"        pm.expect(pm.collectionVariables.get(\"programID_Mandatory\")).to.eql(response.programId)\r",
 									"        pm.expect(requestBody.programName).to.eql(response.programName);\r",
 									"        pm.expect(requestBody.programDescription).to.eql(response.programDescription);\r",
 									"        pm.expect(requestBody.programStatus).to.eql(response.programStatus);\r",
 									"\r",
 									"    });\r",
 									"\r",
-									"}\r",
 									"\r",
 									"\r",
 									""
@@ -1666,29 +1270,28 @@
 							"script": {
 								"id": "627b66a0-2fc2-44f9-9106-9676d8b12d1d",
 								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-									"    }\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\")\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_Mandatory\"))\r",
+									"pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName_Mandatory\"))\r",
+									"pm.variables.set(\"programDescription\", pm.collectionVariables.get(\"programDesc_Mandatory\"))\r",
+									"pm.variables.set(\"programStatus\", pm.collectionVariables.get(\"programStatus_Mandatory\"))\r",
 									"\r",
-									"    return randomString;\r",
+									"if(scenarioName.includes(\"Update Program Name\")){\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName\"))\r",
 									"}\r",
-									"\r",
-									"var programName_Mandatory_dataupdate = 'All-Update-'+ getRandomLetterString();\r",
-									"pm.variables.set(\"programName_Mandatory_dataupdate\",programName_Mandatory_dataupdate)\r",
-									"console.log('randome data ' + programName_Mandatory_dataupdate)"
+									"else if(scenarioName.includes(\"Update Program Status\")){\r",
+									"    pm.variables.set(\"programStatus\", pm.collectionVariables.get(\"programStatus\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"Update Program Description\")){\r",
+									"    pm.variables.set(\"programDescription\", pm.collectionVariables.get(\"programDescription\"))\r",
+									"}"
 								],
 								"type": "text/javascript",
 								"packages": {}
 							}
 						}
 					],
-					"id": "943fa7fa-6472-4e29-8593-c58304c8c1ab",
+					"id": "b6d1ca78-bd93-4a00-a507-bbae812aacc4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1697,29 +1300,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"programDescription\":\"Mandatory Update\",\r\n \"programName\":\"{{programName_Mandatory_dataupdate}}\", //also has to be unique\r\n \"programStatus\":\"Active\" //mandatory\r\n }\r\n\r\n//POSSIBLE DEFECT\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"All Update\",\r\n    \"programName\": \"All Update\", //Mandatory\r\n    \"programStatus\": \"Active\" //Mandatory\r\n    }\r\n\r\n    ERROR CODE = 400\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n /*\r\n StatusCode:\r\n 200ok\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n */",
+							"raw": " {\r\n \"programDescription\":\"{{programDescription}}\",\r\n \"programName\":\"{{programName}}\", //also has to be unique\r\n \"programStatus\":\"{{programStatus}}\" //mandatory\r\n }\r\n\r\n//POSSIBLE DEFECT\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"All Update\",\r\n    \"programName\": \"All Update\", //Mandatory\r\n    \"programStatus\": \"Active\" //Mandatory\r\n    }\r\n\r\n    ERROR CODE = 400\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n /*\r\n StatusCode:\r\n 200ok\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n */",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/program/:programName",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"program",
-								":programName"
-							],
-							"variable": [
-								{
-									"key": "programName",
-									"value": "{{programName_All}}"
-								}
-							]
-						}
+						"url": "{{baseURL}}/program/{{programName}}"
 					},
 					"response": []
 				},
@@ -1731,6 +1319,63 @@
 							"script": {
 								"id": "32d21eff-919c-4433-93ea-80ce325f8667",
 								"exec": [
+									"setTimeout(() => {}, 2000);\r",
+									"\r",
+									"//INCORRECT ENDPOINT SHOULD GIVE 404 BOT FOUND. DEFECT --> GETTING 401 UNAUTHORIZED\r",
+									"\r",
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const expMessage = pm.collectionVariables.get(\"message\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Validation\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")) {\r",
+									"    pm.test(`Validate ${scenarioName} Text Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(!scenarioName.includes(\"Incorrect Http Method\") && !scenarioName.includes(\"Incorrect Endpoint\") && !scenarioName.includes(\"Incorrect BaseURL\") && !scenarioName.includes(\"No Auth\") && !scenarioName.includes(\"Content-Type\")) {\r",
+									"\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"            pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"            pm.expect(pm.response.json().message).to.include(expMessage);\r",
+									"            pm.expect(pm.response.json().success).to.eql(false);\r",
+									"            \r",
+									"    });\r",
+									"}\r",
 									""
 								],
 								"type": "text/javascript",
@@ -1742,29 +1387,40 @@
 							"script": {
 								"id": "627b66a0-2fc2-44f9-9106-9676d8b12d1d",
 								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz'; // Available letters\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); // Get a random index\r",
-									"        randomString += letters[randomIndex]; // Add the random letter to the string\r",
-									"    }\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\")\r",
+									"console.log(\"Scenario Name = \"+scenarioName)\r",
 									"\r",
-									"    return randomString;\r",
+									"pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName_Mandatory\"))\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"baseURL\",pm.collectionVariables.get(\"baseURL\"));\r",
+									"\r",
+									"//Tweak data based on scenario needs\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
 									"}\r",
+									"else if(scenarioName === \"Incorrect Content-Type\"){\r",
+									"    var contentType = \"application/xml\"; \r",
 									"\r",
-									"var programName_Mandatory_dataupdate = 'All-Update-'+ getRandomLetterString();\r",
-									"pm.variables.set(\"programName_Mandatory_dataupdate\",programName_Mandatory_dataupdate)\r",
-									"console.log('randome data ' + programName_Mandatory_dataupdate)"
+									"    // Set the header for Content-Type\r",
+									"    pm.request.headers.add({\r",
+									"        key: \"Content-Type\",\r",
+									"        value: contentType\r",
+									"    });\r",
+									"}\r",
+									"else if(scenarioName === \"Duplicate Program Name\"){\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName_All\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"Incorrect Path Parameter\")){\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
 							}
 						}
 					],
-					"id": "0f01ea7f-1704-419a-b837-f53b6ad796c7",
+					"id": "efa004d1-9473-4272-a23e-75e2e081876e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1776,31 +1432,11 @@
 							"raw": "{\r\n \"programDescription\":\"jljklj\",\r\n \"programName\":\"Prog-Name-Updated\", //also has to be unique\r\n \"programStatus\":\"Active\" //mandatory\r\n }\r\n\r\n//POSSIBLE DEFECT\r\n/*\r\nGetting error for program name without hyphen\r\n    PAYLOAD\r\n     {\r\n    \"programDescription\": \"All Update\",\r\n    \"programName\": \"All Update\", //Mandatory\r\n    \"programStatus\": \"Active\" //Mandatory\r\n    }\r\n\r\n    ERROR CODE = 400\r\n    ERROR MSG\r\n    {\r\n        \"message\": \"programName Must contain only letters and sometimes hyphens\",\r\n        \"success\": false\r\n    }\r\n*/\r\n\r\n /*\r\n StatusCode:\r\n 200ok\r\n 404:Error withmessageandbooleansuccessdetail–ForInvalidProgramId\r\n 400:BadRequestMissingfield\r\n */",
 							"options": {
 								"raw": {
-									"language": "text"
+									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "https://lms-hackthon-feb25-803334c87fbe.herokuapp.com/lms/program/:programName",
-							"protocol": "https",
-							"host": [
-								"lms-hackthon-feb25-803334c87fbe",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"lms",
-								"program",
-								":programName"
-							],
-							"variable": [
-								{
-									"id": "d644e83a-99e2-4908-adab-5e4ceb637b8c",
-									"key": "programName",
-									"value": "null"
-								}
-							]
-						}
+						"url": "{{baseURL}}/{{endPoint}}/{{programName}}"
 					},
 					"response": []
 				},
@@ -1889,7 +1525,7 @@
 							}
 						}
 					],
-					"id": "277ec926-5c15-453a-b5e9-29b51d32f850",
+					"id": "0dcdee87-d189-4dac-a763-73df9571c375",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2018,7 +1654,7 @@
 							}
 						}
 					],
-					"id": "98fbc7dd-0e33-4bc8-8268-e08545d56edc",
+					"id": "996d61f6-c67c-4ef7-b915-c83855375803",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2056,7 +1692,7 @@
 									"    });\r",
 									"\r",
 									"    //4.Request VS Response Body Validation -- DEFECT: ACTUAL DEL MSG HAS A SPACE BETWEEN \"Name\" AND \"-\"\r",
-									"    pm.test(\"Validate Deletion Message\", function () {\r",
+									"    pm.test(\"Validate Deletion Message\", function () { \r",
 									"        pm.expect(pm.response.text()).to.eql('Message: Program Name-'+pm.collectionVariables.get(\"programName_All\")+' is deleted Successfully!')\r",
 									"    });\r",
 									"\r",
@@ -2118,7 +1754,7 @@
 							}
 						}
 					],
-					"id": "63381237-d78a-4051-9f75-717e1e23c049",
+					"id": "526210e1-3d88-41ce-b273-de1bcab36ad0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2247,7 +1883,7 @@
 							}
 						}
 					],
-					"id": "d7123df4-d125-4c8b-8605-b7973a0b090c",
+					"id": "a76a1408-7bc7-4681-8b1e-151f2ac3d1dc",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2259,7 +1895,7 @@
 					"response": []
 				}
 			],
-			"id": "cebf6f34-f2c4-4439-9067-fd483d168029"
+			"id": "8cbec1c4-c1b1-4ce2-9e3f-5d930e41be63"
 		},
 		{
 			"name": "Batch",
@@ -2303,7 +1939,7 @@
 							}
 						}
 					],
-					"id": "f9251d9f-7678-4ed8-ac5f-63bee5a75e67",
+					"id": "3a41dc81-63f9-49f0-8adc-393a2c16a58d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2315,7 +1951,100 @@
 					"response": []
 				},
 				{
-					"name": "CreateNewBatch-Mandatory",
+					"name": "Negative - AllBatches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3148edf8-6d68-4c59-abcc-1fa7f149238a",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(\"Validate Incorrect HTTP Method JSON Response msg\", () => {\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Endpoint\") {\r",
+									"    pm.test(\"Validate Incorrect Endpoint Response msg\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(\"Validate Incorrect BaseURL Response msg\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6cc1adf4-52d8-476b-b2c4-7f2662125559",
+								"exec": [
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "8460d5c2-52c0-4f6c-af6b-2d3d02de24d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}"
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewBatch",
 					"event": [
 						{
 							"listen": "test",
@@ -2323,9 +2052,9 @@
 								"id": "54a6a48b-7699-4b70-9898-6ec3b615367e",
 								"exec": [
 									"const response = pm.response.json();\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
 									"\r",
-									"//POSITIVE TEST VALIDATION\r",
-									"if(pm.response.to.have.status(201)){ // HAPPY PATH\r",
+									"\r",
 									"\r",
 									"    //1. Status\r",
 									"    pm.test(\"Status code is 201\", function () {\r",
@@ -2380,50 +2109,38 @@
 									"               \r",
 									"                const batches = res.json(); \r",
 									"                const count = batches.length; \r",
+									"                if(!pm.collectionVariables.get(\"i\")){\r",
+									"                    var j = 1;\r",
+									"                }else var j =  pm.collectionVariables.get(\"i\")\r",
 									"\r",
 									"                    pm.expect(batches).to.include(response.batchName);\r",
-									"                    pm.expect(count).to.equal((pm.collectionVariables.get(\"BatchCount_BeforeAdd\"))+1); \r",
+									"                    pm.expect(count).to.equal((pm.collectionVariables.get(\"BatchCount_BeforeAdd\"))+j); \r",
+									"                    pm.collectionVariables.set(\"j\", j++)\r",
 									"                \r",
 									"            }\r",
 									"        });\r",
 									"    });\r",
 									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"//SET VALUE AT RUN TIME\r",
+									"if(scenarioName === \"Batch with mandatory fields\"){\r",
+									"    pm.collectionVariables.set(\"batchID_Mandatory\", response.batchId)\r",
+									"    pm.collectionVariables.set(\"batchName_Mandatory\", response.batchName)\r",
+									"    pm.collectionVariables.set(\"batchNoOfClasses_Mandatory\", response.batchNoOfClasses)\r",
+									"    pm.collectionVariables.set(\"batchDesc_Mandatory\", response.batchDescription)\r",
+									"    pm.collectionVariables.set(\"batchStatus_Mandatory\", response.batchStatus)\r",
 									"}\r",
-									"\r",
-									"\r",
-									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!)\r",
-									"pm.collectionVariables.set(\"batchID_Mandatory\", response.batchId)\r",
-									"pm.collectionVariables.set(\"batchName_Mandatory\", response.batchName)\r",
-									"pm.collectionVariables.set(\"batchNoOfClasses_Mandatory\", response.batchNoOfClasses)\r",
-									"pm.collectionVariables.set(\"batchDesc_Mandatory\", response.batchDescription)\r",
-									"pm.collectionVariables.set(\"batchStatus_Mandatory\", response.batchStatus)\r",
-									"\r",
-									"\r",
-									"//NEGATIVE TEST VALIDATION\r",
-									"/**\r",
-									" * status code = 400\r",
-									"{   \r",
-									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-									"    \"success\": false\r",
+									"else if(scenarioName === \"Batch with All fields\"){\r",
+									"    pm.collectionVariables.set(\"batchID_ModuleIntegration\", response.batchId)\r",
+									"    pm.collectionVariables.set(\"batchName_ModuleIntegration\", response.batchName)\r",
+									"    pm.collectionVariables.set(\"batchNoOfClasses_ModuleIntegration\", response.batchNoOfClasses)\r",
+									"    pm.collectionVariables.set(\"batchDesc_ModuleIntegration\", response.batchDescription)\r",
+									"    pm.collectionVariables.set(\"batchStatus_ModuleIntegration\", response.batchStatus)\r",
 									"}\r",
-									" */\r",
-									"\r",
-									"\r",
-									"\r",
-									"/*\r",
-									"Mandatory: BatchName,programID,Batchstatus,NoofClasses\r",
-									"\r",
-									"//Response\r",
-									"{\r",
-									" \"batchDescription\":\"string\",\r",
-									" \"batchId\":0,\r",
-									" \"batchName\":\"string\",\r",
-									" \"batchNoOfClasses\":0,\r",
-									" \"batchStatus\":\"string\",\r",
-									" \"programId\":0,\r",
-									" \"programName\":\"string\"\r",
-									" }\r",
-									" */"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2434,40 +2151,14 @@
 							"script": {
 								"id": "26e9f29d-e9ec-4cda-8a10-aadfc01f9210",
 								"exec": [
-									"const programIdData = pm.collectionVariables.get(\"programID_ModuleIntegration\")\r",
-									"pm.variables.set(\"programIdData\", programIdData)\r",
-									"\r",
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz';\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); \r",
-									"        randomString += letters[randomIndex]; \r",
-									"    }\r",
-									"\r",
-									"    return randomString;\r",
-									"}\r",
-									"\r",
-									"//var batchName_Mandatory_data = 'Batch Mandatory'+ getRandomLetterString(); //Defect\r",
-									"var batchName_Mandatory_data = 'Batch-Mandatory'+ getRandomLetterString(); //worked\r",
-									"\r",
-									"pm.variables.set(\"batchName_Mandatory_data\",batchName_Mandatory_data)\r",
-									"\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens\",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
 							}
 						}
 					],
-					"id": "80762521-dca7-4834-a140-ee9acf10e63c",
+					"id": "e1ff0694-19f0-48cf-9474-0662cc22a09f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2476,7 +2167,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"batchDescription\":\"\",\r\n \"batchName\":\"{{batchName_Mandatory_data}}\", //Unique & Mandatory\r\n \"batchNoOfClasses\":8,  //Mandatory\r\n \"batchStatus\":\"Active\",  //Mandatory\r\n \"programId\":{{programIdData}}  //Mandatory\r\n }\r\n\r\n\r\n\r\n /*\r\n {\r\n    \"message\": \"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens\",\r\n    \"success\": false\r\n}\r\n */",
+							"raw": "{\r\n \"batchDescription\":\"{{batchDescription}}\",\r\n \"batchName\":\"{{batchName_Mandatory_data}}\", //Unique & Mandatory\r\n \"batchNoOfClasses\":{{batchNoOfClasses}},  //Mandatory\r\n \"batchStatus\":\"{{batchStatus}}\",  //Mandatory\r\n \"programId\":{{programID_ModuleIntegration}}  //Mandatory\r\n }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2488,115 +2179,96 @@
 					"response": []
 				},
 				{
-					"name": "CreateNewBatch-All",
+					"name": "Negative - CreateNewBatch",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "54a6a48b-7699-4b70-9898-6ec3b615367e",
 								"exec": [
-									"const response = pm.response.json();\r",
+									"setTimeout(() => {}, 1000);\r",
 									"\r",
-									"//POSITIVE TEST VALIDATION\r",
-									"if (pm.response.to.have.status(201)) { // HAPPY PATH\r",
-									"\r",
-									"    //1. Status\r",
-									"    pm.test(\"Status code is 201\", function () {\r",
-									"        pm.response.to.have.status(201);\r",
-									"    });\r",
-									"\r",
-									"    //2. Status Line\r",
-									"    pm.test(\"Status message is Created\", function () {\r",
-									"        pm.response.to.have.status(\"Created\");\r",
-									"    });\r",
-									"\r",
-									"    //3. Test for Content-Type header having a particular value\r",
-									"    pm.test(\"Content-Type header is application/json\", () => {\r",
-									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
-									"    });\r",
-									"\r",
-									"    //4. Schema Validation -- TO BE DONE\r",
-									"\r",
-									"    //5. Request VS Response Body Validation\r",
-									"    pm.test(\"Program details in Request and Response matches\", function () {\r",
-									"\r",
-									"        // Get the raw request body and Parse it to JSON\r",
-									"        const rawRequestBody = pm.request.body.raw;\r",
-									"        const requestBody = JSON.parse(rawRequestBody);\r",
-									"\r",
-									"        pm.expect(response).to.have.property(\"batchId\")\r",
-									"        pm.expect(requestBody.batchDescription).to.eql(response.batchDescription);\r",
-									"        pm.expect(requestBody.batchName).to.eql(response.batchName);\r",
-									"        pm.expect(requestBody.batchNoOfClasses).to.eql(response.batchNoOfClasses);\r",
-									"        pm.expect(requestBody.batchStatus).to.eql(response.batchStatus);\r",
-									"        pm.expect(requestBody.programId).to.eql(response.programId);\r",
-									"        pm.expect(pm.collectionVariables.get(\"programName_ModuleIntegration\")).to.eql(response.programName);\r",
-									"\r",
-									"\r",
-									"    });\r",
-									"\r",
-									"    //GET ALL PROGRAMS COUNT AFTER PROGRAM CREATION\r",
-									"    pm.test(\"Check Total Batch Count increased by 1\", function () {\r",
-									"\r",
-									"        // Perform GET request programmatically\r",
-									"        pm.sendRequest({\r",
-									"            url: pm.environment.get(\"baseURL\") + '/batches',\r",
-									"            method: 'GET',\r",
-									"            header: {\r",
-									"                'Authorization': 'Bearer ' + pm.collectionVariables.get(\"BearerToken\")\r",
-									"            }\r",
-									"        }, function (err, res) {\r",
-									"            if (err) {\r",
-									"                console.log(err);\r",
-									"                return;\r",
-									"            } else {\r",
-									"\r",
-									"                const batches = res.json();\r",
-									"                const count = batches.length;\r",
-									"\r",
-									"                pm.expect(batches).to.include(response.batchName);\r",
-									"                pm.expect(count).to.equal((pm.collectionVariables.get(\"BatchCount_BeforeAdd\")) + 2);\r",
-									"                pm.collectionVariables.unset(\"BatchCount_BeforeAdd\")\r",
-									"            }\r",
-									"        });\r",
-									"    });\r",
-									"\r",
-									"}\r",
-									"\r",
-									"\r",
-									"//SET VALUE AT RUN TIME (LATER CHECK IF THIS COULD BE TRANSFERRED AS PROGRAM OBJECT!!!!)\r",
-									"pm.collectionVariables.set(\"batchID_ModuleIntegration\", response.batchId)\r",
-									"pm.collectionVariables.set(\"batchName_ModuleIntegration\", response.batchName)\r",
-									"pm.collectionVariables.set(\"batchNoOfClasses_ModuleIntegration\", response.batchNoOfClasses)\r",
-									"pm.collectionVariables.set(\"batchDesc_ModuleIntegration\", response.batchDescription)\r",
-									"pm.collectionVariables.set(\"batchStatus_ModuleIntegration\", response.batchStatus)\r",
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const expMessage = pm.collectionVariables.get(\"message\");\r",
 									"\r",
 									"\r",
 									"//NEGATIVE TEST VALIDATION\r",
-									"/**\r",
-									" * status code = 400\r",
-									"{   \r",
-									"    \"message\": \"programName Must contain only letters and sometimes hyphens\",\r",
-									"    \"success\": false\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
 									"}\r",
-									" */\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")) {\r",
+									"    pm.test(`Validate ${scenarioName} Text Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Mismatch data type - String\")) {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(\"programId JSON parse error: Cannot deserialize value of type `java.lang.Long` from String\");\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Batch No Of Classes field is zero\" || scenarioName === \"Batch No Of Classes field is a negative number\" || scenarioName === \"Batch No Of Classes field is a null value\") {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(\" No of Classes is needed; It should be a positive number \");\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(!scenarioName.includes(\"Incorrect Http Method\") && !scenarioName.includes(\"Incorrect Endpoint\") && !scenarioName.includes(\"Incorrect BaseURL\") && !scenarioName.includes(\"No Auth\") && !scenarioName.includes(\"Content-Type\") && !scenarioName.includes(\"Mismatch data type - String\")\r",
+									"    && !scenarioName.includes(\"Batch No Of Classes field is zero\") && !scenarioName.includes(\"Batch No Of Classes field is a negative number\")\r",
+									"    && !scenarioName.includes(\"Batch No Of Classes field is a null value\")) {\r",
+									"\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"            pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"            pm.expect(pm.response.json().message).to.include(expMessage);\r",
+									"            pm.expect(pm.response.json().success).to.eql(false);\r",
+									"            \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"//delete later program id = 17692, 17693\r",
 									"\r",
 									"\r",
 									"\r",
-									"/*\r",
-									"Mandatory: BatchName,programID,Batchstatus,NoofClasses\r",
 									"\r",
-									"//Response\r",
-									"{\r",
-									" \"batchDescription\":\"string\",\r",
-									" \"batchId\":0,\r",
-									" \"batchName\":\"string\",\r",
-									" \"batchNoOfClasses\":0,\r",
-									" \"batchStatus\":\"string\",\r",
-									" \"programId\":0,\r",
-									" \"programName\":\"string\"\r",
-									" }\r",
-									" */"
+									"\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2607,43 +2279,42 @@
 							"script": {
 								"id": "26e9f29d-e9ec-4cda-8a10-aadfc01f9210",
 								"exec": [
-									"const programIdData = pm.collectionVariables.get(\"programID_ModuleIntegration\")\r",
-									"pm.variables.set(\"programIdData\", programIdData)\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Inside pre-requisite = Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"baseURL\",pm.collectionVariables.get(\"baseURL\"));\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_ModuleIntegration\"))\r",
 									"\r",
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz';\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); \r",
-									"        randomString += letters[randomIndex]; \r",
-									"    }\r",
 									"\r",
-									"    return randomString;\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
 									"}\r",
-									"\r",
-									"//var batchName_Mandatory_data = 'Batch Mandatory'+ getRandomLetterString(); //Defect\r",
-									"var batchName_All_data = 'Batch-All'+ getRandomLetterString(); //worked\r",
-									"var batchName_All_data = 'Batch-All'+ getRandomLetterString() + ' Number3'; //Defect\r",
-									"var batchName_All_data = 'Batch-All'+ getRandomLetterString() + '-Number3'; //worked\r",
-									"\r",
-									"\r",
-									"pm.variables.set(\"batchName_All_data\",batchName_All_data)\r",
-									"\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"batchName Please provide a valid name and must begin with letter and can have letters,numbers and sometimes hyphens\",\r",
-									"    \"success\": false\r",
+									"else if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
 									"}\r",
-									" */"
+									"else if(scenarioName === \"Incorrect Content-Type\"){\r",
+									"    var contentType = \"application/xml\"; \r",
+									"\r",
+									"    // Set the header for Content-Type\r",
+									"    pm.request.headers.add({\r",
+									"        key: \"Content-Type\",\r",
+									"        value: contentType\r",
+									"    });\r",
+									"}\r",
+									"else if(scenarioName === \"Duplicate Batch Name\"){\r",
+									"    pm.variables.set(\"batchName\", pm.collectionVariables.get('batchName_Mandatory'))\r",
+									"}\r",
+									"else if(scenarioName === \"All Fields Empty\" || scenarioName.includes(\"Program Id \")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"programId\"))\r",
+									"}\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
 							}
 						}
 					],
-					"id": "5c21889d-7982-4a1a-ab1b-c45d99295f66",
+					"id": "e5c4b74d-3303-4786-af19-baa043b42ec8",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2652,14 +2323,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n \"batchDescription\":\"Ao Ao Description\",\r\n \"batchName\":\"{{batchName_All_data}}\", //Unique & Mandatory\r\n \"batchNoOfClasses\":8,  //Mandatory\r\n \"batchStatus\":\"Active\",  //Mandatory\r\n \"programId\":{{programIdData}}  //Mandatory\r\n }\r\n",
+							"raw": "{\r\n \"batchDescription\":\"{{batchDescription}}\",\r\n \"batchName\":\"{{batchName}}\", //Unique & Mandatory\r\n \"batchNoOfClasses\":\"{{batchNoOfClasses}}\", //Mandatory\r\n \"batchStatus\":\"{{batchStatus}}\",  //Mandatory\r\n \"programId\":\"{{programID_ModuleIntegration}}\"  //Mandatory\r\n }\r\n\r\n// {\r\n//  \"batchDescription\":\"bla bla\",\r\n//  \"batchName\":\"Account\", //Unique & Mandatory -- DEFECT: ALLOWING DUPLICATE BATCH NAME\r\n//  \"batchNoOfClasses\":12,  //Mandatory\r\n//  \"batchStatus\":\"Active\",  //Mandatory\r\n//  \"programId\":16357  //Mandatory\r\n//  }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseURL}}/batches"
+						"url": "{{baseURL}}/{{endPoint}}"
 					},
 					"response": []
 				},
@@ -2706,9 +2377,8 @@
 									"        pm.expect(pm.collectionVariables.get(\"batchStatus_Mandatory\")).to.eql(response.batchStatus);\r",
 									"         });\r",
 									"\r",
-									"    } else if (pm.variables.get(\"batchId\") === \"batchID_ModuleIntegration\") {\r",
-									"\r",
-									"\r",
+									"    }        \r",
+									"    else {\r",
 									"         pm.test(\"Validate stored programs data with response data\", function () {\r",
 									"            pm.expect(pm.collectionVariables.get(\"programID_ModuleIntegration\")).to.eql(response.programId);\r",
 									"            pm.expect(pm.collectionVariables.get(\"batchName_ModuleIntegration\")).to.eql(response.batchName);\r",
@@ -2774,7 +2444,7 @@
 							}
 						}
 					],
-					"id": "c78b22c3-23eb-4b4a-8cc9-f8e6a6f0976b",
+					"id": "ed27a140-5dca-4fee-b91d-f37309bd1a28",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2793,12 +2463,121 @@
 							],
 							"variable": [
 								{
-									"id": "47d06168-995d-4957-a1d1-64d85f467759",
 									"key": "batchId",
 									"value": "{{currentBatch}}"
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - BatchbyBatchId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa10bada-951f-415c-b7a6-f665a53166bd",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');        \r",
+									"        pm.expect(pm.response.json().message).to.eql(`Batch not found with Id : ${pathParameter}`);         \r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"String\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2677842c-8bbe-4931-b420-68f1399b92a8",
+								"exec": [
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Inside pre-requisite Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"batchId\", pm.collectionVariables.get(\"batchID_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"batchId\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "558164b8-2c31-4273-9563-b64e246abf48",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{batchId}}"
 					},
 					"response": []
 				},
@@ -2850,13 +2629,14 @@
 									"        console.log(pm.collectionVariables.get(\"batchID_ModuleIntegration\"))\r",
 									"\r",
 									"         pm.test(\"Validate stored programs data with response data\", function () {\r",
-									"            pm.expect(pm.collectionVariables.get(\"programID_ModuleIntegration\")).to.eql(response[0].batchId);\r",
+									"            pm.expect(pm.collectionVariables.get(\"batchID_ModuleIntegration\")).to.eql(response[0].batchId);\r",
 									"            pm.expect(pm.collectionVariables.get(\"batchName_ModuleIntegration\")).to.eql(response[0].batchName);\r",
 									"            pm.expect(pm.collectionVariables.get(\"batchNoOfClasses_ModuleIntegration\")).to.eql(response[0].batchNoOfClasses);            \r",
 									"            pm.expect(pm.collectionVariables.get(\"batchDesc_ModuleIntegration\")).to.eql(response[0].batchDescription);\r",
 									"            pm.expect(pm.collectionVariables.get(\"batchStatus_ModuleIntegration\")).to.eql(response[0].batchStatus);\r",
 									"         });\r",
 									"    }\r",
+									"\r",
 									"\r",
 									"\r",
 									"}\r",
@@ -2903,7 +2683,7 @@
 									"\r",
 									"\r",
 									"if(!batchNameList){\r",
-									"  batchNameList = [pm.collectionVariables.get(\"batchName_Mandatory\"), pm.collectionVariables.get(\"batchName_ModuleIntegration\")];\r",
+									"  batchNameList = [pm.collectionVariables.get(\"batchName_Mandatory\"),  pm.collectionVariables.get(\"batchName_ModuleIntegration\")];\r",
 									"  console.log(\"batchNameList = \"+batchNameList);\r",
 									"}\r",
 									"\r",
@@ -2921,7 +2701,7 @@
 							}
 						}
 					],
-					"id": "98920319-6d05-4e4d-9c7a-8db2099728b6",
+					"id": "f92b261e-63fc-4199-bede-1a49d7a464bc",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2940,12 +2720,122 @@
 							],
 							"variable": [
 								{
-									"id": "c58b3bd0-cad4-48f0-ab17-ddf01a2c2c9c",
 									"key": "batchName",
 									"value": "{{currentBatchName}}"
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - BatchbyBatchName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa10bada-951f-415c-b7a6-f665a53166bd",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing Batch Name\")) {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');        \r",
+									"        pm.expect(pm.response.json().message).to.eql(`programBatch with name ${pathParameter} not found`);         \r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"Number\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6a55eac9-71ce-4515-a034-366cce51f033",
+								"exec": [
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Inside pre-requisite Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"batchName\", pm.collectionVariables.get(\"batchName_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"batchName\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "c56a0fbe-cb3c-4cfa-9415-2aecf572a9da",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{batchName}}"
 					},
 					"response": []
 				},
@@ -2994,14 +2884,15 @@
 									"        const batchIds = response.map(item => item.batchId);\r",
 									"        const batchNames = response.map(item => item.batchName);\r",
 									"        \r",
-									"        pm.expect(batchIds).contains(pm.collectionVariables.get(\"batchID_Mandatory\"), pm.collectionVariables.get(\"batchID_All\"))\r",
-									"        pm.expect(batchNames).contains(pm.collectionVariables.get(\"batchName_Mandatory\"), pm.collectionVariables.get(\"batchName_All\"))\r",
+									"        pm.expect(batchIds).contains(pm.collectionVariables.get(\"batchID_Mandatory\"),  pm.collectionVariables.get(\"batchID_ModuleIntegration\"))\r",
+									"        pm.expect(batchNames).contains(pm.collectionVariables.get(\"batchName_Mandatory\"), pm.collectionVariables.get(\"batchName_ModuleIntegration\"))\r",
+									"        \r",
 									"    });\r",
 									"    \r",
 									"\r",
 									"}\r",
 									"\r",
-									"/*\r",
+									"/*  DEFECT = 18546, 18547\r",
 									"{\r",
 									"    \"message\": \"batch with this programId 16591123 not found\",\r",
 									"    \"success\": false\r",
@@ -3013,7 +2904,7 @@
 							}
 						}
 					],
-					"id": "dc90bdd4-4eef-47a9-9519-a3060122e02f",
+					"id": "d4514a0a-bc07-4a79-98fd-61c135c860a1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -3032,12 +2923,129 @@
 							],
 							"variable": [
 								{
-									"id": "eefa0d53-03a7-467f-a8eb-5d65e6d63c96",
 									"key": "programId",
 									"value": "{{programID_ModuleIntegration}}"
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - BatchbyProgramId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa10bada-951f-415c-b7a6-f665a53166bd",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');        \r",
+									"        pm.expect(pm.response.json().message).to.eql(`batch with this programId ${pathParameter} not found`);         \r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"String\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"/*\r",
+									"{\r",
+									"    \"message\": \"batch with this programId 18547 not found\",\r",
+									"    \"success\": false\r",
+									"}\r",
+									" */"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "17d56baa-efcd-4d8a-8f06-a6e48ae34dea",
+								"exec": [
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Inside pre-requisite Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "baa6f652-1f17-4513-9aeb-9fed2c8d05b7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{programId}}"
 					},
 					"response": []
 				},
@@ -3090,29 +3098,7 @@
 									"    });\r",
 									"\r",
 									"}\r",
-									"\r",
-									"\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"Invalid Status: must be Active or Inactive\",\r",
-									"    \"success\": false\r",
-									"}\r",
-									"\r",
-									"{\r",
-									"    \"message\": \" No of Classes is needed; It should be a positive number \",\r",
-									"    \"success\": false\r",
-									"}\r",
-									"\r",
-									"{\r",
-									"    \"message\": \" ProgramId should be a positive number \",\r",
-									"    \"success\": false\r",
-									"}\r",
-									"\r",
-									"{\r",
-									"    \"message\": \"Batch not found with Id : 9097123 \",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -3123,30 +3109,36 @@
 							"script": {
 								"id": "edb6e91f-bddf-4532-96e0-d76972ee72a6",
 								"exec": [
-									"function getRandomLetterString() {\r",
-									"    const letters = 'abcdefghijklmnopqrstuvwxyz';\r",
-									"    let randomString = '';\r",
-									"    \r",
-									"    // Loop 3 times to generate a 3-letter string\r",
-									"    for (let i = 0; i < 3; i++) {\r",
-									"        const randomIndex = Math.floor(Math.random() * letters.length); \r",
-									"        randomString += letters[randomIndex]; \r",
-									"    }\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\")\r",
 									"\r",
-									"    return randomString;\r",
+									"pm.variables.set(\"batchId\", pm.collectionVariables.get(\"batchID_Mandatory\"))\r",
+									"pm.variables.set(\"batchName\", pm.collectionVariables.get(\"batchName_Mandatory\"))\r",
+									"pm.variables.set(\"batchNoOfClasses\", pm.collectionVariables.get(\"batchNoOfClasses_Mandatory\"))\r",
+									"pm.variables.set(\"batchStatus\", pm.collectionVariables.get(\"batchStatus_Mandatory\"))\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_ModuleIntegration\"))\r",
+									"pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName.includes(\"Update Batch Name\")){\r",
+									"    pm.variables.set(\"batchName\", pm.collectionVariables.get(\"batchName\"))\r",
 									"}\r",
-									"\r",
-									"//var batchName_Mandatory_data = 'Batch Mandatory'+ getRandomLetterString(); //Defect\r",
-									"var batchName_Mandatory_dataupdate = 'Batch-Mandatory-Update'+ getRandomLetterString(); //worked\r",
-									"\r",
-									"pm.variables.set(\"batchName_Mandatory_dataupdate\",batchName_Mandatory_dataupdate)"
+									"else if(scenarioName.includes(\"Update Batch No Of Class\")){\r",
+									"    pm.variables.set(\"batchNoOfClasses\", pm.collectionVariables.get(\"batchNoOfClasses\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"Update Batch Status\")){\r",
+									"    pm.variables.set(\"batchStatus\", pm.collectionVariables.get(\"batchStatus\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"Update Program ID\")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"programId\"))\r",
+									"    pm.variables.set(\"programName\", pm.collectionVariables.get(\"programName\"))\r",
+									"    pm.variables.set(\"batchStatus\", pm.collectionVariables.get(\"batchStatus\"))\r",
+									"}"
 								],
 								"type": "text/javascript",
 								"packages": {}
 							}
 						}
 					],
-					"id": "caf50a77-e2ec-4d4e-855f-188c883c5a9a",
+					"id": "41d6f1e6-e3bd-4758-bb85-717804920a84",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -3155,7 +3147,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n//  \"batchDescription\":\"Batch Desc Updated\",\r\n//  \"batchId\":{{batchID_Mandatory}},\r\n \"batchDescription\":\"\",\r\n \"batchId\":1234, //doesnt matter. it is whatever is passed as path parameter\r\n \"batchName\":\"{{batchName_Mandatory_dataupdate}}\",  //Mandatory\r\n \"batchNoOfClasses\":15, //Mandatory\r\n \"batchStatus\":\"Active\",  //Mandatory\r\n \"programId\": 16208,  //Mandatory\r\n \"programName\": \"DVLPRer\" //Mandatory\r\n }\r\n\r\n ",
+							"raw": "{\r\n \"batchDescription\":\"{{batchDescription}}\",\r\n \"batchId\":\"{{batchId}}\",\r\n \"batchName\":\"{{batchName}}\",  //Mandatory\r\n \"batchNoOfClasses\":\"{{batchNoOfClasses}}\", //Mandatory\r\n \"batchStatus\":\"{{batchStatus}}\",  //Mandatory\r\n \"programId\": \"{{programId}}\",  //Mandatory\r\n \"programName\": \"{{programName}}\" //Mandatory\r\n }\r\n\r\n ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3173,12 +3165,173 @@
 							],
 							"variable": [
 								{
-									"id": "2c945a2b-a19a-416b-a6d1-743570112d45",
 									"key": "batchId",
 									"value": "{{batchID_Mandatory}}"
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative - UpdatebyBatchId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "99ea712a-4fa9-4733-a4b5-8151161a2bdc",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');        \r",
+									"        pm.expect(pm.response.json().message).to.eql(`Batch not found with Id : ${pathParameter}`);         \r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"String\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Batch No Of Classes field is zero\" || scenarioName === \"Batch No Of Classes field is a negative number\" || scenarioName === \"Batch No Of Classes field is a null value\") {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(\" No of Classes is needed; It should be a positive number \");\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Mismatch data type - String\")) {\r",
+									"    pm.test(`Validate ${scenarioName} HTML Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.include(\"programId JSON parse error: Cannot deserialize value of type `java.lang.Long` from String\");\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(!scenarioName.includes(\"Incorrect Http Method\") && !scenarioName.includes(\"Incorrect Endpoint\") && !scenarioName.includes(\"Incorrect BaseURL\") && !scenarioName.includes(\"No Auth\") && !scenarioName.includes(\"Content-Type\") && !scenarioName.includes(\"Mismatch data type - String\")\r",
+									"    && !scenarioName.includes(\"Batch No Of Classes field is zero\") && !scenarioName.includes(\"Batch No Of Classes field is a negative number\")\r",
+									"    && !scenarioName.includes(\"Batch No Of Classes field is a null value\")) {\r",
+									"\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"            pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"            pm.expect(pm.response.json().message).to.include(expMessage);\r",
+									"            pm.expect(pm.response.json().success).to.eql(false);\r",
+									"            \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "edb6e91f-bddf-4532-96e0-d76972ee72a6",
+								"exec": [
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Inside pre-requisite = Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"baseURL\",pm.collectionVariables.get(\"baseURL\"));\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programID_ModuleIntegration\"))\r",
+									"pm.variables.set(\"programId\", pm.collectionVariables.get(\"programName_ModuleIntegration\"))\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+									"}\r",
+									"else if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"}\r",
+									"else if(scenarioName === \"Incorrect Content-Type\"){\r",
+									"    var contentType = \"application/xml\"; \r",
+									"\r",
+									"    // Set the header for Content-Type\r",
+									"    pm.request.headers.add({\r",
+									"        key: \"Content-Type\",\r",
+									"        value: contentType\r",
+									"    });\r",
+									"}\r",
+									"else if(scenarioName === \"Duplicate Batch Name\"){\r",
+									"    pm.variables.set(\"batchName\", pm.collectionVariables.get('batchName_Mandatory'))\r",
+									"}\r",
+									"else if(scenarioName === \"All Fields Empty\" || scenarioName.includes(\"Program Id \")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"programId\"))\r",
+									"}\r",
+									"else if(scenarioName.includes(\"Incorrect Path Parameter\")){\r",
+									"    pm.variables.set(\"programId\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "f84f7efe-1128-4530-baea-0215f32b302b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n//  \"batchDescription\":\"Batch Desc Updated\",\r\n//  \"batchId\":{{batchID_Mandatory}},\r\n \"batchDescription\":\"\",\r\n \"batchId\":1234, //doesnt matter. it is whatever is passed as path parameter\r\n \"batchName\":\"{{batchName_Mandatory_dataupdate}}\",  //Mandatory\r\n \"batchNoOfClasses\":15, //Mandatory\r\n \"batchStatus\":\"Active\",  //Mandatory\r\n \"programId\": 16208,  //Mandatory\r\n \"programName\": \"DVLPRer\" //Mandatory\r\n }\r\n\r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/{{endPoint}}/{{batchId}}"
 					},
 					"response": []
 				},
@@ -3217,7 +3370,7 @@
 									"  /*  pm.test(\"Validate stored Batch data with response data\", function () {\r",
 									"\r",
 									"        pm.expect(response).to.include('Message: Batch with Id-'+currentBatch+' deleted Successfully!');\r",
-									"        DEFECT!! ERROR ENCOUNTERED --> JSONError: Unexpected token 'M' at 1:1 Message: Batch with Id-9684 deleted Successfully! ^  -- CANNOT VALIDATE DELETE MSG SINCE  Unexpected token 'M' at 1:1: This means that Postman was expecting JSON data (starting with {, [, or other JSON-valid characters), but it found the character 'M' (the first character of \"Message: Batch with Id-9684 deleted Successfully!\").  Message: Batch with Id-9684 deleted Successfully!: This is the raw text from your response body, which is not in valid JSON format \r",
+									"        DEFECT!! ERROR ENCOUNTERED --> JSONError: Unexpected token 'M' at 1:1 Message: Batch with Id-9684 deleted Successfully! ^  -- CANNOT VALIDATE DELETE MSG SINCE  Unexpected token 'M' at 1:1: This means that Postman was expecting JSON data (starting with {, [, or other JSON-valid characters), but it found the character 'M' (the first character of \"Message: Batch with Id-9684 deleted Successfully!\").  Message: Batch with Id-9684 deleted Successfully!: This is the raw text from response body, which is not in valid JSON format \r",
 									"    }); */\r",
 									"\r",
 									"    //5. Validate Delete Program status has changed to Inactive\r",
@@ -3254,28 +3407,7 @@
 									"\r",
 									"\r",
 									"}\r",
-									"\r",
-									"\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"Batch not found with Id : 91799 \",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"programBatch with name activejava43456 not found\",\r",
-									"    \"success\": false\r",
-									"}\r",
-									" */\r",
-									"\r",
-									"\r",
-									"/*\r",
-									"{\r",
-									"    \"message\": \"Batch id not found or not exists 925122\",\r",
-									"    \"success\": false\r",
-									"} \r",
-									"*/"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -3310,7 +3442,7 @@
 							}
 						}
 					],
-					"id": "77f44398-d857-41b3-a310-e66525b55532",
+					"id": "2f79f8ff-9227-49ad-853f-aaf689979242",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -3328,7 +3460,6 @@
 							],
 							"variable": [
 								{
-									"id": "8cc4bdc7-54a5-48b4-97b7-c490bf4379f1",
 									"key": "id",
 									"value": "{{batchID_Mandatory}}"
 								}
@@ -3337,7 +3468,230 @@
 					},
 					"response": [
 						{
-							"id": "911c75ee-1a1a-4a1c-80a5-6e3c497dd727",
+							"id": "e93a79b7-2cef-4a46-a766-5279ad32bee7",
+							"name": "DeletebatchbyBatchIdResponse",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/batches/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"batches",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "9865"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1741625597&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=PDLt%2B00Gslhxfgkc1x%2FIEozuZjdj88gMBe2QrUbcjjE%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1741625597&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=PDLt%2B00Gslhxfgkc1x%2FIEozuZjdj88gMBe2QrUbcjjE%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Mar 2025 16:53:17 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "Message: Batch with Id-9865 deleted Successfully!"
+						}
+					]
+				},
+				{
+					"name": "Negative - DeletebatchbyBatchId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1c22dca5-5599-48da-93e9-54e395d43d6b",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`No active program with the program Id${pathParameter}`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"String\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "eaee0068-97f3-4ffe-bb5b-e62eeb433c10",
+								"exec": [
+									"console.log(\"Inside pre-requisite\")\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"id\", pm.collectionVariables.get(\"batchID_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"id\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "2cdd2780-2cca-48ee-9b3b-f39cd3a6ec9b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{id}}"
+					},
+					"response": [
+						{
+							"id": "face005b-8264-41a2-8907-6ae515ed9e9c",
 							"name": "DeletebatchbyBatchIdResponse",
 							"originalRequest": {
 								"method": "DELETE",
@@ -3447,7 +3801,7 @@
 					]
 				}
 			],
-			"id": "ae705100-802f-4758-a9c0-df74e4d857fc"
+			"id": "32a24896-a4aa-4c24-87b8-3e985b26b832"
 		},
 		{
 			"name": "Users",
@@ -7244,6 +7598,20 @@
 			"item": [
 				{
 					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "76257fe2-76bf-4923-a656-40a97b811e1d",
+								"exec": [
+									"//Data cleanup - to remove all variables at collection level\r",
+									"pm.collectionVariables.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "6c64072c-651e-4ab2-b31b-8741802b1701",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
