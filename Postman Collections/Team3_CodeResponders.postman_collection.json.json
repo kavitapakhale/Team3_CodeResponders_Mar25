@@ -2074,7 +2074,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\"userComments\": \"aw\",\r\n\"userEduPg\": \"A12\",\r\n\"userEduUg\": \"A2\",\r\n\"userFirstName\": \"AAT\",\r\n\"userLastName\": \"T\",\r\n\"userLinkedinUrl\": \"www.linkedin.com\",\r\n\"userLocation\": \"wa\",\r\n\"userMiddleName\": \"w\",\r\n\"userPhoneNumber\": \"+91 3334567890\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R02\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"\",\r\n\"userVisaStatus\": \"\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"\",\r\n\"userLoginEmail\": \"\"\r\n}\r\n}\r\n\r\n",
+									"raw": "{\r\n\"userComments\": \"aw\",\r\n\"userEduPg\": \"A12\",\r\n\"userEduUg\": \"A2\",\r\n\"userFirstName\": \"AAT\",\r\n\"userLastName\": \"T\",\r\n\"userLinkedinUrl\": \"www.linkedin.com\",\r\n\"userLocation\": \"wa\",\r\n\"userMiddleName\": \"w\",\r\n\"userPhoneNumber\": \"+91 3334567890\",\r\n\"userRoleMaps\": [\r\n{\r\n\"roleId\": \"R02\",\r\n\"userRoleStatus\": \"Active\"\r\n}\r\n],\r\n\"userTimeZone\": \"\",\r\n\"userVisaStatus\": \"\",\r\n\"userLogin\": {\r\n\"loginStatus\" : \"\",\r\n\"userLoginEmail\": \"Test@gmail.com\"\r\n}\r\n}\r\n\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
