@@ -5162,7 +5162,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/upcomingClasses/297"
+						"url": "{{baseURL}}/upcomingClasses/{{Student_id}}"
 					},
 					"response": []
 				},
@@ -5287,7 +5287,44 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/upcomingClasses/297"
+						"url": "{{baseURL}}/upcomingClasses/{{Student_id}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update New Class",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d350511c-fc91-4538-99ee-cb45faff617e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "9a632819-3f4b-4b51-acee-6ce82f35223f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"csId\": {{csId}},\r\n\"batchId\": {{batchId}},\r\n\"classNo\": {{updateclassNo}},\r\n\"classDate\": \"{{updateclassDate}}\",\r\n\"classTopic\": \"{{updateclassTopic}}\",\r\n\"classStatus\": \"{{updateclassStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{updateclassDescription}}\",\r\n\"classComments\": \"{{updateclassComments}}\" ,\r\n\"classNotes\": \"{{updateclassNotes}}\",\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{updateclassScheduledDates}}\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/updateClass/{{classId}}"
 					},
 					"response": []
 				},
@@ -5408,7 +5445,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/classesbyBatch/8432"
+						"url": "{{baseURL}}/classesbyBatch/{{batchID_ModuleIntegration}}"
 					},
 					"response": []
 				},
@@ -5465,43 +5502,6 @@
 						"method": "GET",
 						"header": [],
 						"url": "{{baseURL}}/classesByStaff/U25"
-					},
-					"response": []
-				},
-				{
-					"name": "Update New Class",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d350511c-fc91-4538-99ee-cb45faff617e",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"id": "9a632819-3f4b-4b51-acee-6ce82f35223f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n\"csId\": {{csId}},\r\n\"batchId\": {{batchId}},\r\n\"classNo\": {{updateclassNo}},\r\n\"classDate\": \"{{updateclassDate}}\",\r\n\"classTopic\": \"{{updateclassTopic}}\",\r\n\"classStatus\": \"{{updateclassStatus}}\",\r\n\"classStaffId\": \"{{classStaffId}}\",\r\n\"classDescription\": \"{{updateclassDescription}}\",\r\n\"classComments\": \"{{updateclassComments}}\" ,\r\n\"classNotes\": \"{{updateclassNotes}}\",\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"classScheduledDates\": [\"{{updateclassScheduledDates}}\"]\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseURL}}/updateClass/{{classId}}"
 					},
 					"response": []
 				},
