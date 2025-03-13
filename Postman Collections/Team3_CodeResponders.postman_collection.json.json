@@ -6060,6 +6060,221 @@
 					"response": []
 				},
 				{
+					"name": "ClassTopic",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd25548d-89f0-486b-900f-e9bcc2e0c644",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"//POSITIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(\"Status message is OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//3. Test for Content-Type header having a particular value\r",
+									"pm.test(\"Content-Type header is application/json\", () => {\r",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"classTopic_ModuleIntegration\",response[0].classTopic)\r",
+									"console.log(pm.collectionVariables.get(\"classTopic_ModuleIntegration\"))\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "19ac6346-4c58-43ab-96b2-50321e6fbbf4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/classes/Chemistry"
+					},
+					"response": []
+				},
+				{
+					"name": "Neg-ClassTopic",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd25548d-89f0-486b-900f-e9bcc2e0c644",
+								"exec": [
+									"const expStatusCode = pm.collectionVariables.get(\"statusCode\");\r",
+									"const expStatusLine = pm.collectionVariables.get(\"statusLine\");\r",
+									"const expHttpMethod = pm.collectionVariables.get(\"httpMethod\");\r",
+									"const scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"const pathParameter = pm.collectionVariables.get(\"pathParameter\");\r",
+									"\r",
+									"\r",
+									"//NEGATIVE TEST VALIDATION\r",
+									"//1. Status\r",
+									"pm.test(`Status code is ${expStatusCode}`, function () {\r",
+									"    pm.response.to.have.status(expStatusCode);\r",
+									"});\r",
+									"\r",
+									"//2. Status Line\r",
+									"pm.test(`Status message is ${expStatusLine}`, function () {\r",
+									"    pm.response.to.have.status(expStatusLine);\r",
+									"});\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Non-existing ID\")) {\r",
+									"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+									"        pm.expect(pm.response.json().message).to.eql(`program with this: ${pathParameter}not found`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"Incorrect Endpoint\")||scenarioName.includes(\"String\")||scenarioName.includes(\"Special Character\")||scenarioName.includes(\"Null Value\")) {\r",
+									"    pm.test(`Validate ${scenarioName}  Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(`Validate ${scenarioName} Response msg`, () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+									"        pm.expect(pm.response.text()).to.includes('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"//3. Scenario specific Tests\r",
+									"if(scenarioName === \"Incorrect Http Method\") {\r",
+									"    pm.test(\"Validate Incorrect HTTP Method JSON Response msg\", () => {\r",
+									"        pm.expect(pm.response.json().message).to.eql(`Request method '${expHttpMethod}' is not supported`);\r",
+									"        pm.expect(pm.response.json().success).to.eql(false);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Endpoint\") {\r",
+									"    pm.test(\"Validate Incorrect Endpoint Response msg\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
+									"        pm.expect(pm.response.text()).to.eql(`Invalid endpoint`);\r",
+									"        \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\") {\r",
+									"    pm.test(\"Validate Incorrect BaseURL Response msg\", () => {\r",
+									"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
+									"        pm.expect(pm.response.text()).to.include('<title>Heroku | Application Error</title>');\r",
+									"        \r",
+									"    });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5787dbf0-c4d0-405b-a83d-6bf08ab82ce5",
+								"exec": [
+									"console.log(\"Inside pre-requisite\")\r",
+									"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+									"console.log(\"Scenario Name \"+scenarioName)\r",
+									"pm.variables.set(\"BearerToken\",pm.collectionVariables.get(\"BearerToken\"));\r",
+									"pm.variables.set(\"classTopic\", pm.collectionVariables.get(\"classTopic_ModuleIntegration\"))\r",
+									"\r",
+									"if(scenarioName === \"Incorrect Http Method\"){\r",
+									"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+									"}\r",
+									"\r",
+									"if(scenarioName.includes(\"PathParameter\")){\r",
+									"    pm.variables.set(\"classTopic\", pm.collectionVariables.get(\"pathParameter\"))\r",
+									"}\r",
+									"\r",
+									"\r",
+									"if(scenarioName === \"Incorrect BaseURL\"){\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}\r",
+									"\r",
+									"if(scenarioName === \"No Auth\"){\r",
+									"\r",
+									"    pm.variables.set(\"BearerToken\",\"\")\r",
+									"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "9f88650f-628d-4b40-b1da-9ab2a938b415",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/{{endPoint}}/{{classTopic}}"
+					},
+					"response": []
+				},
+				{
+					"name": "ClassTopic Invalid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd25548d-89f0-486b-900f-e9bcc2e0c644",
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "c18a3cd4-e5ee-4831-a020-d64f67843e55",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/classes/$$2389@"
+					},
+					"response": []
+				},
+				{
 					"name": "Update New Class",
 					"event": [
 						{
