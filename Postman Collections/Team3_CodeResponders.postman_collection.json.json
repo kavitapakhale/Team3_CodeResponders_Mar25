@@ -6639,7 +6639,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"csId\": 51\r\n}",
+							"raw": "{\r\n\"classRecordingPath\": \"{{updateclassRecordingPath}}\",\r\n\"csId\": {{csId}}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
