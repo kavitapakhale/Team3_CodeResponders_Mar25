@@ -6639,7 +6639,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"batchId\":1234,\r\n\"classComments\": \"string\",\r\n\"classDate\":\"2025-06-21T15:11:08.750+00:00\",\r\n\"classDescription\": \"string\",\r\n\"classNo\":722,\r\n\"classNotes\": \"string\",\r\n\"classRecordingPath\": \"string \",\r\n\"classStaffId\": \"U34\",\r\n\"classTopic\": \"Chemistry\",\r\n\"csId\":50\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
