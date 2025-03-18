@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b51eb5c2-d1aa-471e-9042-a8d29be81441",
+								"id": "23be38f5-4fa2-4905-a5bd-32dbbfa923e1",
 								"exec": [
 									"const response = pm.response.json()\r",
 									"\r",
@@ -32,7 +32,7 @@
 									"pm.test(\"User have both Admin and Staff roles assigned\", function () {\r",
 									"    const roles = response.roles\r",
 									"    pm.expect(roles).to.include(\"ROLE_ADMIN\");\r",
-									"    pm.expect(roles).to.include(\"ROLE_STAFF\");\r",
+									"    pm.expect(roles).to.include(\"ROLE_STAFF\"); //not needed\r",
 									"});\r",
 									"\r",
 									"\r",
